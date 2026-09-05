@@ -1,0 +1,15 @@
+{
+  "name": "aura-ecommerce",
+  "version": "1.0.0",
+  "description": "AURA Atelier Contemporary E-Commerce Store",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": ["ecommerce", "fashion", "apparel"],
+  "author": "AURA Atelier",
+  "license": "MIT"
+}
