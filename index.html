@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AURA ATELIER | Contemporary Luxury Apparel & Streetwear</title>
-  <meta name="description" content="Discover modern shirts, oversized heavy graphic t-shirts, and tailored trousers. Engineered with premium natural fabrics and weightless zero-gravity proportions.">
+  <title>AURA ATELIER | Contemporary Luxury Apparel & Minimalist Studio</title>
+  <meta name="description" content="Discover contemporary luxury shirts, heavyweight graphic tees, and tailored trousers. Engineered with 100% natural fibers and architectural silhouettes.">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -18,10 +18,10 @@
               red: '#DC2626',
               crimson: '#991B1B',
               dark: '#09090B',
-              card: '#121216',
-              border: '#27272A',
+              card: '#FFFFFF',
+              border: '#E4E4E7',
               muted: '#71717A',
-              light: '#FAFAFA'
+              bg: '#FAFAFA'
             }
           },
           fontFamily: {
@@ -39,23 +39,23 @@
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="bg-[#09090B] text-zinc-100 antialiased selection:bg-red-600 selection:text-white">
+<body class="bg-[#FAFAFA] text-zinc-900 antialiased selection:bg-red-600 selection:text-white">
 
   <!-- =====================================================
-       TOP ANNOUNCEMENT BAR & UTILITIES
+       TOP ANNOUNCEMENT BAR & UTILITIES (CLEAN LUXURY)
        ===================================================== -->
-  <div class="bg-gradient-to-r from-zinc-950 via-zinc-900 to-zinc-950 border-b border-zinc-800/80 text-xs py-2 px-4">
+  <div class="bg-zinc-950 text-white text-xs py-2 px-4 border-b border-zinc-800">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
       <div class="flex items-center gap-2 text-zinc-300">
-        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-red-950/80 text-red-400 border border-red-800/50">
-          <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span> DROP 04
+        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-red-600/90 text-white">
+          <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span> DROP 04
         </span>
-        <span>Use code <strong class="text-white tracking-wider font-mono bg-zinc-800 px-1.5 py-0.5 rounded">GRAVITY20</strong> for 20% Off • Free Express Shipping on orders over $100</span>
+        <span class="text-xs">Use code <strong class="text-white tracking-wider font-mono bg-zinc-800 px-1.5 py-0.5 rounded text-red-400">GRAVITY20</strong> for 20% Off • Free Express Delivery Worldwide on orders $100+</span>
       </div>
       <div class="flex items-center gap-4 text-zinc-400 text-xs">
         <div class="flex items-center gap-1">
-          <i data-lucide="globe" class="w-3.5 h-3.5 text-zinc-500"></i>
-          <select id="currency-selector" class="bg-transparent text-zinc-300 hover:text-white border-none focus:outline-none cursor-pointer text-xs font-medium py-0.5">
+          <i data-lucide="globe" class="w-3.5 h-3.5 text-zinc-400"></i>
+          <select id="currency-selector" class="bg-transparent text-zinc-200 hover:text-white border-none focus:outline-none cursor-pointer text-xs font-medium py-0.5">
             <option value="USD" class="bg-zinc-900 text-white">USD ($)</option>
             <option value="EUR" class="bg-zinc-900 text-white">EUR (€)</option>
             <option value="INR" class="bg-zinc-900 text-white">INR (₹)</option>
@@ -71,35 +71,35 @@
   </div>
 
   <!-- =====================================================
-       HEADER & MAIN NAVIGATION
+       HEADER & MAIN NAVIGATION (CRISP WHITE GLASS)
        ===================================================== -->
-  <header class="sticky top-0 z-40 bg-[#09090B]/90 backdrop-blur-xl border-b border-zinc-800/80 transition-all duration-300" id="main-header">
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-xl border-b border-zinc-200 transition-all duration-300 shadow-sm" id="main-header">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
       
       <!-- Mobile Menu Toggle Button -->
-      <button id="mobile-menu-btn" class="lg:hidden p-2 text-zinc-400 hover:text-white focus:outline-none rounded-lg hover:bg-zinc-800" aria-label="Toggle navigation">
+      <button id="mobile-menu-btn" class="lg:hidden p-2 text-zinc-600 hover:text-zinc-950 focus:outline-none rounded-xl hover:bg-zinc-100" aria-label="Toggle navigation">
         <i data-lucide="menu" class="w-6 h-6"></i>
       </button>
 
       <!-- Brand Logo -->
       <a href="#" class="flex items-center gap-2.5 group">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-red-600 to-zinc-900 flex items-center justify-center border border-red-500/30 group-hover:border-red-500 transition shadow-lg shadow-red-950/30">
-          <span class="font-heading font-black text-lg tracking-tighter text-white">A</span>
+        <div class="w-9 h-9 rounded-xl bg-zinc-950 flex items-center justify-center text-white group-hover:bg-red-600 transition shadow-md">
+          <span class="font-heading font-black text-lg tracking-tighter">A</span>
         </div>
         <div class="flex flex-col">
-          <span class="font-heading text-xl font-bold tracking-widest text-white leading-none">AURA<span class="text-red-500">.</span></span>
-          <span class="text-[9px] uppercase tracking-[0.25em] text-zinc-500 font-semibold">Studio Atelier</span>
+          <span class="font-heading text-xl font-extrabold tracking-widest text-zinc-950 leading-none">AURA<span class="text-red-600">.</span></span>
+          <span class="text-[9px] uppercase tracking-[0.25em] text-zinc-500 font-bold">Studio Atelier</span>
         </div>
       </a>
 
       <!-- Desktop Nav Links -->
       <nav class="hidden lg:flex items-center gap-1 xl:gap-2">
-        <button onclick="filterByCategory('all')" class="nav-link active px-3.5 py-2 rounded-lg text-sm font-medium text-white hover:text-white hover:bg-zinc-800/60 transition" data-category="all">All Products</button>
-        <button onclick="filterByCategory('shirts')" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-zinc-400 hover:text-white hover:bg-zinc-800/60 transition" data-category="shirts">Shirts</button>
-        <button onclick="filterByCategory('tshirts')" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-zinc-400 hover:text-white hover:bg-zinc-800/60 transition" data-category="tshirts">T-Shirts</button>
-        <button onclick="filterByCategory('pants')" class="nav-link px-3.5 py-2 rounded-lg text-sm font-medium text-zinc-400 hover:text-white hover:bg-zinc-800/60 transition" data-category="pants">Pants & Trousers</button>
-        <button onclick="filterBySale()" class="nav-link px-3.5 py-2 rounded-lg text-sm font-semibold text-red-400 hover:text-red-300 hover:bg-red-950/30 transition flex items-center gap-1.5" data-category="sale">
-          <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span> Sale Up to 35%
+        <button onclick="filterByCategory('all')" class="nav-link active px-4 py-2 rounded-xl text-sm font-semibold text-zinc-950 bg-zinc-100 hover:bg-zinc-200/80 transition" data-category="all">All Products</button>
+        <button onclick="filterByCategory('shirts')" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100 transition" data-category="shirts">Shirts</button>
+        <button onclick="filterByCategory('tshirts')" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100 transition" data-category="tshirts">T-Shirts</button>
+        <button onclick="filterByCategory('pants')" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100 transition" data-category="pants">Pants & Trousers</button>
+        <button onclick="filterBySale()" class="nav-link px-4 py-2 rounded-xl text-sm font-bold text-red-600 hover:text-red-700 hover:bg-red-50 transition flex items-center gap-1.5" data-category="sale">
+          <span class="w-1.5 h-1.5 rounded-full bg-red-600"></span> Sale Up to 35%
         </button>
       </nav>
 
@@ -109,109 +109,109 @@
         <!-- Live Predictive Search Box -->
         <div class="relative hidden md:block w-48 lg:w-64 xl:w-72">
           <div class="relative flex items-center">
-            <i data-lucide="search" class="w-4 h-4 text-zinc-500 absolute left-3 pointer-events-none"></i>
+            <i data-lucide="search" class="w-4 h-4 text-zinc-400 absolute left-3 pointer-events-none"></i>
             <input 
               type="text" 
               id="global-search-input" 
               placeholder="Search shirts, tees, cargo..." 
-              class="w-full bg-zinc-900/90 text-sm text-zinc-200 placeholder-zinc-500 pl-9 pr-8 py-2 rounded-xl border border-zinc-800 focus:border-red-500/80 focus:ring-1 focus:ring-red-500/80 focus:outline-none transition"
+              class="w-full bg-zinc-100 text-sm text-zinc-900 placeholder-zinc-400 pl-9 pr-8 py-2 rounded-xl border border-zinc-200 focus:bg-white focus:border-zinc-950 focus:ring-1 focus:ring-zinc-950 focus:outline-none transition"
               autocomplete="off"
             >
-            <button id="search-clear-btn" class="hidden absolute right-2.5 text-zinc-500 hover:text-white p-0.5" aria-label="Clear search">
+            <button id="search-clear-btn" class="hidden absolute right-2.5 text-zinc-400 hover:text-zinc-900 p-0.5" aria-label="Clear search">
               <i data-lucide="x" class="w-3.5 h-3.5"></i>
             </button>
           </div>
 
           <!-- Instant Search Autocomplete Dropdown -->
-          <div id="search-results-dropdown" class="hidden absolute left-0 right-0 top-full mt-2 glass-dropdown rounded-2xl shadow-2xl p-2 z-50 max-h-96 overflow-y-auto border border-zinc-800">
+          <div id="search-results-dropdown" class="hidden absolute left-0 right-0 top-full mt-2 glass-dropdown-light rounded-2xl shadow-xl p-2 z-50 max-h-96 overflow-y-auto border border-zinc-200">
             <!-- Dynamic search results populated by JS -->
           </div>
         </div>
 
         <!-- Mobile Search Button -->
-        <button id="mobile-search-toggle" class="md:hidden p-2 text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-800" aria-label="Open search">
+        <button id="mobile-search-toggle" class="md:hidden p-2.5 text-zinc-600 hover:text-zinc-950 rounded-xl hover:bg-zinc-100" aria-label="Open search">
           <i data-lucide="search" class="w-5 h-5"></i>
         </button>
 
         <!-- Wishlist Button with Badge -->
-        <button id="wishlist-btn" class="relative p-2.5 text-zinc-400 hover:text-white rounded-xl hover:bg-zinc-800/80 transition group" aria-label="View wishlist">
+        <button id="wishlist-btn" class="relative p-2.5 text-zinc-600 hover:text-zinc-950 rounded-xl hover:bg-zinc-100 transition group border border-zinc-200 bg-white shadow-sm" aria-label="View wishlist">
           <i data-lucide="heart" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
-          <span id="wishlist-badge" class="absolute -top-0.5 -right-0.5 w-5 h-5 bg-red-600 text-white font-bold text-[11px] rounded-full flex items-center justify-center ring-2 ring-[#09090B] transform scale-0 transition-transform duration-200">0</span>
+          <span id="wishlist-badge" class="absolute -top-1 -right-1 w-5 h-5 bg-red-600 text-white font-bold text-[11px] rounded-full flex items-center justify-center ring-2 ring-white transform scale-0 transition-transform duration-200">0</span>
         </button>
 
         <!-- Cart Slide-out Trigger Button -->
-        <button id="cart-btn" class="relative flex items-center gap-2 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white px-3.5 py-2 rounded-xl font-medium text-sm transition shadow-lg shadow-red-950/40 group" aria-label="View shopping cart">
+        <button id="cart-btn" class="relative flex items-center gap-2.5 bg-zinc-950 hover:bg-zinc-800 text-white px-4 py-2.5 rounded-xl font-semibold text-sm transition shadow-md group" aria-label="View shopping cart">
           <div class="relative">
             <i data-lucide="shopping-bag" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
-            <span id="cart-badge" class="absolute -top-2 -right-2 bg-white text-zinc-950 font-black text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+            <span id="cart-badge" class="absolute -top-2 -right-2 bg-red-600 text-white font-black text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
           </div>
-          <span id="header-cart-total" class="hidden sm:inline font-bold tracking-tight">$0.00</span>
+          <span id="header-cart-total" class="hidden sm:inline font-bold tracking-tight font-mono">$0.00</span>
         </button>
       </div>
 
     </div>
 
     <!-- Mobile Search Bar (Expandable) -->
-    <div id="mobile-search-bar" class="hidden md:hidden px-4 pb-3 pt-1 border-t border-zinc-800/60 bg-zinc-950">
+    <div id="mobile-search-bar" class="hidden md:hidden px-4 pb-3 pt-1 border-t border-zinc-200 bg-white">
       <div class="relative flex items-center">
-        <i data-lucide="search" class="w-4 h-4 text-zinc-500 absolute left-3"></i>
+        <i data-lucide="search" class="w-4 h-4 text-zinc-400 absolute left-3"></i>
         <input 
           type="text" 
           id="mobile-search-input" 
           placeholder="Search all apparel..." 
-          class="w-full bg-zinc-900 text-sm text-zinc-200 placeholder-zinc-500 pl-9 pr-8 py-2.5 rounded-xl border border-zinc-800 focus:outline-none focus:border-red-500"
+          class="w-full bg-zinc-100 text-sm text-zinc-900 placeholder-zinc-400 pl-9 pr-8 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white"
         >
       </div>
-      <div id="mobile-search-results-dropdown" class="hidden mt-2 glass-dropdown rounded-xl shadow-xl p-2 max-h-72 overflow-y-auto"></div>
+      <div id="mobile-search-results-dropdown" class="hidden mt-2 glass-dropdown-light rounded-xl shadow-xl p-2 max-h-72 overflow-y-auto border border-zinc-200"></div>
     </div>
   </header>
 
   <!-- =====================================================
        MOBILE NAVIGATION DRAWER
        ===================================================== -->
-  <div id="mobile-menu-drawer" class="fixed inset-0 z-50 drawer-backdrop bg-black/80 flex">
-    <div class="w-4/5 max-w-sm bg-zinc-950 h-full border-r border-zinc-800 p-6 flex flex-col justify-between drawer-panel-left overflow-y-auto">
+  <div id="mobile-menu-drawer" class="fixed inset-0 z-50 drawer-backdrop bg-black/60 flex">
+    <div class="w-4/5 max-w-sm bg-white h-full border-r border-zinc-200 p-6 flex flex-col justify-between drawer-panel-left overflow-y-auto shadow-2xl">
       <div>
-        <div class="flex items-center justify-between pb-6 border-b border-zinc-800">
+        <div class="flex items-center justify-between pb-6 border-b border-zinc-200">
           <div class="flex items-center gap-2">
-            <div class="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center font-bold text-white">A</div>
-            <span class="font-heading font-bold text-lg text-white">AURA ATELIER</span>
+            <div class="w-8 h-8 rounded-lg bg-zinc-950 flex items-center justify-center font-bold text-white">A</div>
+            <span class="font-heading font-extrabold text-lg text-zinc-950">AURA ATELIER</span>
           </div>
-          <button id="close-mobile-menu" class="p-2 text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-900">
+          <button id="close-mobile-menu" class="p-2 text-zinc-400 hover:text-zinc-950 rounded-lg hover:bg-zinc-100">
             <i data-lucide="x" class="w-5 h-5"></i>
           </button>
         </div>
 
         <nav class="mt-6 flex flex-col gap-2">
-          <button onclick="filterByCategory('all'); closeMobileNav();" class="flex items-center justify-between p-3 rounded-xl text-left text-base font-semibold text-white hover:bg-zinc-900">
+          <button onclick="filterByCategory('all'); closeMobileNav();" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-semibold text-zinc-950 hover:bg-zinc-100">
             <span>All Collection</span>
-            <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-600"></i>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
           </button>
-          <button onclick="filterByCategory('shirts'); closeMobileNav();" class="flex items-center justify-between p-3 rounded-xl text-left text-base font-medium text-zinc-300 hover:bg-zinc-900">
+          <button onclick="filterByCategory('shirts'); closeMobileNav();" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-medium text-zinc-700 hover:bg-zinc-100">
             <span>Shirts & Overshirts</span>
-            <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-600"></i>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
           </button>
-          <button onclick="filterByCategory('tshirts'); closeMobileNav();" class="flex items-center justify-between p-3 rounded-xl text-left text-base font-medium text-zinc-300 hover:bg-zinc-900">
+          <button onclick="filterByCategory('tshirts'); closeMobileNav();" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-medium text-zinc-700 hover:bg-zinc-100">
             <span>Graphic & Heavy Tees</span>
-            <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-600"></i>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
           </button>
-          <button onclick="filterByCategory('pants'); closeMobileNav();" class="flex items-center justify-between p-3 rounded-xl text-left text-base font-medium text-zinc-300 hover:bg-zinc-900">
+          <button onclick="filterByCategory('pants'); closeMobileNav();" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-medium text-zinc-700 hover:bg-zinc-100">
             <span>Trousers & Pants</span>
-            <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-600"></i>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
           </button>
-          <button onclick="filterBySale(); closeMobileNav();" class="flex items-center justify-between p-3 rounded-xl text-left text-base font-semibold text-red-400 bg-red-950/20 hover:bg-red-950/40 border border-red-900/30">
-            <span>Seasonal Sale (35% Off)</span>
+          <button onclick="filterBySale(); closeMobileNav();" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-bold text-red-600 bg-red-50 hover:bg-red-100 border border-red-200">
+            <span>Seasonal Sale (-35% Off)</span>
             <span class="text-xs bg-red-600 text-white px-2 py-0.5 rounded font-bold">HOT</span>
           </button>
         </nav>
       </div>
 
-      <div class="pt-6 border-t border-zinc-800 space-y-4">
-        <button onclick="openSizeGuideModal('shirt-01'); closeMobileNav();" class="w-full flex items-center gap-3 p-3 rounded-xl bg-zinc-900 text-zinc-300 text-sm font-medium">
-          <i data-lucide="ruler" class="w-4 h-4 text-red-500"></i> Measurement & Size Guide
+      <div class="pt-6 border-t border-zinc-200 space-y-4">
+        <button onclick="openSizeGuideModal('shirt-01'); closeMobileNav();" class="w-full flex items-center gap-3 p-3 rounded-xl bg-zinc-100 text-zinc-800 text-sm font-semibold">
+          <i data-lucide="ruler" class="w-4 h-4 text-red-600"></i> Measurement & Size Guide
         </button>
-        <div class="text-xs text-zinc-500 text-center">
-          © 2026 AURA STUDIO ATELIER. All rights reserved.
+        <div class="text-xs text-zinc-400 text-center font-medium">
+          © 2026 AURA STUDIO ATELIER.
         </div>
       </div>
     </div>
@@ -219,68 +219,69 @@
   </div>
 
   <!-- =====================================================
-       HERO SECTION - EDITORIAL CAMPAIGN BANNER
+       HERO SECTION - WHITE SCANDINAVIAN LUXURY EDITORIAL
        ===================================================== -->
-  <section class="relative min-h-[580px] lg:min-h-[660px] flex items-center overflow-hidden border-b border-zinc-800">
-    <!-- Background Image with Moody Gradient Overlay -->
+  <section class="relative min-h-[580px] lg:min-h-[660px] flex items-center overflow-hidden border-b border-zinc-200 bg-white">
+    <!-- Background Image with Soft Light Gradient -->
     <div class="absolute inset-0 z-0">
       <img 
-        src="assets/images/hero-campaign.jpg" 
-        alt="AURA 2026 Collection Campaign" 
-        class="w-full h-full object-cover object-center filter brightness-[0.70] contrast-[1.08] scale-105 transition-transform duration-1000"
+        src="assets/images/hero-white-campaign.jpg" 
+        alt="AURA 2026 White Luxury Campaign" 
+        class="w-full h-full object-cover object-center filter brightness-[0.98] contrast-[1.02] scale-100"
       >
-      <div class="absolute inset-0 bg-gradient-to-r from-[#09090B] via-[#09090B]/85 to-transparent"></div>
-      <div class="absolute inset-0 bg-gradient-to-t from-[#09090B] via-transparent to-black/40"></div>
+      <!-- Subtle Ambient Soft Fades -->
+      <div class="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent lg:w-3/5"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent"></div>
     </div>
 
     <!-- Hero Content Container -->
     <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
-      <div class="max-w-2xl space-y-6">
+      <div class="max-w-xl space-y-6">
         
         <!-- Promo Badge Pill -->
-        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-zinc-900/90 border border-red-500/40 text-red-400 text-xs font-semibold tracking-wide backdrop-blur-md glow-red-sm">
-          <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
-          <span>AUTUMN / WINTER 2026 ARCHIVE</span>
-          <span class="text-zinc-600">•</span>
-          <span class="text-zinc-300">DROP 04 IS LIVE</span>
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-zinc-300 text-zinc-900 text-xs font-bold tracking-wide shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+          <span>AUTUMN / WINTER 2026</span>
+          <span class="text-zinc-400">•</span>
+          <span class="text-red-600">NAMMA THAA AURA</span>
         </div>
 
         <!-- High-Impact Editorial Heading -->
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.08]">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-950 leading-[1.08]">
           Sculpted Silhouettes.<br>
-          <span class="text-gradient-crimson">Weightless Drape.</span>
+          <span class="text-zinc-600">Weightless Drape.</span>
         </h1>
 
         <!-- Subtitle & Manifesto -->
-        <p class="text-zinc-300 text-base sm:text-lg leading-relaxed font-normal max-w-xl">
-          Engineered for fluid motion and timeless elegance. Experience 280 GSM heavyweight French terry tees, pure Normandy linen shirting, and double-pleated architectural trousers.
+        <p class="text-zinc-600 text-base sm:text-lg leading-relaxed font-normal">
+          Engineered for effortless movement and refined proportion. Pure French flax linen shirting, 280 GSM heavyweight structured tees, and double-pleated tailored trousers.
         </p>
 
         <!-- CTA Buttons -->
         <div class="flex flex-wrap items-center gap-4 pt-2">
-          <a href="#catalog-section" class="px-7 py-3.5 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 font-bold text-sm tracking-wide transition-all duration-200 shadow-xl shadow-white/10 flex items-center gap-2 group">
+          <a href="#catalog-section" class="px-7 py-3.5 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-sm tracking-wide transition-all duration-200 shadow-lg flex items-center gap-2 group">
             <span>Shop Collection</span>
             <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
           </a>
-          <button onclick="filterBySale(); scrollToCatalog();" class="px-7 py-3.5 rounded-xl bg-zinc-900/90 hover:bg-zinc-800 text-white font-semibold text-sm border border-zinc-700/80 transition-all duration-200 backdrop-blur-md flex items-center gap-2">
-            <i data-lucide="tag" class="w-4 h-4 text-red-500"></i>
+          <button onclick="filterBySale(); scrollToCatalog();" class="px-7 py-3.5 rounded-xl bg-white hover:bg-zinc-100 text-zinc-900 font-bold text-sm border border-zinc-300 transition-all duration-200 shadow-sm flex items-center gap-2">
+            <i data-lucide="tag" class="w-4 h-4 text-red-600"></i>
             <span>View Sale Items (-35%)</span>
           </button>
         </div>
 
         <!-- Feature Points -->
-        <div class="grid grid-cols-3 gap-4 pt-6 border-t border-zinc-800/80 max-w-lg">
+        <div class="grid grid-cols-3 gap-4 pt-6 border-t border-zinc-200 max-w-lg">
           <div>
-            <span class="block text-xl font-heading font-bold text-white">100%</span>
-            <span class="text-xs text-zinc-400">Natural Fibers</span>
+            <span class="block text-xl font-heading font-black text-zinc-950">100%</span>
+            <span class="text-xs text-zinc-500 font-medium">Organic Fibers</span>
           </div>
           <div>
-            <span class="block text-xl font-heading font-bold text-white">280+ GSM</span>
-            <span class="text-xs text-zinc-400">Dense Street Weave</span>
+            <span class="block text-xl font-heading font-black text-zinc-950">280+ GSM</span>
+            <span class="text-xs text-zinc-500 font-medium">Heavy Weave</span>
           </div>
           <div>
-            <span class="block text-xl font-heading font-bold text-white">48h</span>
-            <span class="text-xs text-zinc-400">Global Dispatch</span>
+            <span class="block text-xl font-heading font-black text-zinc-950">48h</span>
+            <span class="text-xs text-zinc-500 font-medium">Global Dispatch</span>
           </div>
         </div>
 
@@ -289,48 +290,75 @@
   </section>
 
   <!-- =====================================================
-       VALUE PROPOSITIONS TRUST BAR
+       INFINITE BRAND MARQUEE TICKER
        ===================================================== -->
-  <section class="border-b border-zinc-800/80 bg-zinc-950/60 py-6">
+  <div class="bg-zinc-950 text-white py-3 overflow-hidden border-y border-zinc-800">
+    <div class="animate-marquee whitespace-nowrap flex items-center gap-8 text-xs font-bold uppercase tracking-[0.2em]">
+      <span>✦ NAMMA THAA AURA</span>
+      <span class="text-zinc-500">•</span>
+      <span>100% SUPIMA & NORMANDY FLAX LINEN</span>
+      <span class="text-zinc-500">•</span>
+      <span>ZERO-GRAVITY ARCHITECTURAL SILHOUETTES</span>
+      <span class="text-zinc-500">•</span>
+      <span>280 GSM COMPACT HEAVYWEIGHT WEAVES</span>
+      <span class="text-zinc-500">•</span>
+      <span>FREE WORLDWIDE SHIPPING $100+</span>
+      <span class="text-zinc-500">•</span>
+      <span>✦ NAMMA THAA AURA</span>
+      <span class="text-zinc-500">•</span>
+      <span>100% SUPIMA & NORMANDY FLAX LINEN</span>
+      <span class="text-zinc-500">•</span>
+      <span>ZERO-GRAVITY ARCHITECTURAL SILHOUETTES</span>
+      <span class="text-zinc-500">•</span>
+      <span>280 GSM COMPACT HEAVYWEIGHT WEAVES</span>
+      <span class="text-zinc-500">•</span>
+      <span>FREE WORLDWIDE SHIPPING $100+</span>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       VALUE PROPOSITIONS TRUST BAR (CLEAN WHITE)
+       ===================================================== -->
+  <section class="border-b border-zinc-200 bg-white py-8">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
         <div class="flex items-center gap-3.5">
-          <div class="w-10 h-10 rounded-xl bg-zinc-900 flex items-center justify-center text-red-500 border border-zinc-800">
+          <div class="w-11 h-11 rounded-2xl bg-zinc-100 flex items-center justify-center text-zinc-900 border border-zinc-200">
             <i data-lucide="truck" class="w-5 h-5"></i>
           </div>
           <div>
-            <h4 class="text-xs font-bold text-white uppercase tracking-wider">Free Global Delivery</h4>
-            <p class="text-[11px] text-zinc-400">On all orders exceeding $100</p>
+            <h4 class="text-xs font-bold text-zinc-950 uppercase tracking-wider">Free Global Delivery</h4>
+            <p class="text-[11px] text-zinc-500">On all orders exceeding $100</p>
           </div>
         </div>
 
         <div class="flex items-center gap-3.5">
-          <div class="w-10 h-10 rounded-xl bg-zinc-900 flex items-center justify-center text-red-500 border border-zinc-800">
+          <div class="w-11 h-11 rounded-2xl bg-zinc-100 flex items-center justify-center text-zinc-900 border border-zinc-200">
             <i data-lucide="sparkles" class="w-5 h-5"></i>
           </div>
           <div>
-            <h4 class="text-xs font-bold text-white uppercase tracking-wider">Supima & Flax Linen</h4>
-            <p class="text-[11px] text-zinc-400">Certified organic & durable</p>
+            <h4 class="text-xs font-bold text-zinc-950 uppercase tracking-wider">Supima & Flax Linen</h4>
+            <p class="text-[11px] text-zinc-500">Certified organic & durable</p>
           </div>
         </div>
 
         <div class="flex items-center gap-3.5">
-          <div class="w-10 h-10 rounded-xl bg-zinc-900 flex items-center justify-center text-red-500 border border-zinc-800">
+          <div class="w-11 h-11 rounded-2xl bg-zinc-100 flex items-center justify-center text-zinc-900 border border-zinc-200">
             <i data-lucide="rotate-ccw" class="w-5 h-5"></i>
           </div>
           <div>
-            <h4 class="text-xs font-bold text-white uppercase tracking-wider">30-Day Easy Returns</h4>
-            <p class="text-[11px] text-zinc-400">Hassle-free doorstep pickup</p>
+            <h4 class="text-xs font-bold text-zinc-950 uppercase tracking-wider">30-Day Easy Returns</h4>
+            <p class="text-[11px] text-zinc-500">Hassle-free doorstep pickup</p>
           </div>
         </div>
 
         <div class="flex items-center gap-3.5">
-          <div class="w-10 h-10 rounded-xl bg-zinc-900 flex items-center justify-center text-red-500 border border-zinc-800">
+          <div class="w-11 h-11 rounded-2xl bg-zinc-100 flex items-center justify-center text-zinc-900 border border-zinc-200">
             <i data-lucide="shield-check" class="w-5 h-5"></i>
           </div>
           <div>
-            <h4 class="text-xs font-bold text-white uppercase tracking-wider">Encrypted Checkout</h4>
-            <p class="text-[11px] text-zinc-400">Cards, UPI & COD Supported</p>
+            <h4 class="text-xs font-bold text-zinc-950 uppercase tracking-wider">Encrypted Checkout</h4>
+            <p class="text-[11px] text-zinc-500">Cards, UPI & COD Supported</p>
           </div>
         </div>
       </div>
@@ -340,14 +368,14 @@
   <!-- =====================================================
        CATEGORY SHOWCASE GRID
        ===================================================== -->
-  <section class="py-16 bg-[#09090B] border-b border-zinc-800">
+  <section class="py-16 bg-[#FAFAFA] border-b border-zinc-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
         <div>
-          <span class="text-xs font-bold text-red-500 uppercase tracking-widest">Curated Departments</span>
-          <h2 class="text-3xl font-extrabold text-white mt-1">Shop by Category</h2>
+          <span class="text-xs font-bold text-red-600 uppercase tracking-widest">Curated Departments</span>
+          <h2 class="text-3xl font-extrabold text-zinc-950 mt-1">Shop by Category</h2>
         </div>
-        <p class="text-sm text-zinc-400 max-w-md">
+        <p class="text-sm text-zinc-500 max-w-md">
           Explore precision-tailored garments built to endure through seasonal transitions.
         </p>
       </div>
@@ -355,52 +383,52 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
         <!-- Category 1: Shirts -->
-        <div onclick="filterByCategory('shirts'); scrollToCatalog();" class="group relative rounded-2xl overflow-hidden cursor-pointer h-96 border border-zinc-800 hover:border-zinc-600 transition-all duration-300">
+        <div onclick="filterByCategory('shirts'); scrollToCatalog();" class="group relative rounded-3xl overflow-hidden cursor-pointer h-96 border border-zinc-200 hover:border-zinc-400 transition-all duration-300 shadow-sm hover:shadow-xl bg-white">
           <img 
             src="assets/images/category-shirts.jpg" 
             alt="Tailored & Linen Shirts" 
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-90"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-95"
           >
-          <div class="absolute inset-0 category-card-overlay flex flex-col justify-end p-6">
-            <span class="text-xs font-bold text-red-400 uppercase tracking-wider">4 Styles Available</span>
-            <h3 class="text-2xl font-bold text-white mt-1 group-hover:text-red-400 transition">Tailored & Linen Shirts</h3>
-            <p class="text-xs text-zinc-300 mt-1 mb-4">Giza poplin, camp collared linen, and structured overshirts.</p>
+          <div class="absolute inset-0 category-card-overlay-light flex flex-col justify-end p-6 text-white">
+            <span class="text-xs font-bold uppercase tracking-wider text-red-400">4 Styles Available</span>
+            <h3 class="text-2xl font-bold mt-1 text-white">Tailored & Linen Shirts</h3>
+            <p class="text-xs text-zinc-200 mt-1 mb-4">Giza poplin, camp collared linen, and structured overshirts.</p>
             <span class="inline-flex items-center gap-2 text-xs font-bold text-white group-hover:translate-x-1 transition-transform">
-              Shop Shirts <i data-lucide="arrow-right" class="w-4 h-4 text-red-500"></i>
+              Shop Shirts <i data-lucide="arrow-right" class="w-4 h-4 text-red-400"></i>
             </span>
           </div>
         </div>
 
         <!-- Category 2: T-Shirts -->
-        <div onclick="filterByCategory('tshirts'); scrollToCatalog();" class="group relative rounded-2xl overflow-hidden cursor-pointer h-96 border border-zinc-800 hover:border-zinc-600 transition-all duration-300">
+        <div onclick="filterByCategory('tshirts'); scrollToCatalog();" class="group relative rounded-3xl overflow-hidden cursor-pointer h-96 border border-zinc-200 hover:border-zinc-400 transition-all duration-300 shadow-sm hover:shadow-xl bg-white">
           <img 
             src="assets/images/category-tees.jpg" 
             alt="Oversized Heavyweight Graphic Tees" 
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-90"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-95"
           >
-          <div class="absolute inset-0 category-card-overlay flex flex-col justify-end p-6">
-            <span class="text-xs font-bold text-red-400 uppercase tracking-wider">Zero-G Drops</span>
-            <h3 class="text-2xl font-bold text-white mt-1 group-hover:text-red-400 transition">Heavyweight Graphic Tees</h3>
-            <p class="text-xs text-zinc-300 mt-1 mb-4">280–300 GSM terry cotton, boxy drop shoulders & archival graphics.</p>
+          <div class="absolute inset-0 category-card-overlay-light flex flex-col justify-end p-6 text-white">
+            <span class="text-xs font-bold uppercase tracking-wider text-red-400">Zero-G Drops</span>
+            <h3 class="text-2xl font-bold mt-1 text-white">Heavyweight Graphic Tees</h3>
+            <p class="text-xs text-zinc-200 mt-1 mb-4">280–300 GSM terry cotton, boxy drop shoulders & archival graphics.</p>
             <span class="inline-flex items-center gap-2 text-xs font-bold text-white group-hover:translate-x-1 transition-transform">
-              Shop Tees <i data-lucide="arrow-right" class="w-4 h-4 text-red-500"></i>
+              Shop Tees <i data-lucide="arrow-right" class="w-4 h-4 text-red-400"></i>
             </span>
           </div>
         </div>
 
         <!-- Category 3: Pants -->
-        <div onclick="filterByCategory('pants'); scrollToCatalog();" class="group relative rounded-2xl overflow-hidden cursor-pointer h-96 border border-zinc-800 hover:border-zinc-600 transition-all duration-300">
+        <div onclick="filterByCategory('pants'); scrollToCatalog();" class="group relative rounded-3xl overflow-hidden cursor-pointer h-96 border border-zinc-200 hover:border-zinc-400 transition-all duration-300 shadow-sm hover:shadow-xl bg-white">
           <img 
             src="assets/images/category-pants.jpg" 
             alt="Pleated Trousers & Utility Cargo Pants" 
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-90"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-95"
           >
-          <div class="absolute inset-0 category-card-overlay flex flex-col justify-end p-6">
-            <span class="text-xs font-bold text-red-400 uppercase tracking-wider">Precision Cut</span>
-            <h3 class="text-2xl font-bold text-white mt-1 group-hover:text-red-400 transition">Trousers & Utility Pants</h3>
-            <p class="text-xs text-zinc-300 mt-1 mb-4">Double reverse pleats, tactical ripstop cargo, and Italian stretch chinos.</p>
+          <div class="absolute inset-0 category-card-overlay-light flex flex-col justify-end p-6 text-white">
+            <span class="text-xs font-bold uppercase tracking-wider text-red-400">Precision Cut</span>
+            <h3 class="text-2xl font-bold mt-1 text-white">Trousers & Utility Pants</h3>
+            <p class="text-xs text-zinc-200 mt-1 mb-4">Double reverse pleats, tactical ripstop cargo, and Italian stretch chinos.</p>
             <span class="inline-flex items-center gap-2 text-xs font-bold text-white group-hover:translate-x-1 transition-transform">
-              Shop Pants <i data-lucide="arrow-right" class="w-4 h-4 text-red-500"></i>
+              Shop Pants <i data-lucide="arrow-right" class="w-4 h-4 text-red-400"></i>
             </span>
           </div>
         </div>
@@ -412,26 +440,22 @@
   <!-- =====================================================
        ZERO-GRAVITY SPOTLIGHT FEATURE BANNER
        ===================================================== -->
-  <section class="py-12 bg-gradient-to-b from-zinc-950 to-[#09090B] border-b border-zinc-800">
+  <section class="py-12 bg-white border-b border-zinc-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="glass-panel rounded-3xl p-8 lg:p-12 border border-red-900/30 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8">
+      <div class="bg-zinc-950 text-white rounded-3xl p-8 lg:p-12 relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 shadow-xl">
         
-        <!-- Glow accents -->
-        <div class="absolute -top-24 -left-24 w-72 h-72 bg-red-600/15 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute -bottom-24 -right-24 w-72 h-72 bg-red-800/15 rounded-full blur-3xl pointer-events-none"></div>
-
         <div class="space-y-4 max-w-xl z-10">
-          <span class="inline-block text-xs font-bold text-red-500 uppercase tracking-widest px-3 py-1 bg-red-950/60 rounded-full border border-red-800/50">
+          <span class="inline-block text-xs font-bold text-red-400 uppercase tracking-widest px-3 py-1 bg-red-950/80 rounded-full border border-red-800/60">
             TECHNOLOGICAL DRAPE
           </span>
           <h3 class="text-3xl lg:text-4xl font-extrabold text-white">
-            Suspended In <span class="text-gradient-crimson">Zero-Gravity</span>
+            Suspended In <span class="text-red-500">Zero-Gravity</span>
           </h3>
           <p class="text-sm text-zinc-300 leading-relaxed">
             Every garment in the Antigravity collection is cut with custom ergonomic balance points. Fabrics drift weightlessly, moving naturally with the body while preserving architectural lines.
           </p>
           <div class="flex items-center gap-4 pt-2">
-            <button onclick="openProductDetailModal('tee-03')" class="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs tracking-wider uppercase transition shadow-lg shadow-red-950/50 flex items-center gap-2">
+            <button onclick="openProductDetailModal('tee-03')" class="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold text-xs tracking-wider uppercase transition shadow-md flex items-center gap-2">
               <span>View Antigravity Tee</span>
               <i data-lucide="external-link" class="w-4 h-4"></i>
             </button>
@@ -457,16 +481,16 @@
   </section>
 
   <!-- =====================================================
-       CATALOG SECTION & MULTI-FILTER SYSTEM
+       CATALOG SECTION & MULTI-FILTER SYSTEM (WHITE ATELIER)
        ===================================================== -->
-  <section id="catalog-section" class="py-14 bg-[#09090B]">
+  <section id="catalog-section" class="py-14 bg-[#FAFAFA]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Catalog Controls Header -->
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between pb-6 border-b border-zinc-800 gap-4">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between pb-6 border-b border-zinc-200 gap-4">
         <div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">The Catalog</h2>
-          <p id="product-count-label" class="text-xs sm:text-sm text-zinc-400 mt-1">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-zinc-950">The Collection</h2>
+          <p id="product-count-label" class="text-xs sm:text-sm text-zinc-500 mt-1 font-medium">
             Showing all 12 contemporary apparel pieces
           </p>
         </div>
@@ -475,31 +499,31 @@
         <div class="flex flex-wrap items-center gap-3">
           
           <!-- Mobile Filter Button (Shows on <lg) -->
-          <button id="mobile-filter-btn" class="lg:hidden flex items-center gap-2 px-4 py-2.5 bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 rounded-xl text-sm font-medium text-white transition">
-            <i data-lucide="sliders-horizontal" class="w-4 h-4 text-red-500"></i>
+          <button id="mobile-filter-btn" class="lg:hidden flex items-center gap-2 px-4 py-2.5 bg-white hover:bg-zinc-50 border border-zinc-300 rounded-xl text-sm font-semibold text-zinc-900 transition shadow-sm">
+            <i data-lucide="sliders-horizontal" class="w-4 h-4 text-red-600"></i>
             <span>Filters & Sort</span>
             <span id="active-filter-count-badge" class="hidden bg-red-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
           </button>
 
           <!-- Sorting Dropdown -->
-          <div class="flex items-center gap-2 bg-zinc-900 px-3 py-2 rounded-xl border border-zinc-800">
-            <span class="text-xs text-zinc-500 hidden sm:inline">Sort:</span>
-            <select id="sort-selector" class="bg-transparent text-sm text-zinc-200 focus:outline-none cursor-pointer pr-2 font-medium">
-              <option value="featured" class="bg-zinc-900 text-white">Featured</option>
-              <option value="price-low" class="bg-zinc-900 text-white">Price: Low to High</option>
-              <option value="price-high" class="bg-zinc-900 text-white">Price: High to Low</option>
-              <option value="rating" class="bg-zinc-900 text-white">Highest Rated</option>
-              <option value="newest" class="bg-zinc-900 text-white">New Arrivals</option>
-              <option value="discount" class="bg-zinc-900 text-white">Biggest Discount</option>
+          <div class="flex items-center gap-2 bg-white px-3.5 py-2 rounded-xl border border-zinc-200 shadow-sm">
+            <span class="text-xs text-zinc-500 font-semibold hidden sm:inline">Sort:</span>
+            <select id="sort-selector" class="bg-transparent text-sm text-zinc-900 focus:outline-none cursor-pointer pr-2 font-bold">
+              <option value="featured">Featured</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Highest Rated</option>
+              <option value="newest">New Arrivals</option>
+              <option value="discount">Biggest Discount</option>
             </select>
           </div>
 
           <!-- View Switcher (Grid vs List) -->
-          <div class="hidden sm:flex items-center gap-1 bg-zinc-900 p-1 rounded-xl border border-zinc-800">
-            <button id="view-grid-btn" class="p-1.5 rounded-lg bg-zinc-800 text-white" title="Grid View" aria-label="Grid View">
+          <div class="hidden sm:flex items-center gap-1 bg-white p-1 rounded-xl border border-zinc-200 shadow-sm">
+            <button id="view-grid-btn" class="p-1.5 rounded-lg bg-zinc-950 text-white" title="Grid View" aria-label="Grid View">
               <i data-lucide="grid" class="w-4 h-4"></i>
             </button>
-            <button id="view-list-btn" class="p-1.5 rounded-lg text-zinc-400 hover:text-white" title="List View" aria-label="List View">
+            <button id="view-list-btn" class="p-1.5 rounded-lg text-zinc-500 hover:text-zinc-950" title="List View" aria-label="List View">
               <i data-lucide="list" class="w-4 h-4"></i>
             </button>
           </div>
@@ -509,69 +533,69 @@
 
       <!-- Active Filter Chips Bar -->
       <div id="active-filter-chips" class="hidden flex-wrap items-center gap-2 pt-4 pb-2">
-        <span class="text-xs text-zinc-500 font-medium">Active Filters:</span>
+        <span class="text-xs text-zinc-500 font-semibold">Active Filters:</span>
         <div id="chips-container" class="flex flex-wrap items-center gap-2">
           <!-- Populated by JS -->
         </div>
-        <button onclick="resetAllFilters()" class="text-xs text-red-400 hover:text-red-300 font-medium underline ml-2">Clear All</button>
+        <button onclick="resetAllFilters()" class="text-xs text-red-600 hover:text-red-700 font-bold underline ml-2">Clear All</button>
       </div>
 
       <!-- Main Body Layout: Sidebar + Product Grid -->
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 pt-6">
         
         <!-- ============================================
-             DESKTOP FILTER SIDEBAR
+             DESKTOP FILTER SIDEBAR (WHITE ATELIER)
              ============================================ -->
-        <aside class="hidden lg:block space-y-6 sticky top-28 h-fit bg-zinc-950/60 p-6 rounded-2xl border border-zinc-800/80 backdrop-blur-md">
+        <aside class="hidden lg:block space-y-6 sticky top-28 h-fit bg-white p-6 rounded-3xl border border-zinc-200 shadow-sm">
           
-          <div class="flex items-center justify-between pb-4 border-b border-zinc-800">
+          <div class="flex items-center justify-between pb-4 border-b border-zinc-200">
             <div class="flex items-center gap-2">
-              <i data-lucide="filter" class="w-4 h-4 text-red-500"></i>
-              <h3 class="text-base font-bold text-white">Filter Apparel</h3>
+              <i data-lucide="filter" class="w-4 h-4 text-red-600"></i>
+              <h3 class="text-base font-bold text-zinc-950">Filter Apparel</h3>
             </div>
-            <button onclick="resetAllFilters()" class="text-xs text-zinc-400 hover:text-white transition">Reset</button>
+            <button onclick="resetAllFilters()" class="text-xs text-zinc-500 hover:text-zinc-950 font-semibold transition">Reset</button>
           </div>
 
           <!-- Filter 1: Category -->
           <div class="space-y-2">
             <label class="text-xs font-bold text-zinc-400 uppercase tracking-wider block">Category</label>
-            <div class="space-y-1 text-sm">
-              <label class="flex items-center justify-between cursor-pointer p-1.5 rounded-lg hover:bg-zinc-900 transition">
-                <span class="flex items-center gap-2">
-                  <input type="radio" name="filter-category" value="all" checked onchange="handleFilterChange()" class="accent-red-600">
-                  <span class="text-zinc-300">All Apparel</span>
+            <div class="space-y-1 text-sm font-medium">
+              <label class="flex items-center justify-between cursor-pointer p-2 rounded-xl hover:bg-zinc-50 transition">
+                <span class="flex items-center gap-2.5">
+                  <input type="radio" name="filter-category" value="all" checked onchange="handleFilterChange()" class="accent-zinc-950">
+                  <span class="text-zinc-900">All Apparel</span>
                 </span>
-                <span class="text-xs text-zinc-500">12</span>
+                <span class="text-xs text-zinc-400 font-mono">12</span>
               </label>
-              <label class="flex items-center justify-between cursor-pointer p-1.5 rounded-lg hover:bg-zinc-900 transition">
-                <span class="flex items-center gap-2">
-                  <input type="radio" name="filter-category" value="shirts" onchange="handleFilterChange()" class="accent-red-600">
-                  <span class="text-zinc-300">Shirts</span>
+              <label class="flex items-center justify-between cursor-pointer p-2 rounded-xl hover:bg-zinc-50 transition">
+                <span class="flex items-center gap-2.5">
+                  <input type="radio" name="filter-category" value="shirts" onchange="handleFilterChange()" class="accent-zinc-950">
+                  <span class="text-zinc-900">Shirts</span>
                 </span>
-                <span class="text-xs text-zinc-500">4</span>
+                <span class="text-xs text-zinc-400 font-mono">4</span>
               </label>
-              <label class="flex items-center justify-between cursor-pointer p-1.5 rounded-lg hover:bg-zinc-900 transition">
-                <span class="flex items-center gap-2">
-                  <input type="radio" name="filter-category" value="tshirts" onchange="handleFilterChange()" class="accent-red-600">
-                  <span class="text-zinc-300">T-Shirts</span>
+              <label class="flex items-center justify-between cursor-pointer p-2 rounded-xl hover:bg-zinc-50 transition">
+                <span class="flex items-center gap-2.5">
+                  <input type="radio" name="filter-category" value="tshirts" onchange="handleFilterChange()" class="accent-zinc-950">
+                  <span class="text-zinc-900">T-Shirts</span>
                 </span>
-                <span class="text-xs text-zinc-500">4</span>
+                <span class="text-xs text-zinc-400 font-mono">4</span>
               </label>
-              <label class="flex items-center justify-between cursor-pointer p-1.5 rounded-lg hover:bg-zinc-900 transition">
-                <span class="flex items-center gap-2">
-                  <input type="radio" name="filter-category" value="pants" onchange="handleFilterChange()" class="accent-red-600">
-                  <span class="text-zinc-300">Pants & Trousers</span>
+              <label class="flex items-center justify-between cursor-pointer p-2 rounded-xl hover:bg-zinc-50 transition">
+                <span class="flex items-center gap-2.5">
+                  <input type="radio" name="filter-category" value="pants" onchange="handleFilterChange()" class="accent-zinc-950">
+                  <span class="text-zinc-900">Pants & Trousers</span>
                 </span>
-                <span class="text-xs text-zinc-500">4</span>
+                <span class="text-xs text-zinc-400 font-mono">4</span>
               </label>
             </div>
           </div>
 
           <!-- Filter 2: Price Range Slider -->
-          <div class="space-y-3 pt-4 border-t border-zinc-800">
+          <div class="space-y-3 pt-4 border-t border-zinc-200">
             <div class="flex items-center justify-between">
               <label class="text-xs font-bold text-zinc-400 uppercase tracking-wider">Max Price</label>
-              <span id="price-slider-label" class="text-sm font-bold text-red-400 font-mono">$100</span>
+              <span id="price-slider-label" class="text-sm font-bold text-red-600 font-mono">$100</span>
             </div>
             <input 
               type="range" 
@@ -583,7 +607,7 @@
               oninput="handlePriceSliderInput(this.value)"
               class="w-full"
             >
-            <div class="flex justify-between text-[11px] text-zinc-500 font-mono">
+            <div class="flex justify-between text-[11px] text-zinc-400 font-mono font-medium">
               <span>$30</span>
               <span>$65</span>
               <span>$100</span>
@@ -591,49 +615,47 @@
           </div>
 
           <!-- Filter 3: Sizes Matrix -->
-          <div class="space-y-2 pt-4 border-t border-zinc-800">
-            <div class="flex items-center justify-between">
-              <label class="text-xs font-bold text-zinc-400 uppercase tracking-wider">Size (Tops & Waist)</label>
-            </div>
+          <div class="space-y-2 pt-4 border-t border-zinc-200">
+            <label class="text-xs font-bold text-zinc-400 uppercase tracking-wider block">Size (Tops & Waist)</label>
             <!-- Tops Sizes -->
             <div class="grid grid-cols-5 gap-1.5">
-              <button onclick="toggleSizeFilter('S')" class="size-filter-btn px-2 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-xs font-medium text-zinc-300 hover:border-zinc-500 transition" data-size="S">S</button>
-              <button onclick="toggleSizeFilter('M')" class="size-filter-btn px-2 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-xs font-medium text-zinc-300 hover:border-zinc-500 transition" data-size="M">M</button>
-              <button onclick="toggleSizeFilter('L')" class="size-filter-btn px-2 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-xs font-medium text-zinc-300 hover:border-zinc-500 transition" data-size="L">L</button>
-              <button onclick="toggleSizeFilter('XL')" class="size-filter-btn px-2 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-xs font-medium text-zinc-300 hover:border-zinc-500 transition" data-size="XL">XL</button>
-              <button onclick="toggleSizeFilter('XXL')" class="size-filter-btn px-2 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-xs font-medium text-zinc-300 hover:border-zinc-500 transition" data-size="XXL">2XL</button>
+              <button onclick="toggleSizeFilter('S')" class="size-filter-btn px-2 py-2 rounded-xl bg-zinc-100 border border-zinc-200 text-xs font-bold text-zinc-800 hover:border-zinc-400 transition" data-size="S">S</button>
+              <button onclick="toggleSizeFilter('M')" class="size-filter-btn px-2 py-2 rounded-xl bg-zinc-100 border border-zinc-200 text-xs font-bold text-zinc-800 hover:border-zinc-400 transition" data-size="M">M</button>
+              <button onclick="toggleSizeFilter('L')" class="size-filter-btn px-2 py-2 rounded-xl bg-zinc-100 border border-zinc-200 text-xs font-bold text-zinc-800 hover:border-zinc-400 transition" data-size="L">L</button>
+              <button onclick="toggleSizeFilter('XL')" class="size-filter-btn px-2 py-2 rounded-xl bg-zinc-100 border border-zinc-200 text-xs font-bold text-zinc-800 hover:border-zinc-400 transition" data-size="XL">XL</button>
+              <button onclick="toggleSizeFilter('XXL')" class="size-filter-btn px-2 py-2 rounded-xl bg-zinc-100 border border-zinc-200 text-xs font-bold text-zinc-800 hover:border-zinc-400 transition" data-size="XXL">2XL</button>
             </div>
             <!-- Waist Sizes for Pants -->
             <div class="grid grid-cols-6 gap-1 pt-1.5">
-              <button onclick="toggleSizeFilter('28')" class="size-filter-btn px-1.5 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-[11px] font-mono font-medium text-zinc-300 hover:border-zinc-500 transition" data-size="28">28</button>
-              <button onclick="toggleSizeFilter('30')" class="size-filter-btn px-1.5 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-[11px] font-mono font-medium text-zinc-300 hover:border-zinc-500 transition" data-size="30">30</button>
-              <button onclick="toggleSizeFilter('32')" class="size-filter-btn px-1.5 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-[11px] font-mono font-medium text-zinc-300 hover:border-zinc-500 transition" data-size="32">32</button>
-              <button onclick="toggleSizeFilter('34')" class="size-filter-btn px-1.5 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-[11px] font-mono font-medium text-zinc-300 hover:border-zinc-500 transition" data-size="34">34</button>
-              <button onclick="toggleSizeFilter('36')" class="size-filter-btn px-1.5 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-[11px] font-mono font-medium text-zinc-300 hover:border-zinc-500 transition" data-size="36">36</button>
-              <button onclick="toggleSizeFilter('38')" class="size-filter-btn px-1.5 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-[11px] font-mono font-medium text-zinc-300 hover:border-zinc-500 transition" data-size="38">38</button>
+              <button onclick="toggleSizeFilter('28')" class="size-filter-btn px-1.5 py-1.5 rounded-lg bg-zinc-100 border border-zinc-200 text-[11px] font-mono font-bold text-zinc-800 hover:border-zinc-400 transition" data-size="28">28</button>
+              <button onclick="toggleSizeFilter('30')" class="size-filter-btn px-1.5 py-1.5 rounded-lg bg-zinc-100 border border-zinc-200 text-[11px] font-mono font-bold text-zinc-800 hover:border-zinc-400 transition" data-size="30">30</button>
+              <button onclick="toggleSizeFilter('32')" class="size-filter-btn px-1.5 py-1.5 rounded-lg bg-zinc-100 border border-zinc-200 text-[11px] font-mono font-bold text-zinc-800 hover:border-zinc-400 transition" data-size="32">32</button>
+              <button onclick="toggleSizeFilter('34')" class="size-filter-btn px-1.5 py-1.5 rounded-lg bg-zinc-100 border border-zinc-200 text-[11px] font-mono font-bold text-zinc-800 hover:border-zinc-400 transition" data-size="34">34</button>
+              <button onclick="toggleSizeFilter('36')" class="size-filter-btn px-1.5 py-1.5 rounded-lg bg-zinc-100 border border-zinc-200 text-[11px] font-mono font-bold text-zinc-800 hover:border-zinc-400 transition" data-size="36">36</button>
+              <button onclick="toggleSizeFilter('38')" class="size-filter-btn px-1.5 py-1.5 rounded-lg bg-zinc-100 border border-zinc-200 text-[11px] font-mono font-bold text-zinc-800 hover:border-zinc-400 transition" data-size="38">38</button>
             </div>
           </div>
 
           <!-- Filter 4: Fit Preference -->
-          <div class="space-y-2 pt-4 border-t border-zinc-800">
+          <div class="space-y-2 pt-4 border-t border-zinc-200">
             <label class="text-xs font-bold text-zinc-400 uppercase tracking-wider block">Fit Profile</label>
             <div class="grid grid-cols-2 gap-2 text-xs">
-              <button onclick="toggleFitFilter('Slim')" class="fit-filter-btn py-2 px-3 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 text-left font-medium hover:border-zinc-600 transition" data-fit="Slim">Slim Fit</button>
-              <button onclick="toggleFitFilter('Regular')" class="fit-filter-btn py-2 px-3 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 text-left font-medium hover:border-zinc-600 transition" data-fit="Regular">Regular Fit</button>
-              <button onclick="toggleFitFilter('Oversized')" class="fit-filter-btn py-2 px-3 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 text-left font-medium hover:border-zinc-600 transition" data-fit="Oversized">Oversized</button>
-              <button onclick="toggleFitFilter('Relaxed')" class="fit-filter-btn py-2 px-3 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-300 text-left font-medium hover:border-zinc-600 transition" data-fit="Relaxed">Relaxed</button>
+              <button onclick="toggleFitFilter('Slim')" class="fit-filter-btn py-2 px-3 rounded-xl bg-zinc-100 border border-zinc-200 text-zinc-800 text-left font-semibold hover:border-zinc-400 transition" data-fit="Slim">Slim Fit</button>
+              <button onclick="toggleFitFilter('Regular')" class="fit-filter-btn py-2 px-3 rounded-xl bg-zinc-100 border border-zinc-200 text-zinc-800 text-left font-semibold hover:border-zinc-400 transition" data-fit="Regular">Regular Fit</button>
+              <button onclick="toggleFitFilter('Oversized')" class="fit-filter-btn py-2 px-3 rounded-xl bg-zinc-100 border border-zinc-200 text-zinc-800 text-left font-semibold hover:border-zinc-400 transition" data-fit="Oversized">Oversized</button>
+              <button onclick="toggleFitFilter('Relaxed')" class="fit-filter-btn py-2 px-3 rounded-xl bg-zinc-100 border border-zinc-200 text-zinc-800 text-left font-semibold hover:border-zinc-400 transition" data-fit="Relaxed">Relaxed</button>
             </div>
           </div>
 
           <!-- Filter 5: Sale & Stock Toggles -->
-          <div class="space-y-2 pt-4 border-t border-zinc-800 text-xs">
-            <label class="flex items-center gap-2 cursor-pointer p-1">
-              <input type="checkbox" id="sale-only-toggle" onchange="handleFilterChange()" class="w-4 h-4 rounded bg-zinc-900 border-zinc-700 accent-red-600">
-              <span class="text-zinc-300 font-medium">On Sale Only (-20% to -35%)</span>
+          <div class="space-y-2 pt-4 border-t border-zinc-200 text-xs">
+            <label class="flex items-center gap-2.5 cursor-pointer p-1">
+              <input type="checkbox" id="sale-only-toggle" onchange="handleFilterChange()" class="w-4 h-4 rounded border-zinc-300 accent-red-600">
+              <span class="text-zinc-800 font-semibold">On Sale Only (-20% to -35%)</span>
             </label>
-            <label class="flex items-center gap-2 cursor-pointer p-1">
-              <input type="checkbox" id="instock-only-toggle" onchange="handleFilterChange()" class="w-4 h-4 rounded bg-zinc-900 border-zinc-700 accent-red-600">
-              <span class="text-zinc-300 font-medium">In Stock Only</span>
+            <label class="flex items-center gap-2.5 cursor-pointer p-1">
+              <input type="checkbox" id="instock-only-toggle" onchange="handleFilterChange()" class="w-4 h-4 rounded border-zinc-300 accent-red-600">
+              <span class="text-zinc-800 font-semibold">In Stock Only</span>
             </label>
           </div>
 
@@ -650,15 +672,15 @@
           </div>
 
           <!-- Empty State (Shown if no products match filters) -->
-          <div id="empty-state" class="hidden flex-col items-center justify-center text-center py-20 px-4 glass-panel rounded-3xl border border-zinc-800">
-            <div class="w-16 h-16 rounded-full bg-zinc-900 flex items-center justify-center text-zinc-500 mb-4">
+          <div id="empty-state" class="hidden flex-col items-center justify-center text-center py-20 px-4 bg-white rounded-3xl border border-zinc-200 shadow-sm">
+            <div class="w-16 h-16 rounded-full bg-zinc-100 flex items-center justify-center text-zinc-400 mb-4">
               <i data-lucide="package-search" class="w-8 h-8"></i>
             </div>
-            <h3 class="text-xl font-bold text-white">No apparel pieces found</h3>
-            <p class="text-zinc-400 text-sm mt-1 max-w-sm">
+            <h3 class="text-xl font-bold text-zinc-950">No apparel pieces found</h3>
+            <p class="text-zinc-500 text-sm mt-1 max-w-sm">
               We couldn't find any products matching your active filters. Try adjusting or clearing your filters.
             </p>
-            <button onclick="resetAllFilters()" class="mt-6 px-6 py-2.5 bg-red-600 hover:bg-red-500 text-white text-xs font-bold uppercase tracking-wider rounded-xl transition">
+            <button onclick="resetAllFilters()" class="mt-6 px-6 py-2.5 bg-zinc-950 hover:bg-zinc-800 text-white text-xs font-bold uppercase tracking-wider rounded-xl transition shadow">
               Clear All Filters
             </button>
           </div>
@@ -672,29 +694,28 @@
   <!-- =====================================================
        MOBILE FILTERS DRAWER
        ===================================================== -->
-  <div id="mobile-filter-drawer" class="fixed inset-0 z-50 drawer-backdrop bg-black/80 flex justify-end">
-    <div class="w-full max-w-md bg-zinc-950 h-full border-l border-zinc-800 p-6 flex flex-col justify-between drawer-panel overflow-y-auto">
+  <div id="mobile-filter-drawer" class="fixed inset-0 z-50 drawer-backdrop bg-black/60 flex justify-end">
+    <div class="w-full max-w-md bg-white h-full border-l border-zinc-200 p-6 flex flex-col justify-between drawer-panel overflow-y-auto shadow-2xl">
       <div>
-        <div class="flex items-center justify-between pb-4 border-b border-zinc-800">
+        <div class="flex items-center justify-between pb-4 border-b border-zinc-200">
           <div class="flex items-center gap-2">
-            <i data-lucide="sliders-horizontal" class="w-5 h-5 text-red-500"></i>
-            <h3 class="text-lg font-bold text-white">Filter & Sort</h3>
+            <i data-lucide="sliders-horizontal" class="w-5 h-5 text-red-600"></i>
+            <h3 class="text-lg font-bold text-zinc-950">Filter & Sort</h3>
           </div>
-          <button id="close-mobile-filter" class="p-2 text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-900">
+          <button id="close-mobile-filter" class="p-2 text-zinc-400 hover:text-zinc-950 rounded-lg hover:bg-zinc-100">
             <i data-lucide="x" class="w-5 h-5"></i>
           </button>
         </div>
 
         <div class="py-6 space-y-6">
-          
           <!-- Category Filter (Mobile) -->
           <div>
             <label class="text-xs font-bold text-zinc-400 uppercase tracking-wider block mb-2">Category</label>
             <div class="grid grid-cols-2 gap-2">
-              <button onclick="setMobileCategory('all')" class="mobile-cat-btn py-2.5 px-3 rounded-xl bg-zinc-900 border border-zinc-800 text-xs font-medium text-zinc-200" data-val="all">All</button>
-              <button onclick="setMobileCategory('shirts')" class="mobile-cat-btn py-2.5 px-3 rounded-xl bg-zinc-900 border border-zinc-800 text-xs font-medium text-zinc-200" data-val="shirts">Shirts</button>
-              <button onclick="setMobileCategory('tshirts')" class="mobile-cat-btn py-2.5 px-3 rounded-xl bg-zinc-900 border border-zinc-800 text-xs font-medium text-zinc-200" data-val="tshirts">T-Shirts</button>
-              <button onclick="setMobileCategory('pants')" class="mobile-cat-btn py-2.5 px-3 rounded-xl bg-zinc-900 border border-zinc-800 text-xs font-medium text-zinc-200" data-val="pants">Pants</button>
+              <button onclick="setMobileCategory('all')" class="mobile-cat-btn py-2.5 px-3 rounded-xl bg-zinc-100 border border-zinc-200 text-xs font-bold text-zinc-900" data-val="all">All</button>
+              <button onclick="setMobileCategory('shirts')" class="mobile-cat-btn py-2.5 px-3 rounded-xl bg-zinc-100 border border-zinc-200 text-xs font-bold text-zinc-900" data-val="shirts">Shirts</button>
+              <button onclick="setMobileCategory('tshirts')" class="mobile-cat-btn py-2.5 px-3 rounded-xl bg-zinc-100 border border-zinc-200 text-xs font-bold text-zinc-900" data-val="tshirts">T-Shirts</button>
+              <button onclick="setMobileCategory('pants')" class="mobile-cat-btn py-2.5 px-3 rounded-xl bg-zinc-100 border border-zinc-200 text-xs font-bold text-zinc-900" data-val="pants">Pants</button>
             </div>
           </div>
 
@@ -702,7 +723,7 @@
           <div>
             <div class="flex justify-between items-center mb-2">
               <label class="text-xs font-bold text-zinc-400 uppercase tracking-wider">Max Price</label>
-              <span id="mobile-price-slider-label" class="text-sm font-bold text-red-400 font-mono">$100</span>
+              <span id="mobile-price-slider-label" class="text-sm font-bold text-red-600 font-mono">$100</span>
             </div>
             <input 
               type="range" 
@@ -720,28 +741,28 @@
           <div>
             <label class="text-xs font-bold text-zinc-400 uppercase tracking-wider block mb-2">Sizes</label>
             <div class="grid grid-cols-5 gap-1.5 mb-2">
-              <button onclick="toggleSizeFilter('S')" class="size-filter-btn p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-xs font-medium text-zinc-300" data-size="S">S</button>
-              <button onclick="toggleSizeFilter('M')" class="size-filter-btn p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-xs font-medium text-zinc-300" data-size="M">M</button>
-              <button onclick="toggleSizeFilter('L')" class="size-filter-btn p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-xs font-medium text-zinc-300" data-size="L">L</button>
-              <button onclick="toggleSizeFilter('XL')" class="size-filter-btn p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-xs font-medium text-zinc-300" data-size="XL">XL</button>
-              <button onclick="toggleSizeFilter('XXL')" class="size-filter-btn p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-xs font-medium text-zinc-300" data-size="XXL">2XL</button>
+              <button onclick="toggleSizeFilter('S')" class="size-filter-btn p-2 rounded-xl bg-zinc-100 border border-zinc-200 text-xs font-bold text-zinc-900" data-size="S">S</button>
+              <button onclick="toggleSizeFilter('M')" class="size-filter-btn p-2 rounded-xl bg-zinc-100 border border-zinc-200 text-xs font-bold text-zinc-900" data-size="M">M</button>
+              <button onclick="toggleSizeFilter('L')" class="size-filter-btn p-2 rounded-xl bg-zinc-100 border border-zinc-200 text-xs font-bold text-zinc-900" data-size="L">L</button>
+              <button onclick="toggleSizeFilter('XL')" class="size-filter-btn p-2 rounded-xl bg-zinc-100 border border-zinc-200 text-xs font-bold text-zinc-900" data-size="XL">XL</button>
+              <button onclick="toggleSizeFilter('XXL')" class="size-filter-btn p-2 rounded-xl bg-zinc-100 border border-zinc-200 text-xs font-bold text-zinc-900" data-size="XXL">2XL</button>
             </div>
             <div class="grid grid-cols-6 gap-1">
-              <button onclick="toggleSizeFilter('28')" class="size-filter-btn p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-[11px] font-mono font-medium text-zinc-300" data-size="28">28</button>
-              <button onclick="toggleSizeFilter('30')" class="size-filter-btn p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-[11px] font-mono font-medium text-zinc-300" data-size="30">30</button>
-              <button onclick="toggleSizeFilter('32')" class="size-filter-btn p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-[11px] font-mono font-medium text-zinc-300" data-size="32">32</button>
-              <button onclick="toggleSizeFilter('34')" class="size-filter-btn p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-[11px] font-mono font-medium text-zinc-300" data-size="34">34</button>
-              <button onclick="toggleSizeFilter('36')" class="size-filter-btn p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-[11px] font-mono font-medium text-zinc-300" data-size="36">36</button>
-              <button onclick="toggleSizeFilter('38')" class="size-filter-btn p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-[11px] font-mono font-medium text-zinc-300" data-size="38">38</button>
+              <button onclick="toggleSizeFilter('28')" class="size-filter-btn p-2 rounded-lg bg-zinc-100 border border-zinc-200 text-[11px] font-mono font-bold text-zinc-900" data-size="28">28</button>
+              <button onclick="toggleSizeFilter('30')" class="size-filter-btn p-2 rounded-lg bg-zinc-100 border border-zinc-200 text-[11px] font-mono font-bold text-zinc-900" data-size="30">30</button>
+              <button onclick="toggleSizeFilter('32')" class="size-filter-btn p-2 rounded-lg bg-zinc-100 border border-zinc-200 text-[11px] font-mono font-bold text-zinc-900" data-size="32">32</button>
+              <button onclick="toggleSizeFilter('34')" class="size-filter-btn p-2 rounded-lg bg-zinc-100 border border-zinc-200 text-[11px] font-mono font-bold text-zinc-900" data-size="34">34</button>
+              <button onclick="toggleSizeFilter('36')" class="size-filter-btn p-2 rounded-lg bg-zinc-100 border border-zinc-200 text-[11px] font-mono font-bold text-zinc-900" data-size="36">36</button>
+              <button onclick="toggleSizeFilter('38')" class="size-filter-btn p-2 rounded-lg bg-zinc-100 border border-zinc-200 text-[11px] font-mono font-bold text-zinc-900" data-size="38">38</button>
             </div>
           </div>
 
         </div>
       </div>
 
-      <div class="pt-4 border-t border-zinc-800 flex gap-3">
-        <button onclick="resetAllFilters(); closeMobileFilterDrawer();" class="flex-1 py-3 rounded-xl bg-zinc-900 text-zinc-300 font-semibold text-xs uppercase tracking-wider">Reset</button>
-        <button onclick="closeMobileFilterDrawer()" class="flex-1 py-3 rounded-xl bg-red-600 text-white font-bold text-xs uppercase tracking-wider shadow-lg shadow-red-950/40">Apply Filters</button>
+      <div class="pt-4 border-t border-zinc-200 flex gap-3">
+        <button onclick="resetAllFilters(); closeMobileFilterDrawer();" class="flex-1 py-3.5 rounded-xl bg-zinc-100 text-zinc-900 font-bold text-xs uppercase tracking-wider">Reset</button>
+        <button onclick="closeMobileFilterDrawer()" class="flex-1 py-3.5 rounded-xl bg-zinc-950 text-white font-bold text-xs uppercase tracking-wider shadow">Apply</button>
       </div>
     </div>
   </div>
@@ -749,11 +770,11 @@
   <!-- =====================================================
        PRODUCT DETAIL MODAL (PDP QUICK VIEW)
        ===================================================== -->
-  <div id="pdp-modal" class="fixed inset-0 z-50 modal-overlay bg-black/85 flex items-center justify-center p-4 backdrop-blur-md">
-    <div class="modal-content-box bg-zinc-950 border border-zinc-800 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative">
+  <div id="pdp-modal" class="fixed inset-0 z-50 modal-overlay bg-black/60 flex items-center justify-center p-4 backdrop-blur-md">
+    <div class="modal-content-box bg-white border border-zinc-200 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative text-zinc-900">
       
       <!-- Close Button -->
-      <button onclick="closePDPModal()" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-zinc-900/90 border border-zinc-700 text-zinc-400 hover:text-white flex items-center justify-center transition" aria-label="Close modal">
+      <button onclick="closePDPModal()" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 hover:text-zinc-950 flex items-center justify-center transition" aria-label="Close modal">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
@@ -768,41 +789,41 @@
   <!-- =====================================================
        INTERACTIVE SIZE GUIDE MODAL
        ===================================================== -->
-  <div id="size-guide-modal" class="fixed inset-0 z-50 modal-overlay bg-black/85 flex items-center justify-center p-4 backdrop-blur-md">
-    <div class="modal-content-box bg-zinc-950 border border-zinc-800 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 relative">
+  <div id="size-guide-modal" class="fixed inset-0 z-50 modal-overlay bg-black/60 flex items-center justify-center p-4 backdrop-blur-md">
+    <div class="modal-content-box bg-white border border-zinc-200 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 relative text-zinc-900">
       
-      <button onclick="closeSizeGuideModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-zinc-900 border border-zinc-700 text-zinc-400 hover:text-white flex items-center justify-center">
+      <button onclick="closeSizeGuideModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 hover:text-zinc-950 flex items-center justify-center">
         <i data-lucide="x" class="w-4 h-4"></i>
       </button>
 
       <div class="flex items-center gap-3 mb-2">
-        <div class="w-8 h-8 rounded-lg bg-red-950/60 border border-red-800/40 flex items-center justify-center text-red-500">
-          <i data-lucide="ruler" class="w-4 h-4"></i>
+        <div class="w-9 h-9 rounded-xl bg-zinc-100 flex items-center justify-center text-red-600 border border-zinc-200">
+          <i data-lucide="ruler" class="w-5 h-5"></i>
         </div>
-        <h3 class="text-xl font-bold text-white">Measurement & Size Guide</h3>
+        <h3 class="text-xl font-bold text-zinc-950">Measurement & Size Guide</h3>
       </div>
-      <p class="text-xs text-zinc-400 mb-6">Accurate garment measurements to find your tailored fit.</p>
+      <p class="text-xs text-zinc-500 mb-6 font-medium">Accurate garment measurements to find your tailored fit.</p>
 
       <!-- Unit Toggle (Inches vs CM) -->
-      <div class="flex items-center justify-between bg-zinc-900/90 p-2 rounded-2xl border border-zinc-800 mb-6">
-        <span class="text-xs font-semibold text-zinc-300 pl-2">Select Unit System:</span>
+      <div class="flex items-center justify-between bg-zinc-100 p-1.5 rounded-2xl border border-zinc-200 mb-6">
+        <span class="text-xs font-bold text-zinc-700 pl-2">Select Unit System:</span>
         <div class="flex gap-1">
           <button id="unit-inches-btn" onclick="switchSizeGuideUnit('inches')" class="px-4 py-1.5 rounded-xl text-xs font-bold bg-white text-zinc-950 shadow transition">Inches (in)</button>
-          <button id="unit-cm-btn" onclick="switchSizeGuideUnit('cm')" class="px-4 py-1.5 rounded-xl text-xs font-bold text-zinc-400 hover:text-white transition">Centimeters (cm)</button>
+          <button id="unit-cm-btn" onclick="switchSizeGuideUnit('cm')" class="px-4 py-1.5 rounded-xl text-xs font-bold text-zinc-500 hover:text-zinc-950 transition">Centimeters (cm)</button>
         </div>
       </div>
 
       <!-- Size Guide Table Container -->
-      <div id="size-guide-table-container" class="overflow-x-auto rounded-xl border border-zinc-800 mb-6">
+      <div id="size-guide-table-container" class="overflow-x-auto rounded-2xl border border-zinc-200 mb-6 bg-white">
         <!-- Injected by JS -->
       </div>
 
       <!-- How to Measure Tips -->
-      <div class="bg-zinc-900/60 rounded-2xl p-4 border border-zinc-800 text-xs space-y-2 text-zinc-300">
-        <h4 class="font-bold text-white flex items-center gap-1.5">
-          <i data-lucide="info" class="w-3.5 h-3.5 text-red-500"></i> How to Measure Correctly:
+      <div class="bg-zinc-50 rounded-2xl p-4 border border-zinc-200 text-xs space-y-2 text-zinc-700">
+        <h4 class="font-bold text-zinc-950 flex items-center gap-1.5">
+          <i data-lucide="info" class="w-3.5 h-3.5 text-red-600"></i> How to Measure Correctly:
         </h4>
-        <ul class="list-disc list-inside space-y-1 text-zinc-400">
+        <ul class="list-disc list-inside space-y-1 text-zinc-500 font-medium">
           <li><strong>Chest:</strong> Measure across the fullest part of your chest, keeping tape level under arms.</li>
           <li><strong>Length:</strong> Measure from the highest point of the shoulder down to the bottom hem.</li>
           <li><strong>Waist:</strong> Measure around your natural waistline where your trousers normally rest.</li>
@@ -813,31 +834,31 @@
   </div>
 
   <!-- =====================================================
-       SLIDE-OVER SHOPPING CART DRAWER
+       SLIDE-OVER SHOPPING CART DRAWER (WHITE)
        ===================================================== -->
-  <div id="cart-drawer" class="fixed inset-0 z-50 drawer-backdrop bg-black/80 flex justify-end">
-    <div class="w-full max-w-md bg-zinc-950 h-full border-l border-zinc-800 flex flex-col justify-between drawer-panel shadow-2xl">
+  <div id="cart-drawer" class="fixed inset-0 z-50 drawer-backdrop bg-black/60 flex justify-end">
+    <div class="w-full max-w-md bg-white h-full border-l border-zinc-200 flex flex-col justify-between drawer-panel shadow-2xl text-zinc-900">
       
       <!-- Cart Header -->
-      <div class="p-6 border-b border-zinc-800 flex items-center justify-between">
+      <div class="p-6 border-b border-zinc-200 flex items-center justify-between">
         <div class="flex items-center gap-2.5">
-          <i data-lucide="shopping-bag" class="w-5 h-5 text-red-500"></i>
-          <h3 class="text-lg font-bold text-white">Your Shopping Bag</h3>
-          <span id="cart-drawer-count" class="text-xs font-semibold px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-300">0 items</span>
+          <i data-lucide="shopping-bag" class="w-5 h-5 text-red-600"></i>
+          <h3 class="text-lg font-bold text-zinc-950">Your Shopping Bag</h3>
+          <span id="cart-drawer-count" class="text-xs font-bold px-2 py-0.5 rounded-full bg-zinc-100 text-zinc-700">0 items</span>
         </div>
-        <button id="close-cart-btn" class="p-2 text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-900 transition">
+        <button id="close-cart-btn" class="p-2 text-zinc-400 hover:text-zinc-950 rounded-lg hover:bg-zinc-100 transition">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
       <!-- Free Shipping Progress Bar -->
-      <div class="bg-zinc-900/90 px-6 py-3 border-b border-zinc-800 text-xs">
+      <div class="bg-zinc-50 px-6 py-3 border-b border-zinc-200 text-xs">
         <div class="flex justify-between items-center mb-1.5">
-          <span id="free-shipping-msg" class="text-zinc-300 font-medium">Add $100 for Free Express Shipping</span>
-          <span id="free-shipping-percent" class="font-mono text-red-400 font-bold">0%</span>
+          <span id="free-shipping-msg" class="text-zinc-700 font-semibold">Add $100 for Free Express Shipping</span>
+          <span id="free-shipping-percent" class="font-mono text-red-600 font-bold">0%</span>
         </div>
-        <div class="w-full h-1.5 bg-zinc-800 rounded-full overflow-hidden">
-          <div id="free-shipping-bar" class="h-full bg-gradient-to-r from-red-600 to-red-400 rounded-full transition-all duration-500" style="width: 0%;"></div>
+        <div class="w-full h-1.5 bg-zinc-200 rounded-full overflow-hidden">
+          <div id="free-shipping-bar" class="h-full bg-gradient-to-r from-red-600 to-red-500 rounded-full transition-all duration-500" style="width: 0%;"></div>
         </div>
       </div>
 
@@ -847,7 +868,7 @@
       </div>
 
       <!-- Cart Footer & Checkout Action -->
-      <div class="p-6 border-t border-zinc-800 bg-zinc-950/80 space-y-4">
+      <div class="p-6 border-t border-zinc-200 bg-white space-y-4">
         
         <!-- Promo Coupon Input -->
         <div class="flex gap-2">
@@ -856,45 +877,45 @@
               type="text" 
               id="promo-code-input" 
               placeholder="Promo code (e.g. GRAVITY20)" 
-              class="w-full bg-zinc-900 text-xs uppercase font-mono text-zinc-200 placeholder-zinc-500 px-3 py-2.5 rounded-xl border border-zinc-800 focus:outline-none focus:border-red-500"
+              class="w-full bg-zinc-100 text-xs uppercase font-mono text-zinc-900 placeholder-zinc-400 px-3 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-bold"
             >
           </div>
-          <button onclick="applyPromoCode()" class="px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-xs font-bold text-white rounded-xl transition">
+          <button onclick="applyPromoCode()" class="px-4 py-2.5 bg-zinc-950 hover:bg-zinc-800 text-xs font-bold text-white rounded-xl transition">
             Apply
           </button>
         </div>
 
-        <div id="applied-coupon-pill" class="hidden flex items-center justify-between bg-red-950/40 border border-red-800/40 px-3 py-1.5 rounded-xl text-xs">
-          <span class="text-red-400 font-medium flex items-center gap-1.5">
+        <div id="applied-coupon-pill" class="hidden flex items-center justify-between bg-red-50 border border-red-200 px-3 py-2 rounded-xl text-xs">
+          <span class="text-red-700 font-bold flex items-center gap-1.5">
             <i data-lucide="tag" class="w-3.5 h-3.5"></i> <span id="coupon-label">20% Discount Applied</span>
           </span>
-          <button onclick="removePromoCode()" class="text-zinc-400 hover:text-white">
+          <button onclick="removePromoCode()" class="text-zinc-400 hover:text-zinc-900">
             <i data-lucide="x" class="w-3.5 h-3.5"></i>
           </button>
         </div>
 
         <!-- Price Breakdown -->
-        <div class="space-y-1.5 text-xs text-zinc-400 pt-2 border-t border-zinc-800">
+        <div class="space-y-1.5 text-xs text-zinc-600 pt-2 border-t border-zinc-200 font-medium">
           <div class="flex justify-between">
             <span>Subtotal</span>
-            <span id="cart-subtotal" class="font-mono text-white">$0.00</span>
+            <span id="cart-subtotal" class="font-mono text-zinc-950 font-bold">$0.00</span>
           </div>
-          <div id="cart-discount-row" class="hidden flex justify-between text-red-400">
+          <div id="cart-discount-row" class="hidden flex justify-between text-red-600 font-bold">
             <span>Promo Discount</span>
             <span id="cart-discount-val" class="font-mono">-$0.00</span>
           </div>
           <div class="flex justify-between">
             <span>Estimated Shipping</span>
-            <span id="cart-shipping" class="font-mono text-white">Calculated at Checkout</span>
+            <span id="cart-shipping" class="font-mono text-zinc-950 font-bold">Calculated at Checkout</span>
           </div>
-          <div class="flex justify-between text-sm font-bold text-white pt-2 border-t border-zinc-800">
+          <div class="flex justify-between text-sm font-bold text-zinc-950 pt-2 border-t border-zinc-200">
             <span>Estimated Total</span>
-            <span id="cart-total" class="font-mono text-red-400 text-base">$0.00</span>
+            <span id="cart-total" class="font-mono text-red-600 text-lg font-black">$0.00</span>
           </div>
         </div>
 
         <!-- Checkout Action Button -->
-        <button id="checkout-btn" onclick="openCheckoutModal()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold text-sm uppercase tracking-wider transition shadow-xl shadow-red-950/50 flex items-center justify-center gap-2">
+        <button id="checkout-btn" onclick="openCheckoutModal()" class="w-full py-4 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-sm uppercase tracking-wider transition shadow-lg flex items-center justify-center gap-2">
           <span>Proceed to Checkout</span>
           <i data-lucide="arrow-right" class="w-4 h-4"></i>
         </button>
@@ -905,18 +926,18 @@
   </div>
 
   <!-- =====================================================
-       SLIDE-OVER WISHLIST DRAWER
+       SLIDE-OVER WISHLIST DRAWER (WHITE)
        ===================================================== -->
-  <div id="wishlist-drawer" class="fixed inset-0 z-50 drawer-backdrop bg-black/80 flex justify-end">
-    <div class="w-full max-w-md bg-zinc-950 h-full border-l border-zinc-800 flex flex-col justify-between drawer-panel shadow-2xl">
+  <div id="wishlist-drawer" class="fixed inset-0 z-50 drawer-backdrop bg-black/60 flex justify-end">
+    <div class="w-full max-w-md bg-white h-full border-l border-zinc-200 flex flex-col justify-between drawer-panel shadow-2xl text-zinc-900">
       
-      <div class="p-6 border-b border-zinc-800 flex items-center justify-between">
+      <div class="p-6 border-b border-zinc-200 flex items-center justify-between">
         <div class="flex items-center gap-2.5">
-          <i data-lucide="heart" class="w-5 h-5 text-red-500 fill-red-500"></i>
-          <h3 class="text-lg font-bold text-white">Your Saved Wishlist</h3>
-          <span id="wishlist-drawer-count" class="text-xs font-semibold px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-300">0 items</span>
+          <i data-lucide="heart" class="w-5 h-5 text-red-600 fill-red-600"></i>
+          <h3 class="text-lg font-bold text-zinc-950">Your Saved Wishlist</h3>
+          <span id="wishlist-drawer-count" class="text-xs font-bold px-2 py-0.5 rounded-full bg-zinc-100 text-zinc-700">0 items</span>
         </div>
-        <button id="close-wishlist-btn" class="p-2 text-zinc-400 hover:text-white rounded-lg hover:bg-zinc-900 transition">
+        <button id="close-wishlist-btn" class="p-2 text-zinc-400 hover:text-zinc-950 rounded-lg hover:bg-zinc-100 transition">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
@@ -925,9 +946,9 @@
         <!-- Injected by JS -->
       </div>
 
-      <div class="p-6 border-t border-zinc-800 bg-zinc-950">
-        <button onclick="addAllWishlistToCart()" class="w-full py-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white font-semibold text-xs uppercase tracking-wider border border-zinc-700 transition flex items-center justify-center gap-2">
-          <i data-lucide="shopping-bag" class="w-4 h-4 text-red-500"></i> Move All to Bag
+      <div class="p-6 border-t border-zinc-200 bg-white">
+        <button onclick="addAllWishlistToCart()" class="w-full py-3.5 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 shadow">
+          <i data-lucide="shopping-bag" class="w-4 h-4"></i> Move All to Bag
         </button>
       </div>
 
@@ -935,18 +956,18 @@
   </div>
 
   <!-- =====================================================
-       MULTI-STEP CHECKOUT MODAL
+       MULTI-STEP CHECKOUT MODAL (WHITE)
        ===================================================== -->
-  <div id="checkout-modal" class="fixed inset-0 z-50 modal-overlay bg-black/85 flex items-center justify-center p-4 backdrop-blur-md">
-    <div class="modal-content-box bg-zinc-950 border border-zinc-800 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 relative">
+  <div id="checkout-modal" class="fixed inset-0 z-50 modal-overlay bg-black/60 flex items-center justify-center p-4 backdrop-blur-md">
+    <div class="modal-content-box bg-white border border-zinc-200 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 relative text-zinc-900">
       
-      <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-zinc-900 border border-zinc-700 text-zinc-400 hover:text-white flex items-center justify-center">
+      <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-500 hover:text-zinc-950 flex items-center justify-center">
         <i data-lucide="x" class="w-4 h-4"></i>
       </button>
 
       <div class="mb-6">
-        <span class="text-xs font-bold text-red-500 uppercase tracking-widest">Secure 256-bit Encrypted</span>
-        <h3 class="text-2xl font-extrabold text-white mt-1">Complete Your Order</h3>
+        <span class="text-xs font-bold text-red-600 uppercase tracking-widest">Secure 256-bit Encrypted</span>
+        <h3 class="text-2xl font-extrabold text-zinc-950 mt-1">Complete Your Order</h3>
       </div>
 
       <!-- Checkout Form -->
@@ -955,97 +976,97 @@
         <!-- Step 1: Customer Details -->
         <div class="space-y-4">
           <h4 class="text-xs font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
-            <span class="w-5 h-5 rounded-full bg-red-600 text-white text-[10px] flex items-center justify-center font-bold">1</span>
+            <span class="w-5 h-5 rounded-full bg-zinc-950 text-white text-[10px] flex items-center justify-center font-bold">1</span>
             Shipping & Contact Details
           </h4>
           
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label class="text-xs text-zinc-400 block mb-1">Full Name *</label>
-              <input type="text" id="cust-name" required placeholder="Alex Mercer" class="w-full bg-zinc-900 text-sm text-zinc-200 px-3.5 py-2.5 rounded-xl border border-zinc-800 focus:outline-none focus:border-red-500">
+              <label class="text-xs text-zinc-600 font-semibold block mb-1">Full Name *</label>
+              <input type="text" id="cust-name" required placeholder="Alex Mercer" class="w-full bg-zinc-100 text-sm text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-medium">
             </div>
             <div>
-              <label class="text-xs text-zinc-400 block mb-1">Email Address *</label>
-              <input type="email" id="cust-email" required placeholder="alex@example.com" class="w-full bg-zinc-900 text-sm text-zinc-200 px-3.5 py-2.5 rounded-xl border border-zinc-800 focus:outline-none focus:border-red-500">
+              <label class="text-xs text-zinc-600 font-semibold block mb-1">Email Address *</label>
+              <input type="email" id="cust-email" required placeholder="alex@example.com" class="w-full bg-zinc-100 text-sm text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-medium">
             </div>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div class="sm:col-span-2">
-              <label class="text-xs text-zinc-400 block mb-1">Street Address *</label>
-              <input type="text" id="cust-address" required placeholder="42 Atelier Boulevard, Suite 10" class="w-full bg-zinc-900 text-sm text-zinc-200 px-3.5 py-2.5 rounded-xl border border-zinc-800 focus:outline-none focus:border-red-500">
+              <label class="text-xs text-zinc-600 font-semibold block mb-1">Street Address *</label>
+              <input type="text" id="cust-address" required placeholder="42 Atelier Boulevard, Suite 10" class="w-full bg-zinc-100 text-sm text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-medium">
             </div>
             <div>
-              <label class="text-xs text-zinc-400 block mb-1">Postal Code *</label>
-              <input type="text" id="cust-zip" required placeholder="10001" class="w-full bg-zinc-900 text-sm text-zinc-200 px-3.5 py-2.5 rounded-xl border border-zinc-800 focus:outline-none focus:border-red-500">
+              <label class="text-xs text-zinc-600 font-semibold block mb-1">Postal Code *</label>
+              <input type="text" id="cust-zip" required placeholder="10001" class="w-full bg-zinc-100 text-sm text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-medium">
             </div>
           </div>
 
           <div class="grid grid-cols-2 gap-3">
             <div>
-              <label class="text-xs text-zinc-400 block mb-1">City *</label>
-              <input type="text" id="cust-city" required placeholder="New York" class="w-full bg-zinc-900 text-sm text-zinc-200 px-3.5 py-2.5 rounded-xl border border-zinc-800 focus:outline-none focus:border-red-500">
+              <label class="text-xs text-zinc-600 font-semibold block mb-1">City *</label>
+              <input type="text" id="cust-city" required placeholder="New York" class="w-full bg-zinc-100 text-sm text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-medium">
             </div>
             <div>
-              <label class="text-xs text-zinc-400 block mb-1">Phone Number *</label>
-              <input type="tel" id="cust-phone" required placeholder="+1 (555) 234-5678" class="w-full bg-zinc-900 text-sm text-zinc-200 px-3.5 py-2.5 rounded-xl border border-zinc-800 focus:outline-none focus:border-red-500">
+              <label class="text-xs text-zinc-600 font-semibold block mb-1">Phone Number *</label>
+              <input type="tel" id="cust-phone" required placeholder="+1 (555) 234-5678" class="w-full bg-zinc-100 text-sm text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-medium">
             </div>
           </div>
         </div>
 
         <!-- Step 2: Payment Method Selection -->
-        <div class="space-y-4 pt-4 border-t border-zinc-800">
+        <div class="space-y-4 pt-4 border-t border-zinc-200">
           <h4 class="text-xs font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
-            <span class="w-5 h-5 rounded-full bg-red-600 text-white text-[10px] flex items-center justify-center font-bold">2</span>
+            <span class="w-5 h-5 rounded-full bg-zinc-950 text-white text-[10px] flex items-center justify-center font-bold">2</span>
             Select Payment Method
           </h4>
 
           <div class="grid grid-cols-3 gap-2">
-            <label class="payment-method-card flex flex-col items-center justify-center p-3 rounded-2xl bg-zinc-900 border border-red-500 cursor-pointer text-center">
+            <label class="payment-method-card flex flex-col items-center justify-center p-3.5 rounded-2xl bg-zinc-50 border-2 border-zinc-950 cursor-pointer text-center">
               <input type="radio" name="payment-method" value="card" checked onchange="switchPaymentView('card')" class="hidden">
-              <i data-lucide="credit-card" class="w-5 h-5 text-red-500 mb-1"></i>
-              <span class="text-xs font-bold text-white">Card</span>
+              <i data-lucide="credit-card" class="w-5 h-5 text-zinc-950 mb-1"></i>
+              <span class="text-xs font-bold text-zinc-950">Card</span>
             </label>
-            <label class="payment-method-card flex flex-col items-center justify-center p-3 rounded-2xl bg-zinc-900 border border-zinc-800 cursor-pointer text-center">
+            <label class="payment-method-card flex flex-col items-center justify-center p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200 cursor-pointer text-center">
               <input type="radio" name="payment-method" value="upi" onchange="switchPaymentView('upi')" class="hidden">
               <i data-lucide="qr-code" class="w-5 h-5 text-zinc-400 mb-1"></i>
-              <span class="text-xs font-bold text-zinc-300">UPI / QR</span>
+              <span class="text-xs font-bold text-zinc-600">UPI / QR</span>
             </label>
-            <label class="payment-method-card flex flex-col items-center justify-center p-3 rounded-2xl bg-zinc-900 border border-zinc-800 cursor-pointer text-center">
+            <label class="payment-method-card flex flex-col items-center justify-center p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200 cursor-pointer text-center">
               <input type="radio" name="payment-method" value="cod" onchange="switchPaymentView('cod')" class="hidden">
               <i data-lucide="banknote" class="w-5 h-5 text-zinc-400 mb-1"></i>
-              <span class="text-xs font-bold text-zinc-300">Cash on Del.</span>
+              <span class="text-xs font-bold text-zinc-600">Cash on Del.</span>
             </label>
           </div>
 
           <!-- Dynamic Payment Sub-views -->
-          <div id="payment-card-view" class="space-y-3 bg-zinc-900/60 p-4 rounded-2xl border border-zinc-800">
+          <div id="payment-card-view" class="space-y-3 bg-zinc-50 p-4 rounded-2xl border border-zinc-200">
             <div>
-              <label class="text-xs text-zinc-400 block mb-1">Card Number</label>
-              <input type="text" placeholder="4242 •••• •••• 4242" class="w-full bg-zinc-900 text-sm font-mono text-zinc-200 px-3.5 py-2 rounded-xl border border-zinc-800 focus:outline-none focus:border-red-500">
+              <label class="text-xs text-zinc-600 font-semibold block mb-1">Card Number</label>
+              <input type="text" placeholder="4242 •••• •••• 4242" class="w-full bg-white text-sm font-mono text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950">
             </div>
             <div class="grid grid-cols-2 gap-3">
               <div>
-                <label class="text-xs text-zinc-400 block mb-1">Expiry Date</label>
-                <input type="text" placeholder="MM / YY" class="w-full bg-zinc-900 text-sm font-mono text-zinc-200 px-3.5 py-2 rounded-xl border border-zinc-800 focus:outline-none focus:border-red-500">
+                <label class="text-xs text-zinc-600 font-semibold block mb-1">Expiry Date</label>
+                <input type="text" placeholder="MM / YY" class="w-full bg-white text-sm font-mono text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950">
               </div>
               <div>
-                <label class="text-xs text-zinc-400 block mb-1">CVC / CVV</label>
-                <input type="text" placeholder="123" class="w-full bg-zinc-900 text-sm font-mono text-zinc-200 px-3.5 py-2 rounded-xl border border-zinc-800 focus:outline-none focus:border-red-500">
+                <label class="text-xs text-zinc-600 font-semibold block mb-1">CVC / CVV</label>
+                <input type="text" placeholder="123" class="w-full bg-white text-sm font-mono text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950">
               </div>
             </div>
           </div>
 
-          <div id="payment-upi-view" class="hidden space-y-3 bg-zinc-900/60 p-4 rounded-2xl border border-zinc-800 text-center">
-            <div class="w-32 h-32 mx-auto bg-white p-2 rounded-xl flex items-center justify-center">
+          <div id="payment-upi-view" class="hidden space-y-3 bg-zinc-50 p-4 rounded-2xl border border-zinc-200 text-center">
+            <div class="w-32 h-32 mx-auto bg-white p-2 rounded-2xl border border-zinc-200 flex items-center justify-center shadow-sm">
               <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=auraatelier@bank&pn=AuraAtelier" alt="Mock UPI QR" class="w-full h-full">
             </div>
-            <p class="text-xs text-zinc-400">Scan using any UPI App (GPay, PhonePe, Paytm)</p>
+            <p class="text-xs text-zinc-500 font-medium">Scan using any UPI App (GPay, PhonePe, Paytm)</p>
           </div>
 
-          <div id="payment-cod-view" class="hidden p-4 rounded-2xl bg-zinc-900/60 border border-zinc-800 text-xs text-zinc-300">
-            <p class="flex items-center gap-2">
-              <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+          <div id="payment-cod-view" class="hidden p-4 rounded-2xl bg-zinc-50 border border-zinc-200 text-xs text-zinc-700">
+            <p class="flex items-center gap-2 font-medium">
+              <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
               Cash on Delivery verified. Pay upon receiving your parcel.
             </p>
           </div>
@@ -1053,13 +1074,13 @@
         </div>
 
         <!-- Order Summary & Complete Button -->
-        <div class="pt-4 border-t border-zinc-800 space-y-3">
+        <div class="pt-4 border-t border-zinc-200 space-y-3">
           <div class="flex justify-between items-center text-sm">
-            <span class="text-zinc-400">Total Amount to Pay:</span>
-            <span id="checkout-total-amount" class="text-xl font-bold font-mono text-red-500">$0.00</span>
+            <span class="text-zinc-600 font-semibold">Total Amount to Pay:</span>
+            <span id="checkout-total-amount" class="text-2xl font-black font-mono text-zinc-950">$0.00</span>
           </div>
 
-          <button type="submit" id="submit-order-btn" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold text-sm uppercase tracking-wider transition shadow-xl shadow-red-950/50 flex items-center justify-center gap-2">
+          <button type="submit" id="submit-order-btn" class="w-full py-4 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-sm uppercase tracking-wider transition shadow-lg flex items-center justify-center gap-2">
             <i data-lucide="lock" class="w-4 h-4"></i>
             <span>Place Order Now</span>
           </button>
@@ -1071,42 +1092,42 @@
   </div>
 
   <!-- =====================================================
-       ORDER CONFIRMATION MODAL WITH CONFETTI
+       ORDER CONFIRMATION MODAL WITH CONFETTI (WHITE)
        ===================================================== -->
-  <div id="order-success-modal" class="fixed inset-0 z-50 modal-overlay bg-black/90 flex items-center justify-center p-4 backdrop-blur-md">
+  <div id="order-success-modal" class="fixed inset-0 z-50 modal-overlay bg-black/60 flex items-center justify-center p-4 backdrop-blur-md">
     <div id="confetti-container" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
     
-    <div class="modal-content-box bg-zinc-950 border border-zinc-800 rounded-3xl max-w-lg w-full p-8 shadow-2xl relative text-center space-y-6">
+    <div class="modal-content-box bg-white border border-zinc-200 rounded-3xl max-w-lg w-full p-8 shadow-2xl relative text-center space-y-6 text-zinc-900">
       
-      <div class="w-20 h-20 rounded-full bg-red-950/60 border border-red-500/50 mx-auto flex items-center justify-center text-red-500 glow-red">
+      <div class="w-20 h-20 rounded-full bg-red-50 border border-red-200 mx-auto flex items-center justify-center text-red-600 shadow-sm">
         <i data-lucide="check" class="w-10 h-10"></i>
       </div>
 
       <div class="space-y-2">
-        <span class="text-xs font-bold text-red-500 uppercase tracking-widest">Order Confirmed</span>
-        <h3 class="text-3xl font-extrabold text-white">Thank You for Ordering!</h3>
-        <p class="text-xs text-zinc-400">
+        <span class="text-xs font-bold text-red-600 uppercase tracking-widest">Order Confirmed</span>
+        <h3 class="text-3xl font-extrabold text-zinc-950">Thank You for Ordering!</h3>
+        <p class="text-xs text-zinc-500 font-medium">
           Your order has been placed successfully. A confirmation email and tracking link have been dispatched.
         </p>
       </div>
 
-      <div class="bg-zinc-900/90 rounded-2xl p-4 border border-zinc-800 text-left space-y-2 text-xs">
+      <div class="bg-zinc-50 rounded-2xl p-4 border border-zinc-200 text-left space-y-2 text-xs">
         <div class="flex justify-between">
-          <span class="text-zinc-500">Order Reference:</span>
-          <span id="success-order-id" class="font-mono font-bold text-white">#AUR-84729</span>
+          <span class="text-zinc-500 font-semibold">Order Reference:</span>
+          <span id="success-order-id" class="font-mono font-bold text-zinc-950">#AUR-84729</span>
         </div>
         <div class="flex justify-between">
-          <span class="text-zinc-500">Estimated Delivery:</span>
-          <span id="success-delivery-date" class="text-zinc-200 font-medium">3-4 Business Days</span>
+          <span class="text-zinc-500 font-semibold">Estimated Delivery:</span>
+          <span id="success-delivery-date" class="text-zinc-800 font-medium">3-4 Business Days</span>
         </div>
         <div class="flex justify-between">
-          <span class="text-zinc-500">Payment Status:</span>
-          <span class="text-green-400 font-bold">Authorized & Verified</span>
+          <span class="text-zinc-500 font-semibold">Payment Status:</span>
+          <span class="text-emerald-600 font-bold">Authorized & Verified</span>
         </div>
       </div>
 
       <div class="flex gap-3">
-        <button onclick="closeOrderSuccessModal()" class="flex-1 py-3 rounded-xl bg-white hover:bg-zinc-200 text-zinc-950 font-bold text-xs uppercase tracking-wider transition">
+        <button onclick="closeOrderSuccessModal()" class="flex-1 py-3.5 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-xs uppercase tracking-wider transition shadow">
           Continue Shopping
         </button>
       </div>
@@ -1122,70 +1143,70 @@
   </div>
 
   <!-- =====================================================
-       FOOTER
+       FOOTER (CLEAN LUXURY IVORY)
        ===================================================== -->
-  <footer class="bg-zinc-950 border-t border-zinc-800 text-zinc-400 text-xs pt-16 pb-12">
+  <footer class="bg-white border-t border-zinc-200 text-zinc-500 text-xs pt-16 pb-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 pb-12 border-b border-zinc-800">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 pb-12 border-b border-zinc-200">
         
         <!-- Col 1: Brand Info -->
         <div class="md:col-span-2 space-y-4">
           <div class="flex items-center gap-2">
-            <div class="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center font-bold text-white text-sm">A</div>
-            <span class="font-heading font-bold text-lg text-white">AURA ATELIER</span>
+            <div class="w-8 h-8 rounded-lg bg-zinc-950 flex items-center justify-center font-bold text-white text-sm">A</div>
+            <span class="font-heading font-extrabold text-lg text-zinc-950">AURA ATELIER</span>
           </div>
-          <p class="text-zinc-400 leading-relaxed max-w-sm">
+          <p class="text-zinc-500 leading-relaxed max-w-sm">
             Contemporary luxury apparel designed for fluid motion and timeless elegance. Crafted from sustainably sourced long-staple cotton and natural Normandy flax linen.
           </p>
-          <div class="flex items-center gap-3 text-zinc-400">
-            <span class="w-8 h-8 rounded-lg bg-zinc-900 flex items-center justify-center hover:text-white cursor-pointer transition"><i data-lucide="instagram" class="w-4 h-4"></i></span>
-            <span class="w-8 h-8 rounded-lg bg-zinc-900 flex items-center justify-center hover:text-white cursor-pointer transition"><i data-lucide="twitter" class="w-4 h-4"></i></span>
-            <span class="w-8 h-8 rounded-lg bg-zinc-900 flex items-center justify-center hover:text-white cursor-pointer transition"><i data-lucide="youtube" class="w-4 h-4"></i></span>
+          <div class="flex items-center gap-3 text-zinc-600">
+            <span class="w-8 h-8 rounded-xl bg-zinc-100 flex items-center justify-center hover:bg-zinc-200 hover:text-zinc-950 cursor-pointer transition"><i data-lucide="instagram" class="w-4 h-4"></i></span>
+            <span class="w-8 h-8 rounded-xl bg-zinc-100 flex items-center justify-center hover:bg-zinc-200 hover:text-zinc-950 cursor-pointer transition"><i data-lucide="twitter" class="w-4 h-4"></i></span>
+            <span class="w-8 h-8 rounded-xl bg-zinc-100 flex items-center justify-center hover:bg-zinc-200 hover:text-zinc-950 cursor-pointer transition"><i data-lucide="youtube" class="w-4 h-4"></i></span>
           </div>
         </div>
 
         <!-- Col 2: Collections -->
         <div class="space-y-3">
-          <h4 class="text-white font-bold uppercase tracking-wider text-[11px]">Collections</h4>
+          <h4 class="text-zinc-950 font-bold uppercase tracking-wider text-[11px]">Collections</h4>
           <ul class="space-y-2">
-            <li><button onclick="filterByCategory('shirts'); scrollToCatalog();" class="hover:text-white transition">Oxford & Linen Shirts</button></li>
-            <li><button onclick="filterByCategory('tshirts'); scrollToCatalog();" class="hover:text-white transition">Heavyweight Graphic Tees</button></li>
-            <li><button onclick="filterByCategory('pants'); scrollToCatalog();" class="hover:text-white transition">Pleated & Cargo Pants</button></li>
-            <li><button onclick="filterBySale(); scrollToCatalog();" class="text-red-400 hover:text-red-300 transition">Sale Archive (-35%)</button></li>
+            <li><button onclick="filterByCategory('shirts'); scrollToCatalog();" class="hover:text-zinc-950 transition">Oxford & Linen Shirts</button></li>
+            <li><button onclick="filterByCategory('tshirts'); scrollToCatalog();" class="hover:text-zinc-950 transition">Heavyweight Graphic Tees</button></li>
+            <li><button onclick="filterByCategory('pants'); scrollToCatalog();" class="hover:text-zinc-950 transition">Pleated & Cargo Pants</button></li>
+            <li><button onclick="filterBySale(); scrollToCatalog();" class="text-red-600 hover:text-red-700 font-bold transition">Sale Archive (-35%)</button></li>
           </ul>
         </div>
 
         <!-- Col 3: Atelier Care -->
         <div class="space-y-3">
-          <h4 class="text-white font-bold uppercase tracking-wider text-[11px]">Client Care</h4>
+          <h4 class="text-zinc-950 font-bold uppercase tracking-wider text-[11px]">Client Care</h4>
           <ul class="space-y-2">
-            <li><button onclick="openSizeGuideModal('shirt-01')" class="hover:text-white transition">Size & Fit Guide</button></li>
-            <li><a href="#" class="hover:text-white transition">Shipping & Customs</a></li>
-            <li><a href="#" class="hover:text-white transition">30-Day Return Portal</a></li>
-            <li><a href="#" class="hover:text-white transition">Fabric Care Matrix</a></li>
+            <li><button onclick="openSizeGuideModal('shirt-01')" class="hover:text-zinc-950 transition">Size & Fit Guide</button></li>
+            <li><a href="#" class="hover:text-zinc-950 transition">Shipping & Customs</a></li>
+            <li><a href="#" class="hover:text-zinc-950 transition">30-Day Return Portal</a></li>
+            <li><a href="#" class="hover:text-zinc-950 transition">Fabric Care Matrix</a></li>
           </ul>
         </div>
 
         <!-- Col 4: Newsletter -->
         <div class="space-y-3">
-          <h4 class="text-white font-bold uppercase tracking-wider text-[11px]">Join Atelier Club</h4>
-          <p class="text-zinc-400">Receive private access to Zero-G drops and private seasonal sales.</p>
+          <h4 class="text-zinc-950 font-bold uppercase tracking-wider text-[11px]">Join Atelier Club</h4>
+          <p class="text-zinc-500">Receive private access to Zero-G drops and seasonal sales.</p>
           <form onsubmit="handleNewsletterSubmit(event)" class="flex gap-1.5">
-            <input type="email" required placeholder="Enter your email" class="w-full bg-zinc-900 text-xs text-white px-3 py-2 rounded-lg border border-zinc-800 focus:outline-none focus:border-red-500">
-            <button type="submit" class="bg-red-600 hover:bg-red-500 text-white px-3 py-2 rounded-lg font-bold text-xs transition">Join</button>
+            <input type="email" required placeholder="Enter your email" class="w-full bg-zinc-100 text-xs text-zinc-900 px-3 py-2 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white">
+            <button type="submit" class="bg-zinc-950 hover:bg-zinc-800 text-white px-4 py-2 rounded-xl font-bold text-xs transition">Join</button>
           </form>
         </div>
 
       </div>
 
-      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-zinc-500 text-[11px]">
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-zinc-400 text-[11px]">
         <div>
           © 2026 AURA STUDIO ATELIER INC. All rights reserved.
         </div>
         <div class="flex gap-4">
-          <a href="#" class="hover:text-zinc-300">Privacy Policy</a>
-          <a href="#" class="hover:text-zinc-300">Terms of Service</a>
-          <a href="#" class="hover:text-zinc-300">Cookie Preferences</a>
+          <a href="#" class="hover:text-zinc-700">Privacy Policy</a>
+          <a href="#" class="hover:text-zinc-700">Terms of Service</a>
+          <a href="#" class="hover:text-zinc-700">Cookie Preferences</a>
         </div>
       </div>
     </div>

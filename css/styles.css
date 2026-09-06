@@ -1,5 +1,5 @@
 /* =====================================================
-   AURA ATELIER - LUXURY APPAREL DESIGN SYSTEM STYLES
+   AURA ATELIER - WHITE MINIMALIST LUXURY DESIGN SYSTEM
    ===================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
@@ -9,6 +9,8 @@
   --font-heading: 'Space Grotesk', sans-serif;
   --color-brand-red: #DC2626;
   --color-brand-crimson: #991B1B;
+  --bg-main: #FAFAFA;
+  --text-main: #09090B;
 }
 
 * {
@@ -19,76 +21,72 @@
 
 body {
   font-family: var(--font-primary);
-  background-color: #09090B;
-  color: #FAFAFA;
+  background-color: #FAFAFA;
+  color: #09090B;
   overflow-x: hidden;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.font-heading {
+h1, h2, h3, h4, h5, h6, .font-heading {
   font-family: var(--font-heading);
   letter-spacing: -0.02em;
 }
 
-/* Custom Sleek Scrollbar */
+/* Custom Sleek Scrollbar (Light Theme) */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #09090b;
+  background: #F4F4F5;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #27272a;
+  background: #D4D4D8;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #3f3f46;
+  background: #A1A1AA;
 }
 
-/* Glassmorphism Utilities */
-.glass-panel {
-  background: rgba(18, 18, 22, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.glass-dropdown {
-  background: rgba(15, 15, 18, 0.92);
+/* Glassmorphism & Elevation Utilities (Light Theme) */
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(228, 228, 231, 0.9);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04);
 }
 
-.glass-card {
-  background: linear-gradient(180deg, rgba(24, 24, 27, 0.8) 0%, rgba(18, 18, 20, 0.95) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+.glass-dropdown-light {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid #E4E4E7;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
 }
 
-.glass-card:hover {
-  border-color: rgba(255, 255, 255, 0.2);
+.white-card {
+  background: #FFFFFF;
+  border: 1px solid #E4E4E7;
+  box-shadow: 0 2px 10px -2px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Neon & Rim Glow effects */
-.glow-red {
-  box-shadow: 0 0 25px -5px rgba(220, 38, 38, 0.35);
+.white-card:hover {
+  border-color: #D4D4D8;
+  box-shadow: 0 12px 30px -8px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
 }
 
-.glow-red-sm {
-  box-shadow: 0 0 12px -2px rgba(220, 38, 38, 0.45);
+/* Subtle Shadows */
+.shadow-soft {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
 }
 
-.glow-white {
-  box-shadow: 0 0 30px -5px rgba(255, 255, 255, 0.15);
+.shadow-soft-lg {
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.10);
 }
 
 /* Product Card Image Transitions */
@@ -103,25 +101,25 @@ h6,
 
 .product-card:hover .img-primary {
   opacity: 0;
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .product-card:hover .img-secondary {
   opacity: 1;
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
-/* Interactive Size Selector Pill */
+/* Interactive Size Selector Pill (Light) */
 .size-btn {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .size-btn.active {
-  background-color: #FAFAFA;
-  color: #09090B;
-  border-color: #FAFAFA;
+  background-color: #09090B;
+  color: #FFFFFF;
+  border-color: #09090B;
   font-weight: 700;
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Interactive Color Swatch */
@@ -135,7 +133,7 @@ h6,
   position: absolute;
   inset: -3px;
   border-radius: 9999px;
-  border: 2px solid #FAFAFA;
+  border: 2px solid #09090B;
 }
 
 /* Drawer Transitions */
@@ -182,7 +180,7 @@ h6,
 }
 
 .modal-content-box {
-  transform: scale(0.95) translateY(12px);
+  transform: scale(0.96) translateY(10px);
   opacity: 0;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
 }
@@ -192,7 +190,7 @@ h6,
   opacity: 1;
 }
 
-/* Range Slider Styling */
+/* Range Slider Styling (Light Theme) */
 input[type=range] {
   -webkit-appearance: none;
   background: transparent;
@@ -207,10 +205,10 @@ input[type=range]::-webkit-slider-thumb {
   height: 18px;
   width: 18px;
   border-radius: 50%;
-  background: #FFFFFF;
+  background: #09090B;
   border: 2px solid #DC2626;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   margin-top: -6px;
   transition: transform 0.15s ease;
 }
@@ -223,53 +221,11 @@ input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
   height: 6px;
   cursor: pointer;
-  background: #27272A;
+  background: #E4E4E7;
   border-radius: 9999px;
 }
 
-/* Badge Pulse Animation */
-@keyframes pulse-subtle {
-
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 0.85;
-    transform: scale(0.97);
-  }
-}
-
-.badge-pulse {
-  animation: pulse-subtle 2.5s infinite ease-in-out;
-}
-
-/* Wishlist Heart Animation */
-@keyframes heart-beat {
-  0% {
-    transform: scale(1);
-  }
-
-  35% {
-    transform: scale(1.35);
-  }
-
-  60% {
-    transform: scale(0.95);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-.heart-pop {
-  animation: heart-beat 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* Toast Notification Styling */
+/* Toast Notification Styling (Light) */
 .toast-item {
   transform: translateY(100%);
   opacity: 0;
@@ -283,15 +239,8 @@ input[type=range]::-webkit-slider-runnable-track {
 
 /* Confetti Animation for Checkout Success */
 @keyframes confetti-fall {
-  0% {
-    transform: translateY(-20px) rotate(0deg);
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateY(600px) rotate(720deg);
-    opacity: 0;
-  }
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(600px) rotate(720deg); opacity: 0; }
 }
 
 .confetti-piece {
@@ -303,60 +252,56 @@ input[type=range]::-webkit-slider-runnable-track {
   animation: confetti-fall 2.8s linear forwards;
 }
 
-/* Hero Text Mask Gradient */
-.text-gradient-silver {
-  background: linear-gradient(135deg, #FFFFFF 0%, #A1A1AA 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.text-gradient-crimson {
-  background: linear-gradient(135deg, #FF6B6B 0%, #DC2626 50%, #991B1B 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 /* Floating Zero-G Item keyframe */
 @keyframes zero-gravity {
-
-  0%,
-  100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-
-  50% {
-    transform: translateY(-10px) rotate(0.8deg);
-  }
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(0.6deg); }
 }
 
 .floating-zerog {
   animation: zero-gravity 6s ease-in-out infinite;
 }
 
-/* Table styling for Size Guide */
+/* Table styling for Size Guide (Light Theme) */
 .size-table th {
-  background: #18181B;
-  color: #A1A1AA;
-  font-weight: 600;
+  background: #F4F4F5;
+  color: #52525B;
+  font-weight: 700;
   text-transform: uppercase;
   font-size: 0.75rem;
   letter-spacing: 0.05em;
-  padding: 10px 14px;
-  border-bottom: 1px solid #27272A;
+  padding: 12px 16px;
+  border-bottom: 1px solid #E4E4E7;
 }
 
 .size-table td {
-  padding: 12px 14px;
-  border-bottom: 1px solid #27272A;
-  color: #FAFAFA;
+  padding: 12px 16px;
+  border-bottom: 1px solid #F4F4F5;
+  color: #09090B;
   font-size: 0.875rem;
 }
 
 .size-table tr:hover td {
-  background: rgba(39, 39, 42, 0.5);
+  background: #FAFAFA;
 }
 
-/* Category card overlay gradients */
-.category-card-overlay {
-  background: linear-gradient(180deg, rgba(9, 9, 11, 0) 40%, rgba(9, 9, 11, 0.95) 100%);
+/* Category card overlay gradients (Crisp Editorial) */
+.category-card-overlay-light {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 35%, rgba(9, 9, 11, 0.85) 100%);
+}
+
+/* Infinite Marquee Animation for Brand Ticker */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 22s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }

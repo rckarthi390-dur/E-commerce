@@ -1,5 +1,6 @@
 // =====================================================
 // AURA ATELIER - APPLICATION CONTROLLER & STATE MANAGER
+// WHITE MINIMALIST LUXURY DESIGN
 // =====================================================
 
 // Global Application State
@@ -153,19 +154,19 @@ function setupEventListeners() {
   // View Switchers
   document.getElementById('view-grid-btn')?.addEventListener('click', () => {
     STATE.viewMode = 'grid';
-    document.getElementById('view-grid-btn').classList.add('bg-zinc-800', 'text-white');
-    document.getElementById('view-grid-btn').classList.remove('text-zinc-400');
-    document.getElementById('view-list-btn').classList.remove('bg-zinc-800', 'text-white');
-    document.getElementById('view-list-btn').classList.add('text-zinc-400');
+    document.getElementById('view-grid-btn').classList.add('bg-zinc-950', 'text-white');
+    document.getElementById('view-grid-btn').classList.remove('text-zinc-500');
+    document.getElementById('view-list-btn').classList.remove('bg-zinc-950', 'text-white');
+    document.getElementById('view-list-btn').classList.add('text-zinc-500');
     renderProducts();
   });
 
   document.getElementById('view-list-btn')?.addEventListener('click', () => {
     STATE.viewMode = 'list';
-    document.getElementById('view-list-btn').classList.add('bg-zinc-800', 'text-white');
-    document.getElementById('view-list-btn').classList.remove('text-zinc-400');
-    document.getElementById('view-grid-btn').classList.remove('bg-zinc-800', 'text-white');
-    document.getElementById('view-grid-btn').classList.add('text-zinc-400');
+    document.getElementById('view-list-btn').classList.add('bg-zinc-950', 'text-white');
+    document.getElementById('view-list-btn').classList.remove('text-zinc-500');
+    document.getElementById('view-grid-btn').classList.remove('bg-zinc-950', 'text-white');
+    document.getElementById('view-grid-btn').classList.add('text-zinc-500');
     renderProducts();
   });
 }
@@ -183,7 +184,7 @@ function updateCurrencyDisplay() {
 }
 
 // =====================================================
-// PRODUCT FILTERING, SORTING & RENDERING
+// PRODUCT FILTERING, SORTING & RENDERING (WHITE ATELIER)
 // =====================================================
 
 function getFilteredProducts() {
@@ -282,34 +283,34 @@ function createProductCardHTML(product) {
   const secondaryImg = product.images[1] || product.images[0];
 
   return `
-    <div class="product-card glass-card rounded-2xl overflow-hidden group flex flex-col justify-between transition-all duration-300 hover:shadow-2xl hover:shadow-black/50 border border-zinc-800/80" data-id="${product.id}">
+    <div class="product-card white-card rounded-3xl overflow-hidden group flex flex-col justify-between" data-id="${product.id}">
       
       <!-- Top Image Area -->
-      <div class="relative aspect-[4/5] bg-zinc-950 overflow-hidden cursor-pointer" onclick="openProductDetailModal('${product.id}')">
+      <div class="relative aspect-[4/5] bg-zinc-100 overflow-hidden cursor-pointer" onclick="openProductDetailModal('${product.id}')">
         
         <!-- Primary & Secondary Hover Images -->
         <img 
           src="${primaryImg}" 
           alt="${product.name}" 
-          class="img-primary absolute inset-0 w-full h-full object-cover object-center filter brightness-95"
+          class="img-primary absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.98]"
           loading="lazy"
         >
         <img 
           src="${secondaryImg}" 
           alt="${product.name} alternate view" 
-          class="img-secondary absolute inset-0 w-full h-full object-cover object-center filter brightness-95"
+          class="img-secondary absolute inset-0 w-full h-full object-cover object-center filter brightness-[0.98]"
           loading="lazy"
         >
 
         <!-- Top Badges -->
         <div class="absolute top-3 left-3 flex flex-col gap-1.5 z-10 pointer-events-none">
           ${product.badge ? `
-            <span class="px-2.5 py-1 rounded-md text-[10px] font-black tracking-wider uppercase bg-red-600 text-white shadow-md">
+            <span class="px-2.5 py-1 rounded-md text-[10px] font-black tracking-wider uppercase bg-zinc-950 text-white shadow-sm">
               ${product.badge}
             </span>
           ` : ''}
           ${product.discount ? `
-            <span class="px-2 py-0.5 rounded text-[10px] font-bold tracking-tight bg-zinc-900/90 text-red-400 border border-red-500/30 backdrop-blur-md">
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold tracking-tight bg-red-600 text-white shadow-sm">
               -${product.discount}% OFF
             </span>
           ` : ''}
@@ -318,17 +319,17 @@ function createProductCardHTML(product) {
         <!-- Wishlist Button Toggle -->
         <button 
           onclick="event.stopPropagation(); toggleWishlist('${product.id}')" 
-          class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-zinc-950/80 hover:bg-zinc-900 text-zinc-300 hover:text-white border border-zinc-700/80 flex items-center justify-center backdrop-blur-md transition-transform active:scale-90"
+          class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-white/90 hover:bg-white text-zinc-600 hover:text-zinc-950 border border-zinc-200 flex items-center justify-center backdrop-blur-md transition-all active:scale-90 shadow-sm"
           aria-label="Add to wishlist"
         >
-          <i data-lucide="heart" class="w-4 h-4 ${isWishlisted ? 'text-red-500 fill-red-500' : ''}"></i>
+          <i data-lucide="heart" class="w-4 h-4 ${isWishlisted ? 'text-red-600 fill-red-600' : ''}"></i>
         </button>
 
         <!-- Quick View Overlay Button on Hover -->
         <div class="absolute inset-x-3 bottom-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
           <button 
             onclick="event.stopPropagation(); openProductDetailModal('${product.id}')"
-            class="w-full py-2.5 bg-white/90 hover:bg-white text-zinc-950 text-xs font-bold uppercase tracking-wider rounded-xl backdrop-blur-md shadow-lg transition flex items-center justify-center gap-1.5"
+            class="w-full py-2.5 bg-zinc-950/90 hover:bg-zinc-950 text-white text-xs font-bold uppercase tracking-wider rounded-xl backdrop-blur-md shadow-md transition flex items-center justify-center gap-1.5"
           >
             <i data-lucide="eye" class="w-3.5 h-3.5"></i> Quick View & Size Guide
           </button>
@@ -340,38 +341,38 @@ function createProductCardHTML(product) {
       <div class="p-5 flex-1 flex flex-col justify-between">
         <div>
           <!-- Fabric & Fit Tags -->
-          <div class="flex items-center justify-between gap-2 text-[11px] text-zinc-400 mb-1.5">
-            <span class="truncate font-medium text-zinc-300 bg-zinc-900 px-2 py-0.5 rounded border border-zinc-800">${product.fabric}</span>
-            <span class="text-zinc-500">${product.fit} Fit</span>
+          <div class="flex items-center justify-between gap-2 text-[11px] mb-1.5">
+            <span class="truncate font-semibold text-zinc-700 bg-zinc-100 px-2 py-0.5 rounded border border-zinc-200">${product.fabric}</span>
+            <span class="text-zinc-500 font-medium">${product.fit} Fit</span>
           </div>
 
           <!-- Product Title -->
           <h3 
             onclick="openProductDetailModal('${product.id}')" 
-            class="text-sm font-bold text-white group-hover:text-red-400 transition cursor-pointer line-clamp-1"
+            class="text-sm font-bold text-zinc-950 group-hover:text-red-600 transition cursor-pointer line-clamp-1"
           >
             ${product.name}
           </h3>
 
           <!-- Rating and Reviews -->
           <div class="flex items-center gap-1.5 mt-1.5 text-xs">
-            <div class="flex text-amber-400">
-              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+            <div class="flex text-amber-500">
+              <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500"></i>
             </div>
-            <span class="font-bold text-white text-xs">${product.rating}</span>
-            <span class="text-zinc-500 text-[11px]">(${product.reviewsCount})</span>
+            <span class="font-bold text-zinc-900 text-xs">${product.rating}</span>
+            <span class="text-zinc-400 text-[11px] font-medium">(${product.reviewsCount})</span>
           </div>
         </div>
 
         <!-- Color Swatch Dots & Price & Add Actions -->
-        <div class="pt-4 mt-3 border-t border-zinc-800/80 space-y-3">
+        <div class="pt-4 mt-3 border-t border-zinc-100 space-y-3">
           
           <div class="flex items-center justify-between">
             <!-- Price Display -->
             <div class="flex items-baseline gap-2">
-              <span class="text-lg font-extrabold text-white font-mono">${formatPrice(product.price)}</span>
+              <span class="text-lg font-black text-zinc-950 font-mono">${formatPrice(product.price)}</span>
               ${product.originalPrice ? `
-                <span class="text-xs text-zinc-500 line-through font-mono">${formatPrice(product.originalPrice)}</span>
+                <span class="text-xs text-zinc-400 line-through font-mono font-medium">${formatPrice(product.originalPrice)}</span>
               ` : ''}
             </div>
 
@@ -379,12 +380,12 @@ function createProductCardHTML(product) {
             <div class="flex items-center gap-1.5">
               ${product.colors.slice(0, 3).map(c => `
                 <span 
-                  class="w-3.5 h-3.5 rounded-full border border-zinc-700 shadow-sm" 
+                  class="w-3.5 h-3.5 rounded-full border border-zinc-300 shadow-xs" 
                   style="background-color: ${c.hex};" 
                   title="${c.name}"
                 ></span>
               `).join('')}
-              ${product.colors.length > 3 ? `<span class="text-[10px] text-zinc-500">+${product.colors.length - 3}</span>` : ''}
+              ${product.colors.length > 3 ? `<span class="text-[10px] text-zinc-400 font-bold">+${product.colors.length - 3}</span>` : ''}
             </div>
           </div>
 
@@ -392,16 +393,16 @@ function createProductCardHTML(product) {
           <div class="relative">
             <button 
               onclick="toggleQuickAddSizeSelector('${product.id}')"
-              class="w-full py-2 bg-zinc-900 hover:bg-zinc-800 text-zinc-200 hover:text-white text-xs font-semibold rounded-xl border border-zinc-700/80 transition flex items-center justify-center gap-2 group-hover:border-zinc-500"
+              class="w-full py-2.5 bg-zinc-100 hover:bg-zinc-950 hover:text-white text-zinc-900 text-xs font-bold rounded-xl border border-zinc-200 transition flex items-center justify-center gap-2"
             >
-              <i data-lucide="plus" class="w-3.5 h-3.5 text-red-500"></i> Quick Add to Bag
+              <i data-lucide="plus" class="w-3.5 h-3.5 text-red-600"></i> Quick Add to Bag
             </button>
 
             <!-- Inline Quick Add Size Selector Popover -->
-            <div id="quick-add-${product.id}" class="hidden absolute left-0 right-0 bottom-full mb-2 bg-zinc-900 border border-zinc-700 rounded-2xl p-3 shadow-2xl z-20">
+            <div id="quick-add-${product.id}" class="hidden absolute left-0 right-0 bottom-full mb-2 bg-white border border-zinc-200 rounded-2xl p-3 shadow-xl z-20">
               <div class="flex justify-between items-center mb-2">
-                <span class="text-[11px] font-bold text-zinc-300">Select Size:</span>
-                <button onclick="toggleQuickAddSizeSelector('${product.id}')" class="text-zinc-500 hover:text-white p-0.5">
+                <span class="text-[11px] font-bold text-zinc-800">Select Size:</span>
+                <button onclick="toggleQuickAddSizeSelector('${product.id}')" class="text-zinc-400 hover:text-zinc-900 p-0.5">
                   <i data-lucide="x" class="w-3 h-3"></i>
                 </button>
               </div>
@@ -409,7 +410,7 @@ function createProductCardHTML(product) {
                 ${product.sizes.map(s => `
                   <button 
                     onclick="quickAddToCart('${product.id}', '${s}')" 
-                    class="px-2.5 py-1 rounded-lg bg-zinc-800 hover:bg-red-600 text-white text-xs font-bold transition border border-zinc-700 hover:border-red-600"
+                    class="px-2.5 py-1 rounded-lg bg-zinc-100 hover:bg-zinc-950 text-zinc-900 hover:text-white text-xs font-bold transition border border-zinc-200"
                   >
                     ${s}
                   </button>
@@ -431,31 +432,31 @@ function createProductListCardHTML(product) {
   const primaryImg = product.images[0] || product.images[1];
 
   return `
-    <div class="glass-card rounded-2xl p-4 flex flex-col sm:flex-row items-center gap-6 border border-zinc-800 hover:border-zinc-700 transition">
-      <div class="relative w-36 h-44 rounded-xl overflow-hidden bg-zinc-950 flex-shrink-0 cursor-pointer" onclick="openProductDetailModal('${product.id}')">
+    <div class="white-card rounded-3xl p-4 flex flex-col sm:flex-row items-center gap-6">
+      <div class="relative w-36 h-44 rounded-2xl overflow-hidden bg-zinc-100 flex-shrink-0 cursor-pointer" onclick="openProductDetailModal('${product.id}')">
         <img src="${primaryImg}" alt="${product.name}" class="w-full h-full object-cover">
-        ${product.badge ? `<span class="absolute top-2 left-2 px-2 py-0.5 text-[9px] font-bold bg-red-600 text-white rounded">${product.badge}</span>` : ''}
+        ${product.badge ? `<span class="absolute top-2 left-2 px-2 py-0.5 text-[9px] font-bold bg-zinc-950 text-white rounded">${product.badge}</span>` : ''}
       </div>
       
       <div class="flex-1 space-y-2 text-center sm:text-left">
         <div class="flex items-center gap-2 justify-center sm:justify-start">
-          <span class="text-xs bg-zinc-900 text-zinc-400 px-2 py-0.5 rounded border border-zinc-800">${product.fabric}</span>
-          <span class="text-xs text-zinc-500">${product.fit} Fit</span>
+          <span class="text-xs bg-zinc-100 text-zinc-700 font-semibold px-2 py-0.5 rounded border border-zinc-200">${product.fabric}</span>
+          <span class="text-xs text-zinc-500 font-medium">${product.fit} Fit</span>
         </div>
-        <h3 onclick="openProductDetailModal('${product.id}')" class="text-lg font-bold text-white hover:text-red-400 transition cursor-pointer">${product.name}</h3>
-        <p class="text-xs text-zinc-400 line-clamp-2">${product.description}</p>
+        <h3 onclick="openProductDetailModal('${product.id}')" class="text-lg font-bold text-zinc-950 hover:text-red-600 transition cursor-pointer">${product.name}</h3>
+        <p class="text-xs text-zinc-500 line-clamp-2">${product.description}</p>
         <div class="flex items-center gap-2 justify-center sm:justify-start">
-          <span class="text-xl font-bold text-white font-mono">${formatPrice(product.price)}</span>
-          ${product.originalPrice ? `<span class="text-xs text-zinc-500 line-through font-mono">${formatPrice(product.originalPrice)}</span>` : ''}
+          <span class="text-xl font-black text-zinc-950 font-mono">${formatPrice(product.price)}</span>
+          ${product.originalPrice ? `<span class="text-xs text-zinc-400 line-through font-mono font-medium">${formatPrice(product.originalPrice)}</span>` : ''}
         </div>
       </div>
 
       <div class="flex sm:flex-col gap-2 w-full sm:w-auto">
-        <button onclick="openProductDetailModal('${product.id}')" class="flex-1 sm:flex-none px-4 py-2.5 bg-zinc-800 hover:bg-zinc-700 text-white text-xs font-semibold rounded-xl transition">
+        <button onclick="openProductDetailModal('${product.id}')" class="flex-1 sm:flex-none px-4 py-2.5 bg-zinc-950 hover:bg-zinc-800 text-white text-xs font-bold rounded-xl transition shadow-sm">
           View Details
         </button>
-        <button onclick="toggleWishlist('${product.id}')" class="p-2.5 bg-zinc-900 border border-zinc-800 hover:text-red-500 text-zinc-400 rounded-xl transition">
-          <i data-lucide="heart" class="w-4 h-4 ${isWishlisted ? 'text-red-500 fill-red-500' : ''}"></i>
+        <button onclick="toggleWishlist('${product.id}')" class="p-2.5 bg-zinc-100 border border-zinc-200 hover:text-red-600 text-zinc-600 rounded-xl transition">
+          <i data-lucide="heart" class="w-4 h-4 ${isWishlisted ? 'text-red-600 fill-red-600' : ''}"></i>
         </button>
       </div>
     </div>
@@ -483,7 +484,7 @@ function quickAddToCart(productId, size) {
   if (el) el.classList.add('hidden');
 }
 
-// Render Search Autocomplete Dropdown
+// Render Search Autocomplete Dropdown (Light)
 function renderSearchDropdown(query, containerEl) {
   const matches = PRODUCTS.filter(p => 
     p.name.toLowerCase().includes(query) || 
@@ -493,7 +494,7 @@ function renderSearchDropdown(query, containerEl) {
 
   if (matches.length === 0) {
     containerEl.innerHTML = `
-      <div class="p-4 text-center text-xs text-zinc-500">
+      <div class="p-4 text-center text-xs text-zinc-400 font-medium">
         No matching garments found for "${query}"
       </div>
     `;
@@ -502,18 +503,18 @@ function renderSearchDropdown(query, containerEl) {
   }
 
   containerEl.innerHTML = `
-    <div class="p-2 text-[10px] font-bold uppercase text-zinc-500 border-b border-zinc-800">
+    <div class="p-2 text-[10px] font-bold uppercase text-zinc-400 border-b border-zinc-100">
       Quick Results (${matches.length})
     </div>
     <div class="space-y-1 mt-1">
       ${matches.map(p => `
-        <div onclick="openProductDetailModal('${p.id}'); document.getElementById('search-results-dropdown').classList.add('hidden');" class="flex items-center gap-3 p-2 rounded-xl hover:bg-zinc-800/80 cursor-pointer transition">
-          <img src="${p.images[0]}" alt="${p.name}" class="w-10 h-12 object-cover rounded-lg bg-zinc-900">
+        <div onclick="openProductDetailModal('${p.id}'); document.getElementById('search-results-dropdown').classList.add('hidden');" class="flex items-center gap-3 p-2 rounded-xl hover:bg-zinc-100 cursor-pointer transition">
+          <img src="${p.images[0]}" alt="${p.name}" class="w-10 h-12 object-cover rounded-lg bg-zinc-100">
           <div class="flex-1">
-            <h4 class="text-xs font-bold text-white">${p.name}</h4>
-            <span class="text-[10px] text-zinc-400 capitalize">${p.category} • ${p.fabric}</span>
+            <h4 class="text-xs font-bold text-zinc-950">${p.name}</h4>
+            <span class="text-[10px] text-zinc-500 capitalize">${p.category} • ${p.fabric}</span>
           </div>
-          <span class="text-xs font-bold font-mono text-red-400">${formatPrice(p.price)}</span>
+          <span class="text-xs font-bold font-mono text-zinc-950">${formatPrice(p.price)}</span>
         </div>
       `).join('')}
     </div>
@@ -606,15 +607,14 @@ function renderActiveFilterChips() {
   chipsBar.classList.add('flex');
 
   chipsContainer.innerHTML = chips.map((chip, idx) => `
-    <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-zinc-900 border border-zinc-700 text-xs font-medium text-zinc-200">
+    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white border border-zinc-200 text-xs font-bold text-zinc-800 shadow-xs">
       ${chip.label}
-      <button onclick="removeFilterChip(${idx})" class="text-zinc-500 hover:text-white ml-1">
+      <button onclick="removeFilterChip(${idx})" class="text-zinc-400 hover:text-zinc-950 ml-1">
         <i data-lucide="x" class="w-3 h-3"></i>
       </button>
     </span>
   `).join('');
 
-  // Store chip actions on window for click
   window._activeChipActions = chips.map(c => c.action);
   initLucideIcons();
 }
@@ -632,11 +632,11 @@ function filterByCategory(cat) {
   // Update desktop nav pills
   document.querySelectorAll('.nav-link').forEach(btn => {
     if (btn.dataset.category === cat) {
-      btn.classList.add('active', 'text-white', 'bg-zinc-800/80');
-      btn.classList.remove('text-zinc-400');
+      btn.classList.add('active', 'text-zinc-950', 'bg-zinc-100');
+      btn.classList.remove('text-zinc-600');
     } else {
-      btn.classList.remove('active', 'text-white', 'bg-zinc-800/80');
-      btn.classList.add('text-zinc-400');
+      btn.classList.remove('active', 'text-zinc-950', 'bg-zinc-100');
+      btn.classList.add('text-zinc-600');
     }
   });
 
@@ -671,7 +671,6 @@ function toggleSizeFilter(size) {
     STATE.filters.sizes.push(size);
   }
 
-  // Update button active UI
   document.querySelectorAll(`.size-filter-btn[data-size="${size}"]`).forEach(btn => {
     btn.classList.toggle('active');
   });
@@ -688,8 +687,8 @@ function toggleFitFilter(fit) {
   }
 
   document.querySelectorAll(`.fit-filter-btn[data-fit="${fit}"]`).forEach(btn => {
-    btn.classList.toggle('border-red-500');
-    btn.classList.toggle('bg-zinc-800');
+    btn.classList.toggle('border-zinc-950');
+    btn.classList.toggle('bg-zinc-950');
     btn.classList.toggle('text-white');
   });
 
@@ -712,9 +711,9 @@ function setMobileCategory(cat) {
   STATE.filters.category = cat;
   document.querySelectorAll('.mobile-cat-btn').forEach(btn => {
     if (btn.dataset.val === cat) {
-      btn.classList.add('border-red-500', 'bg-zinc-800', 'text-white');
+      btn.classList.add('border-zinc-950', 'bg-zinc-950', 'text-white');
     } else {
-      btn.classList.remove('border-red-500', 'bg-zinc-800', 'text-white');
+      btn.classList.remove('border-zinc-950', 'bg-zinc-950', 'text-white');
     }
   });
   renderProducts();
@@ -747,14 +746,14 @@ function resetAllFilters() {
 
   document.querySelectorAll('.size-filter-btn').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.fit-filter-btn').forEach(b => {
-    b.classList.remove('border-red-500', 'bg-zinc-800', 'text-white');
+    b.classList.remove('border-zinc-950', 'bg-zinc-950', 'text-white');
   });
 
   document.querySelectorAll('.nav-link').forEach(btn => {
     if (btn.dataset.category === 'all') {
-      btn.classList.add('active', 'text-white', 'bg-zinc-800/80');
+      btn.classList.add('active', 'text-zinc-950', 'bg-zinc-100');
     } else {
-      btn.classList.remove('active', 'text-white', 'bg-zinc-800/80');
+      btn.classList.remove('active', 'text-zinc-950', 'bg-zinc-100');
     }
   });
 
@@ -770,7 +769,7 @@ function scrollToCatalog() {
 }
 
 // =====================================================
-// PRODUCT DETAIL MODAL (PDP)
+// PRODUCT DETAIL MODAL (PDP - WHITE LUXURY)
 // =====================================================
 
 function openProductDetailModal(productId) {
@@ -788,7 +787,7 @@ function openProductDetailModal(productId) {
     <!-- Gallery Left Column -->
     <div class="space-y-4">
       <!-- Main Featured Image -->
-      <div class="relative aspect-[4/5] rounded-2xl overflow-hidden bg-zinc-900 border border-zinc-800 group">
+      <div class="relative aspect-[4/5] rounded-3xl overflow-hidden bg-zinc-100 border border-zinc-200 group">
         <img 
           id="pdp-main-image" 
           src="${product.images[0]}" 
@@ -796,7 +795,7 @@ function openProductDetailModal(productId) {
           class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         >
         ${product.badge ? `
-          <span class="absolute top-4 left-4 px-3 py-1 bg-red-600 text-white font-black text-xs uppercase tracking-wider rounded-lg shadow-lg">
+          <span class="absolute top-4 left-4 px-3 py-1 bg-zinc-950 text-white font-black text-xs uppercase tracking-wider rounded-lg shadow-sm">
             ${product.badge}
           </span>
         ` : ''}
@@ -807,7 +806,7 @@ function openProductDetailModal(productId) {
         ${product.images.map((img, idx) => `
           <button 
             onclick="switchPDPMainImage('${img}', this)" 
-            class="pdp-thumb-btn w-20 h-24 rounded-xl overflow-hidden border-2 ${idx === 0 ? 'border-red-500 ring-2 ring-red-500/30' : 'border-zinc-800'} flex-shrink-0 transition"
+            class="pdp-thumb-btn w-20 h-24 rounded-2xl overflow-hidden border-2 ${idx === 0 ? 'border-zinc-950 ring-2 ring-zinc-950/20' : 'border-zinc-200'} flex-shrink-0 transition bg-zinc-100"
           >
             <img src="${img}" alt="Thumbnail ${idx + 1}" class="w-full h-full object-cover">
           </button>
@@ -821,57 +820,57 @@ function openProductDetailModal(productId) {
         
         <!-- Breadcrumb & Stock Status -->
         <div class="flex items-center justify-between text-xs">
-          <span class="text-zinc-500 uppercase tracking-wider font-semibold capitalize">
+          <span class="text-zinc-500 uppercase tracking-wider font-bold capitalize">
             Aura Atelier / ${product.category}
           </span>
-          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full ${
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full ${
             product.stockStatus === 'only_2_left' 
-              ? 'bg-amber-950/60 text-amber-400 border border-amber-700/50' 
-              : 'bg-emerald-950/60 text-emerald-400 border border-emerald-700/50'
-          } font-semibold text-[11px]">
-            <span class="w-1.5 h-1.5 rounded-full ${product.stockStatus === 'only_2_left' ? 'bg-amber-400' : 'bg-emerald-400'} animate-pulse"></span>
+              ? 'bg-amber-50 text-amber-700 border border-amber-200' 
+              : 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+          } font-bold text-[11px]">
+            <span class="w-1.5 h-1.5 rounded-full ${product.stockStatus === 'only_2_left' ? 'bg-amber-500' : 'bg-emerald-500'} animate-pulse"></span>
             ${product.stockStatus === 'only_2_left' ? 'Only 2 Left in Stock!' : 'In Stock & Ready to Ship'}
           </span>
         </div>
 
         <!-- Title -->
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-zinc-950 tracking-tight leading-tight">
           ${product.name}
         </h2>
 
         <!-- Rating & Reviews -->
-        <div class="flex items-center gap-3 text-xs">
-          <div class="flex text-amber-400">
-            ${Array(5).fill(0).map(() => `<i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>`).join('')}
+        <div class="flex items-center gap-2 text-xs">
+          <div class="flex text-amber-500">
+            ${Array(5).fill(0).map(() => `<i data-lucide="star" class="w-4 h-4 fill-amber-500"></i>`).join('')}
           </div>
-          <span class="font-bold text-white">${product.rating} / 5.0</span>
-          <span class="text-zinc-500">(${product.reviewsCount} verified reviews)</span>
+          <span class="font-bold text-zinc-950">${product.rating} / 5.0</span>
+          <span class="text-zinc-400 font-medium">(${product.reviewsCount} verified reviews)</span>
         </div>
 
         <!-- Price Display -->
         <div class="flex items-baseline gap-3 pt-2">
-          <span class="text-3xl font-black text-white font-mono">${formatPrice(product.price)}</span>
+          <span class="text-3xl font-black text-zinc-950 font-mono">${formatPrice(product.price)}</span>
           ${product.originalPrice ? `
-            <span class="text-lg text-zinc-500 line-through font-mono">${formatPrice(product.originalPrice)}</span>
-            <span class="text-xs font-bold text-red-400 bg-red-950/80 px-2 py-1 rounded-lg border border-red-800/60">Save ${product.discount}%</span>
+            <span class="text-lg text-zinc-400 line-through font-mono">${formatPrice(product.originalPrice)}</span>
+            <span class="text-xs font-bold text-red-600 bg-red-50 px-2.5 py-1 rounded-lg border border-red-200">Save ${product.discount}%</span>
           ` : ''}
         </div>
 
         <!-- Description -->
-        <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed pt-1">
+        <p class="text-xs sm:text-sm text-zinc-600 leading-relaxed pt-1">
           ${product.description}
         </p>
 
         <!-- Color Selector -->
-        <div class="space-y-2 pt-2 border-t border-zinc-800">
+        <div class="space-y-2 pt-2 border-t border-zinc-100">
           <div class="flex justify-between items-center text-xs">
-            <span class="text-zinc-400 font-medium">Selected Color: <strong id="pdp-selected-color-name" class="text-white">${product.colors[0]?.name}</strong></span>
+            <span class="text-zinc-500 font-medium">Selected Color: <strong id="pdp-selected-color-name" class="text-zinc-950 font-bold">${product.colors[0]?.name}</strong></span>
           </div>
           <div class="flex items-center gap-3">
             ${product.colors.map((c, idx) => `
               <button 
                 onclick="selectPDPColor('${c.name}', this)" 
-                class="color-swatch w-8 h-8 rounded-full border border-zinc-600 transition ${idx === 0 ? 'active' : ''}" 
+                class="color-swatch w-8 h-8 rounded-full border border-zinc-300 transition ${idx === 0 ? 'active' : ''}" 
                 style="background-color: ${c.hex};" 
                 title="${c.name}"
               ></button>
@@ -880,10 +879,10 @@ function openProductDetailModal(productId) {
         </div>
 
         <!-- Size Selector & Interactive Guide Trigger -->
-        <div class="space-y-2 pt-2 border-t border-zinc-800">
+        <div class="space-y-2 pt-2 border-t border-zinc-100">
           <div class="flex justify-between items-center text-xs">
-            <span class="text-zinc-400 font-medium">Select Size:</span>
-            <button onclick="openSizeGuideModal('${product.id}')" class="text-red-400 hover:text-red-300 font-bold flex items-center gap-1 transition">
+            <span class="text-zinc-500 font-medium">Select Size:</span>
+            <button onclick="openSizeGuideModal('${product.id}')" class="text-red-600 hover:text-red-700 font-bold flex items-center gap-1 transition">
               <i data-lucide="ruler" class="w-3.5 h-3.5"></i> Interactive Size Guide
             </button>
           </div>
@@ -891,7 +890,7 @@ function openProductDetailModal(productId) {
             ${product.sizes.map((s, idx) => `
               <button 
                 onclick="selectPDPSize('${s}', this)" 
-                class="size-btn px-4 py-2.5 rounded-xl border border-zinc-800 bg-zinc-900 text-xs font-bold text-zinc-200 hover:border-zinc-500 transition ${idx === 0 ? 'active' : ''}"
+                class="size-btn px-4 py-2.5 rounded-xl border border-zinc-200 bg-zinc-100 text-xs font-bold text-zinc-900 hover:border-zinc-400 transition ${idx === 0 ? 'active' : ''}"
               >
                 ${s}
               </button>
@@ -900,14 +899,14 @@ function openProductDetailModal(productId) {
         </div>
 
         <!-- Quantity Stepper -->
-        <div class="flex items-center gap-4 pt-2 border-t border-zinc-800">
-          <span class="text-xs text-zinc-400 font-medium">Quantity:</span>
-          <div class="flex items-center border border-zinc-800 rounded-xl bg-zinc-900">
-            <button onclick="adjustPDPQty(-1)" class="p-2.5 text-zinc-400 hover:text-white transition">
+        <div class="flex items-center gap-4 pt-2 border-t border-zinc-100">
+          <span class="text-xs text-zinc-500 font-medium">Quantity:</span>
+          <div class="flex items-center border border-zinc-200 rounded-xl bg-zinc-100">
+            <button onclick="adjustPDPQty(-1)" class="p-2.5 text-zinc-500 hover:text-zinc-950 transition">
               <i data-lucide="minus" class="w-3.5 h-3.5"></i>
             </button>
-            <span id="pdp-qty-display" class="px-4 text-xs font-bold font-mono text-white">1</span>
-            <button onclick="adjustPDPQty(1)" class="p-2.5 text-zinc-400 hover:text-white transition">
+            <span id="pdp-qty-display" class="px-4 text-xs font-bold font-mono text-zinc-950">1</span>
+            <button onclick="adjustPDPQty(1)" class="p-2.5 text-zinc-500 hover:text-zinc-950 transition">
               <i data-lucide="plus" class="w-3.5 h-3.5"></i>
             </button>
           </div>
@@ -920,7 +919,7 @@ function openProductDetailModal(productId) {
         <button 
           id="pdp-add-to-cart-btn"
           onclick="handlePDPAddToCart()" 
-          class="w-full py-4 rounded-xl bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-bold text-xs uppercase tracking-wider transition shadow-xl shadow-red-950/50 flex items-center justify-center gap-2"
+          class="w-full py-4 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-xs uppercase tracking-wider transition shadow-lg flex items-center justify-center gap-2"
         >
           <i data-lucide="shopping-bag" class="w-4 h-4"></i>
           <span>Add to Shopping Bag</span>
@@ -928,7 +927,7 @@ function openProductDetailModal(productId) {
 
         <button 
           onclick="handlePDPBuyNow()"
-          class="w-full py-3.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-white font-bold text-xs uppercase tracking-wider border border-zinc-700 transition"
+          class="w-full py-3.5 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-950 font-bold text-xs uppercase tracking-wider border border-zinc-300 transition"
         >
           Instant Checkout
         </button>
@@ -951,12 +950,12 @@ function switchPDPMainImage(src, btnEl) {
   if (mainImg) mainImg.src = src;
 
   document.querySelectorAll('.pdp-thumb-btn').forEach(b => {
-    b.classList.remove('border-red-500', 'ring-2', 'ring-red-500/30');
-    b.classList.add('border-zinc-800');
+    b.classList.remove('border-zinc-950', 'ring-2', 'ring-zinc-950/20');
+    b.classList.add('border-zinc-200');
   });
 
-  btnEl.classList.remove('border-zinc-800');
-  btnEl.classList.add('border-red-500', 'ring-2', 'ring-red-500/30');
+  btnEl.classList.remove('border-zinc-200');
+  btnEl.classList.add('border-zinc-950', 'ring-2', 'ring-zinc-950/20');
 }
 
 function selectPDPColor(colorName, btnEl) {
@@ -1028,14 +1027,14 @@ function switchSizeGuideUnit(unit) {
 
   if (unit === 'inches') {
     inchesBtn.classList.add('bg-white', 'text-zinc-950', 'shadow');
-    inchesBtn.classList.remove('text-zinc-400');
+    inchesBtn.classList.remove('text-zinc-500');
     cmBtn.classList.remove('bg-white', 'text-zinc-950', 'shadow');
-    cmBtn.classList.add('text-zinc-400');
+    cmBtn.classList.add('text-zinc-500');
   } else {
     cmBtn.classList.add('bg-white', 'text-zinc-950', 'shadow');
-    cmBtn.classList.remove('text-zinc-400');
+    cmBtn.classList.remove('text-zinc-500');
     inchesBtn.classList.remove('bg-white', 'text-zinc-950', 'shadow');
-    inchesBtn.classList.add('text-zinc-400');
+    inchesBtn.classList.add('text-zinc-500');
   }
 
   const currentProduct = STATE.currentPDPProduct || PRODUCTS[0];
@@ -1070,12 +1069,12 @@ function renderSizeGuideTable(product) {
             const data = measurements[size];
             return `
               <tr>
-                <td class="font-bold font-mono text-white">${size}</td>
-                <td class="font-mono text-zinc-300">${data.waist}</td>
-                <td class="font-mono text-zinc-300">${data.hip}</td>
-                <td class="font-mono text-zinc-300">${data.rise}</td>
-                <td class="font-mono text-zinc-300">${data.inseam}</td>
-                <td class="font-mono text-zinc-300">${data.legOpening}</td>
+                <td class="font-bold font-mono text-zinc-950">${size}</td>
+                <td class="font-mono text-zinc-700">${data.waist}</td>
+                <td class="font-mono text-zinc-700">${data.hip}</td>
+                <td class="font-mono text-zinc-700">${data.rise}</td>
+                <td class="font-mono text-zinc-700">${data.inseam}</td>
+                <td class="font-mono text-zinc-700">${data.legOpening}</td>
               </tr>
             `;
           }).join('')}
@@ -1099,11 +1098,11 @@ function renderSizeGuideTable(product) {
             const data = measurements[size];
             return `
               <tr>
-                <td class="font-bold font-mono text-white">${size}</td>
-                <td class="font-mono text-zinc-300">${data.chest}</td>
-                <td class="font-mono text-zinc-300">${data.length}</td>
-                <td class="font-mono text-zinc-300">${data.shoulder}</td>
-                <td class="font-mono text-zinc-300">${data.sleeve}</td>
+                <td class="font-bold font-mono text-zinc-950">${size}</td>
+                <td class="font-mono text-zinc-700">${data.chest}</td>
+                <td class="font-mono text-zinc-700">${data.length}</td>
+                <td class="font-mono text-zinc-700">${data.shoulder}</td>
+                <td class="font-mono text-zinc-700">${data.sleeve}</td>
               </tr>
             `;
           }).join('')}
@@ -1191,7 +1190,7 @@ function updateCartUI() {
 
   if (rawSubtotal >= freeShipThreshold || (STATE.appliedCoupon && STATE.appliedCoupon.freeShipping)) {
     if (freeShipBar) freeShipBar.style.width = '100%';
-    if (freeShipMsg) freeShipMsg.innerHTML = '<span class="text-emerald-400 font-bold">✓ Free Express Shipping Unlocked!</span>';
+    if (freeShipMsg) freeShipMsg.innerHTML = '<span class="text-emerald-700 font-bold">✓ Free Express Shipping Unlocked!</span>';
     if (freeShipPercent) freeShipPercent.textContent = '100%';
   } else {
     const diff = freeShipThreshold - rawSubtotal;
@@ -1207,41 +1206,41 @@ function updateCartUI() {
 
   if (STATE.cart.length === 0) {
     container.innerHTML = `
-      <div class="flex flex-col items-center justify-center text-center h-full py-16 text-zinc-500">
-        <i data-lucide="shopping-bag" class="w-12 h-12 mb-3 stroke-1 text-zinc-600"></i>
-        <h4 class="text-base font-bold text-white mb-1">Your bag is currently empty</h4>
-        <p class="text-xs text-zinc-400 max-w-xs mb-6">Discover our newest shirts, heavyweight tees, and pleated trousers.</p>
-        <button onclick="closeCartDrawer(); scrollToCatalog();" class="px-6 py-2.5 bg-white text-zinc-950 font-bold text-xs uppercase tracking-wider rounded-xl hover:bg-zinc-200 transition">
+      <div class="flex flex-col items-center justify-center text-center h-full py-16 text-zinc-400">
+        <i data-lucide="shopping-bag" class="w-12 h-12 mb-3 stroke-1 text-zinc-300"></i>
+        <h4 class="text-base font-bold text-zinc-950 mb-1">Your bag is currently empty</h4>
+        <p class="text-xs text-zinc-500 max-w-xs mb-6 font-medium">Discover our newest shirts, heavyweight tees, and pleated trousers.</p>
+        <button onclick="closeCartDrawer(); scrollToCatalog();" class="px-6 py-2.5 bg-zinc-950 text-white font-bold text-xs uppercase tracking-wider rounded-xl hover:bg-zinc-800 transition shadow">
           Explore Collection
         </button>
       </div>
     `;
   } else {
     container.innerHTML = STATE.cart.map(item => `
-      <div class="flex items-center gap-4 bg-zinc-900/60 p-3.5 rounded-2xl border border-zinc-800">
-        <img src="${item.image}" alt="${item.name}" class="w-16 h-20 object-cover rounded-xl bg-zinc-950 flex-shrink-0">
+      <div class="flex items-center gap-4 bg-zinc-50 p-3.5 rounded-2xl border border-zinc-200">
+        <img src="${item.image}" alt="${item.name}" class="w-16 h-20 object-cover rounded-xl bg-zinc-100 flex-shrink-0">
         
         <div class="flex-1 min-w-0 space-y-1">
-          <h4 class="text-xs font-bold text-white truncate">${item.name}</h4>
-          <div class="text-[11px] text-zinc-400 flex gap-2">
-            <span>Size: <strong class="text-zinc-200">${item.size}</strong></span>
+          <h4 class="text-xs font-bold text-zinc-950 truncate">${item.name}</h4>
+          <div class="text-[11px] text-zinc-500 font-medium flex gap-2">
+            <span>Size: <strong class="text-zinc-800">${item.size}</strong></span>
             <span>•</span>
             <span class="truncate">${item.color}</span>
           </div>
-          <div class="font-bold text-white text-xs font-mono">${formatPrice(item.price)}</div>
+          <div class="font-bold text-zinc-950 text-xs font-mono">${formatPrice(item.price)}</div>
         </div>
 
         <div class="flex flex-col items-end gap-2">
-          <button onclick="removeFromCart('${item.id}')" class="text-zinc-500 hover:text-red-400 p-1">
+          <button onclick="removeFromCart('${item.id}')" class="text-zinc-400 hover:text-red-600 p-1">
             <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
           </button>
           
-          <div class="flex items-center border border-zinc-800 rounded-lg bg-zinc-950">
-            <button onclick="updateCartItemQty('${item.id}', -1)" class="p-1 text-zinc-400 hover:text-white">
+          <div class="flex items-center border border-zinc-300 rounded-lg bg-white">
+            <button onclick="updateCartItemQty('${item.id}', -1)" class="p-1 text-zinc-500 hover:text-zinc-950">
               <i data-lucide="minus" class="w-3 h-3"></i>
             </button>
-            <span class="px-2 text-xs font-bold font-mono text-white">${item.quantity}</span>
-            <button onclick="updateCartItemQty('${item.id}', 1)" class="p-1 text-zinc-400 hover:text-white">
+            <span class="px-2 text-xs font-bold font-mono text-zinc-950">${item.quantity}</span>
+            <button onclick="updateCartItemQty('${item.id}', 1)" class="p-1 text-zinc-500 hover:text-zinc-950">
               <i data-lucide="plus" class="w-3 h-3"></i>
             </button>
           </div>
@@ -1377,30 +1376,30 @@ function updateWishlistUI() {
 
   if (count === 0) {
     container.innerHTML = `
-      <div class="flex flex-col items-center justify-center text-center h-full py-16 text-zinc-500">
-        <i data-lucide="heart" class="w-12 h-12 mb-3 stroke-1 text-zinc-600"></i>
-        <h4 class="text-base font-bold text-white mb-1">Your wishlist is empty</h4>
-        <p class="text-xs text-zinc-400 max-w-xs">Click the heart icon on any product card to save pieces for later.</p>
+      <div class="flex flex-col items-center justify-center text-center h-full py-16 text-zinc-400">
+        <i data-lucide="heart" class="w-12 h-12 mb-3 stroke-1 text-zinc-300"></i>
+        <h4 class="text-base font-bold text-zinc-950 mb-1">Your wishlist is empty</h4>
+        <p class="text-xs text-zinc-500 max-w-xs font-medium">Click the heart icon on any product card to save pieces for later.</p>
       </div>
     `;
   } else {
     const savedProducts = PRODUCTS.filter(p => STATE.wishlist.includes(p.id));
     container.innerHTML = savedProducts.map(p => `
-      <div class="flex items-center gap-4 bg-zinc-900/60 p-3.5 rounded-2xl border border-zinc-800">
-        <img src="${p.images[0]}" alt="${p.name}" class="w-16 h-20 object-cover rounded-xl bg-zinc-950 flex-shrink-0 cursor-pointer" onclick="openProductDetailModal('${p.id}')">
+      <div class="flex items-center gap-4 bg-zinc-50 p-3.5 rounded-2xl border border-zinc-200">
+        <img src="${p.images[0]}" alt="${p.name}" class="w-16 h-20 object-cover rounded-xl bg-zinc-100 flex-shrink-0 cursor-pointer" onclick="openProductDetailModal('${p.id}')">
         
         <div class="flex-1 min-w-0 space-y-1">
-          <h4 class="text-xs font-bold text-white truncate cursor-pointer hover:text-red-400" onclick="openProductDetailModal('${p.id}')">${p.name}</h4>
-          <span class="text-[11px] text-zinc-400 block">${p.fabric}</span>
-          <div class="font-bold text-white text-xs font-mono">${formatPrice(p.price)}</div>
+          <h4 class="text-xs font-bold text-zinc-950 truncate cursor-pointer hover:text-red-600" onclick="openProductDetailModal('${p.id}')">${p.name}</h4>
+          <span class="text-[11px] text-zinc-500 font-medium block">${p.fabric}</span>
+          <div class="font-bold text-zinc-950 text-xs font-mono">${formatPrice(p.price)}</div>
         </div>
 
         <div class="flex flex-col items-end gap-2">
-          <button onclick="toggleWishlist('${p.id}')" class="text-zinc-500 hover:text-red-400 p-1">
+          <button onclick="toggleWishlist('${p.id}')" class="text-zinc-400 hover:text-red-600 p-1">
             <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
           </button>
           
-          <button onclick="addToCart('${p.id}', '${p.sizes[0]}', '${p.colors[0]?.name}'); toggleWishlist('${p.id}');" class="px-2.5 py-1 rounded-lg bg-red-600 hover:bg-red-500 text-white text-[11px] font-bold transition">
+          <button onclick="addToCart('${p.id}', '${p.sizes[0]}', '${p.colors[0]?.name}'); toggleWishlist('${p.id}');" class="px-3 py-1.5 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white text-[11px] font-bold transition shadow-xs">
             Move to Bag
           </button>
         </div>
@@ -1474,11 +1473,11 @@ function switchPaymentView(method) {
   document.querySelectorAll('.payment-method-card').forEach(c => {
     const radio = c.querySelector('input[name="payment-method"]');
     if (radio && radio.value === method) {
-      c.classList.add('border-red-500');
-      c.classList.remove('border-zinc-800');
+      c.classList.add('border-zinc-950', 'border-2');
+      c.classList.remove('border-zinc-200');
     } else {
-      c.classList.remove('border-red-500');
-      c.classList.add('border-zinc-800');
+      c.classList.remove('border-zinc-950', 'border-2');
+      c.classList.add('border-zinc-200');
     }
   });
 
@@ -1522,7 +1521,7 @@ function spawnConfetti() {
   if (!container) return;
 
   container.innerHTML = '';
-  const colors = ['#DC2626', '#FFFFFF', '#991B1B', '#F59E0B', '#3B82F6'];
+  const colors = ['#DC2626', '#09090B', '#991B1B', '#F59E0B', '#3B82F6'];
 
   for (let i = 0; i < 45; i++) {
     const piece = document.createElement('div');
@@ -1556,7 +1555,7 @@ function closeMobileFilterDrawer() {
 }
 
 // =====================================================
-// TOAST NOTIFICATIONS SYSTEM
+// TOAST NOTIFICATIONS SYSTEM (WHITE LUXURY)
 // =====================================================
 
 function showToast(message, type = 'info') {
@@ -1564,17 +1563,17 @@ function showToast(message, type = 'info') {
   if (!container) return;
 
   const toast = document.createElement('div');
-  toast.className = 'toast-item pointer-events-auto flex items-center gap-3 p-4 rounded-2xl bg-zinc-950/95 border shadow-2xl backdrop-blur-xl text-xs font-semibold text-white';
+  toast.className = 'toast-item pointer-events-auto flex items-center gap-3 p-4 rounded-2xl bg-white border border-zinc-200 shadow-2xl text-xs font-bold text-zinc-900';
 
   if (type === 'success') {
-    toast.classList.add('border-emerald-500/50', 'text-emerald-300');
-    toast.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i> <span>${message}</span>`;
+    toast.classList.add('border-emerald-300', 'text-emerald-950');
+    toast.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> <span>${message}</span>`;
   } else if (type === 'error') {
-    toast.classList.add('border-red-500/50', 'text-red-300');
-    toast.innerHTML = `<i data-lucide="alert-circle" class="w-4 h-4 text-red-400"></i> <span>${message}</span>`;
+    toast.classList.add('border-red-300', 'text-red-950');
+    toast.innerHTML = `<i data-lucide="alert-circle" class="w-4 h-4 text-red-600"></i> <span>${message}</span>`;
   } else {
-    toast.classList.add('border-zinc-700', 'text-zinc-200');
-    toast.innerHTML = `<i data-lucide="info" class="w-4 h-4 text-zinc-400"></i> <span>${message}</span>`;
+    toast.classList.add('border-zinc-300', 'text-zinc-900');
+    toast.innerHTML = `<i data-lucide="info" class="w-4 h-4 text-zinc-600"></i> <span>${message}</span>`;
   }
 
   container.appendChild(toast);
