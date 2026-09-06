@@ -7,7 +7,7 @@
 const STATE = {
   cart: JSON.parse(localStorage.getItem('karthi_cart')) || [],
   wishlist: JSON.parse(localStorage.getItem('karthi_wishlist')) || [],
-  currency: localStorage.getItem('karthi_currency') || 'USD',
+  currency: 'INR',
   appliedCoupon: JSON.parse(localStorage.getItem('karthi_coupon')) || null,
   viewMode: 'grid',
   sizeGuideUnit: 'inches',
@@ -16,7 +16,7 @@ const STATE = {
   selectedPDPColor: null,
   filters: {
     category: 'all',
-    maxPrice: 500,
+    maxPrice: 10000,
     sizes: [],
     fits: [],
     saleOnly: false,
@@ -189,16 +189,14 @@ function setupEventListeners() {
   });
 }
 
-// Price and Currency Formatter
-function formatPrice(amountInUSD) {
-  const curr = CURRENCIES[STATE.currency] || CURRENCIES.USD;
-  const converted = amountInUSD * curr.rate;
-  return `${curr.symbol}${converted.toFixed(2)}`;
+// Price and Currency Formatter (Fixed Indian Rupee INR - ₹)
+function formatPrice(amount) {
+  const num = Math.round(Number(amount) || 0);
+  return `₹${num.toLocaleString('en-IN')}`;
 }
 
 function updateCurrencyDisplay() {
-  const selector = document.getElementById('currency-selector');
-  if (selector) selector.value = STATE.currency;
+  // Always fixed to INR (₹)
 }
 
 // =====================================================
@@ -581,19 +579,19 @@ function renderActiveFilterChips() {
     });
   }
 
-  if (STATE.filters.maxPrice < 500) {
+  if (STATE.filters.maxPrice < 10000) {
     chips.push({
-      label: `Max Price: $${STATE.filters.maxPrice}`,
+      label: `Max Price: ₹${STATE.filters.maxPrice.toLocaleString('en-IN')}`,
       action: () => {
-        STATE.filters.maxPrice = 500;
+        STATE.filters.maxPrice = 10000;
         const s1 = document.getElementById('price-range-slider');
         const s2 = document.getElementById('mobile-price-range-slider');
-        if (s1) s1.value = 500;
-        if (s2) s2.value = 500;
+        if (s1) s1.value = 10000;
+        if (s2) s2.value = 10000;
         const l1 = document.getElementById('price-slider-label');
         const l2 = document.getElementById('mobile-price-slider-label');
-        if (l1) l1.textContent = '$500';
-        if (l2) l2.textContent = '$500';
+        if (l1) l1.textContent = '₹10,000';
+        if (l2) l2.textContent = '₹10,000';
         handleFilterChange();
       }
     });
@@ -705,10 +703,11 @@ function filterBySale() {
 
 function handlePriceSliderInput(val) {
   STATE.filters.maxPrice = Number(val);
+  const formatted = `₹${Number(val).toLocaleString('en-IN')}`;
   const label1 = document.getElementById('price-slider-label');
   const label2 = document.getElementById('mobile-price-slider-label');
-  if (label1) label1.textContent = `$${val}`;
-  if (label2) label2.textContent = `$${val}`;
+  if (label1) label1.textContent = formatted;
+  if (label2) label2.textContent = formatted;
   renderProducts();
 }
 
@@ -771,7 +770,7 @@ function setMobileCategory(cat) {
 function resetAllFilters() {
   STATE.filters = {
     category: 'all',
-    maxPrice: 500,
+    maxPrice: 10000,
     sizes: [],
     fits: [],
     saleOnly: false,
@@ -780,14 +779,14 @@ function resetAllFilters() {
   };
 
   const slider = document.getElementById('price-range-slider');
-  if (slider) slider.value = 500;
+  if (slider) slider.value = 10000;
   const sliderLabel = document.getElementById('price-slider-label');
-  if (sliderLabel) sliderLabel.textContent = '$500';
+  if (sliderLabel) sliderLabel.textContent = '₹10,000';
 
   const mSlider = document.getElementById('mobile-price-range-slider');
-  if (mSlider) mSlider.value = 500;
+  if (mSlider) mSlider.value = 10000;
   const mSliderLabel = document.getElementById('mobile-price-slider-label');
-  if (mSliderLabel) mSliderLabel.textContent = '$500';
+  if (mSliderLabel) mSliderLabel.textContent = '₹10,000';
 
   const catRadio = document.querySelector('input[name="filter-category"][value="all"]');
   if (catRadio) catRadio.checked = true;
@@ -1237,8 +1236,8 @@ function updateCartUI() {
   if (cartHeaderTotal) cartHeaderTotal.textContent = formatPrice(rawSubtotal);
   if (cartDrawerCount) cartDrawerCount.textContent = `${totalItems} items`;
 
-  // Free Shipping Threshold ($100)
-  const freeShipThreshold = 100;
+  // Free Shipping Threshold (₹2,499)
+  const freeShipThreshold = 2499;
   const freeShipBar = document.getElementById('free-shipping-bar');
   const freeShipMsg = document.getElementById('free-shipping-msg');
   const freeShipPercent = document.getElementById('free-shipping-percent');
@@ -1310,7 +1309,7 @@ function updateCartUI() {
     discountAmount = rawSubtotal * STATE.appliedCoupon.discount;
   }
 
-  const shippingCost = (rawSubtotal >= freeShipThreshold || (STATE.appliedCoupon && STATE.appliedCoupon.freeShipping) || rawSubtotal === 0) ? 0 : 15;
+  const shippingCost = (rawSubtotal >= freeShipThreshold || (STATE.appliedCoupon && STATE.appliedCoupon.freeShipping) || rawSubtotal === 0) ? 0 : 199;
   const finalTotal = Math.max(0, rawSubtotal - discountAmount + (rawSubtotal > 0 ? shippingCost : 0));
 
   const subtotalEl = document.getElementById('cart-subtotal');
@@ -1330,7 +1329,7 @@ function updateCartUI() {
   }
 
   if (shippingEl) {
-    shippingEl.textContent = shippingCost === 0 ? (rawSubtotal > 0 ? 'FREE' : '$0.00') : formatPrice(shippingCost);
+    shippingEl.textContent = shippingCost === 0 ? (rawSubtotal > 0 ? 'FREE' : '₹0') : formatPrice(shippingCost);
   }
 
   if (totalEl) totalEl.textContent = formatPrice(finalTotal);

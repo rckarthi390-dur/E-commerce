@@ -1,5 +1,6 @@
 // ==========================================
 // KARTHI APPAREL - PRODUCT CATALOG DATABASE
+// All Prices in Indian Rupee (INR - ₹)
 // ==========================================
 
 const DEFAULT_PRODUCTS = [
@@ -10,8 +11,8 @@ const DEFAULT_PRODUCTS = [
     id: "shirt-01",
     name: "Architect Poplin Classic Shirt",
     category: "shirts",
-    price: 68,
-    originalPrice: 95,
+    price: 2499,
+    originalPrice: 3499,
     discount: 28,
     rating: 4.9,
     reviewsCount: 142,
@@ -62,9 +63,9 @@ const DEFAULT_PRODUCTS = [
     id: "shirt-02",
     name: "Riviera Linen Cuban Collar Shirt",
     category: "shirts",
-    price: 74,
-    originalPrice: 110,
-    discount: 32,
+    price: 2799,
+    originalPrice: 3999,
+    discount: 30,
     rating: 4.8,
     reviewsCount: 98,
     badge: "SALE",
@@ -112,8 +113,8 @@ const DEFAULT_PRODUCTS = [
     id: "shirt-03",
     name: "Kuro Structured Minimal Overshirt",
     category: "shirts",
-    price: 92,
-    originalPrice: 120,
+    price: 2999,
+    originalPrice: 3899,
     discount: 23,
     rating: 4.9,
     reviewsCount: 76,
@@ -162,9 +163,9 @@ const DEFAULT_PRODUCTS = [
     id: "shirt-04",
     name: "Milano Tailored Slim Oxford",
     category: "shirts",
-    price: 59,
-    originalPrice: 85,
-    discount: 30,
+    price: 2899,
+    originalPrice: 3999,
+    discount: 27,
     rating: 4.7,
     reviewsCount: 115,
     badge: "SALE",
@@ -215,9 +216,9 @@ const DEFAULT_PRODUCTS = [
     id: "tee-01",
     name: "Neo-Archive Heavyweight Graphic Tee",
     category: "tshirts",
-    price: 48,
-    originalPrice: 65,
-    discount: 26,
+    price: 1499,
+    originalPrice: 1999,
+    discount: 25,
     rating: 5.0,
     reviewsCount: 230,
     badge: "TRENDING",
@@ -267,9 +268,9 @@ const DEFAULT_PRODUCTS = [
     id: "tee-02",
     name: "Supima Luxe Ribbed Crewneck",
     category: "tshirts",
-    price: 36,
-    originalPrice: 48,
-    discount: 25,
+    price: 1299,
+    originalPrice: 1799,
+    discount: 27,
     rating: 4.8,
     reviewsCount: 167,
     badge: "BESTSELLER",
@@ -319,9 +320,9 @@ const DEFAULT_PRODUCTS = [
     id: "tee-03",
     name: "Antigravity Zero-G Oversized Tee",
     category: "tshirts",
-    price: 52,
-    originalPrice: 75,
-    discount: 30,
+    price: 1699,
+    originalPrice: 2299,
+    discount: 26,
     rating: 4.9,
     reviewsCount: 84,
     badge: "EXCLUSIVE",
@@ -368,8 +369,8 @@ const DEFAULT_PRODUCTS = [
     id: "tee-04",
     name: "Raw Hem Waffle Knit Tee",
     category: "tshirts",
-    price: 42,
-    originalPrice: 58,
+    price: 1599,
+    originalPrice: 2199,
     discount: 27,
     rating: 4.6,
     reviewsCount: 52,
@@ -421,9 +422,9 @@ const DEFAULT_PRODUCTS = [
     id: "pants-01",
     name: "Atelier Pleated Wide-Leg Trousers",
     category: "pants",
-    price: 88,
-    originalPrice: 130,
-    discount: 32,
+    price: 2999,
+    originalPrice: 3999,
+    discount: 25,
     rating: 4.9,
     reviewsCount: 189,
     badge: "BESTSELLER",
@@ -475,8 +476,8 @@ const DEFAULT_PRODUCTS = [
     id: "pants-02",
     name: "Tactical Minimalist Cargo Pant",
     category: "pants",
-    price: 79,
-    originalPrice: 105,
+    price: 3499,
+    originalPrice: 4699,
     discount: 25,
     rating: 4.8,
     reviewsCount: 140,
@@ -529,9 +530,9 @@ const DEFAULT_PRODUCTS = [
     id: "pants-03",
     name: "Sartorial Stretch Chino Trousers",
     category: "pants",
-    price: 64,
-    originalPrice: 90,
-    discount: 29,
+    price: 2799,
+    originalPrice: 3799,
+    discount: 26,
     rating: 4.7,
     reviewsCount: 112,
     badge: "SALE",
@@ -582,9 +583,9 @@ const DEFAULT_PRODUCTS = [
     id: "pants-04",
     name: "Verona Drawstring Relaxed Linen Pant",
     category: "pants",
-    price: 72,
-    originalPrice: 98,
-    discount: 26,
+    price: 3199,
+    originalPrice: 4299,
+    discount: 25,
     rating: 4.8,
     reviewsCount: 65,
     badge: "NEW SEASON",
@@ -638,8 +639,14 @@ function getActiveProducts() {
   const saved = localStorage.getItem('karthi_products');
   if (saved) {
     try {
-      const parsed = JSON.parse(saved);
+      let parsed = JSON.parse(saved);
       if (Array.isArray(parsed) && parsed.length > 0) {
+        // If stored products contain legacy dollar values (< 300), reset to INR defaults
+        if (parsed.some(p => p.price && p.price < 300)) {
+          localStorage.removeItem('karthi_products');
+          localStorage.setItem('karthi_products', JSON.stringify(DEFAULT_PRODUCTS));
+          return DEFAULT_PRODUCTS;
+        }
         return parsed;
       }
     } catch (e) {
@@ -668,7 +675,7 @@ function getActiveCoupons() {
     "KARTHI20": { discount: 0.20, label: "20% Karthi Atelier Discount" },
     "WELCOME10": { discount: 0.10, label: "10% Welcome Discount" },
     "GRAVITY20": { discount: 0.20, label: "20% Drop Discount" },
-    "FREESHIP": { discount: 0.00, freeShipping: true, label: "Free Express Shipping" }
+    "FREESHIP": { discount: 0.00, freeShipping: true, label: "Free Express Shipping Across India" }
   };
   localStorage.setItem('karthi_coupons', JSON.stringify(defaults));
   return defaults;
@@ -676,12 +683,7 @@ function getActiveCoupons() {
 
 const COUPONS = getActiveCoupons();
 
-// Currency configurations
+// Currency configurations (Exclusively Indian Rupee INR - ₹)
 const CURRENCIES = {
-  USD: { symbol: "$", rate: 1.00, label: "USD ($)" },
-  EUR: { symbol: "€", rate: 0.92, label: "EUR (€)" },
-  INR: { symbol: "₹", rate: 83.50, label: "INR (₹)" },
-  GBP: { symbol: "£", rate: 0.79, label: "GBP (£)" }
+  INR: { symbol: "₹", rate: 1.00, label: "INR (₹)" }
 };
-
-

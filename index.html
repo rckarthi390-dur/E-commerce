@@ -75,17 +75,12 @@
         <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-red-600/90 text-white">
           <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span> DROP 04
         </span>
-        <span class="text-xs">Use code <strong class="text-white tracking-wider font-mono bg-zinc-800 px-1.5 py-0.5 rounded text-red-400">GRAVITY20</strong> for 20% Off • Free Express Delivery Worldwide on orders $100+</span>
+        <span class="text-xs">Use code <strong class="text-white tracking-wider font-mono bg-zinc-800 px-1.5 py-0.5 rounded text-red-400">KARTHI20</strong> for 20% Off • Free Express Delivery Across India on orders ₹2,499+</span>
       </div>
       <div class="flex items-center gap-4 text-zinc-400 text-xs">
-        <div class="flex items-center gap-1">
-          <i data-lucide="globe" class="w-3.5 h-3.5 text-zinc-400"></i>
-          <select id="currency-selector" class="bg-transparent text-zinc-200 hover:text-white border-none focus:outline-none cursor-pointer text-xs font-medium py-0.5">
-            <option value="USD" class="bg-zinc-900 text-white">USD ($)</option>
-            <option value="EUR" class="bg-zinc-900 text-white">EUR (€)</option>
-            <option value="INR" class="bg-zinc-900 text-white">INR (₹)</option>
-            <option value="GBP" class="bg-zinc-900 text-white">GBP (£)</option>
-          </select>
+        <div class="flex items-center gap-1.5 text-zinc-200 text-xs font-bold font-mono bg-zinc-900 px-2.5 py-1 rounded-lg border border-zinc-800">
+          <span>🇮🇳</span>
+          <span>INR (₹)</span>
         </div>
         <span class="text-zinc-700">|</span>
         <button onclick="openSizeGuideModal('shirt-01')" class="hover:text-white transition flex items-center gap-1">
@@ -616,26 +611,26 @@
             </div>
           </div>
 
-          <!-- Filter 2: Price Range Slider -->
+          <!-- Filter 2: Price Range Slider (INR) -->
           <div class="space-y-3 pt-4 border-t border-zinc-200">
             <div class="flex items-center justify-between">
               <label class="text-xs font-bold text-zinc-400 uppercase tracking-wider">Max Price</label>
-              <span id="price-slider-label" class="text-sm font-bold text-red-600 font-mono">$500</span>
+              <span id="price-slider-label" class="text-sm font-bold text-red-600 font-mono">₹10,000</span>
             </div>
             <input 
               type="range" 
               id="price-range-slider" 
-              min="20" 
-              max="500" 
-              value="500" 
-              step="5" 
+              min="500" 
+              max="10000" 
+              value="10000" 
+              step="100" 
               oninput="handlePriceSliderInput(this.value)"
               class="w-full"
             >
             <div class="flex justify-between text-[11px] text-zinc-400 font-mono font-medium">
-              <span>$20</span>
-              <span>$250</span>
-              <span>$500</span>
+              <span>₹500</span>
+              <span>₹5,000</span>
+              <span>₹10,000</span>
             </div>
           </div>
 
@@ -744,19 +739,19 @@
             </div>
           </div>
 
-          <!-- Price Slider (Mobile) -->
+          <!-- Price Slider (Mobile INR) -->
           <div>
             <div class="flex justify-between items-center mb-2">
               <label class="text-xs font-bold text-zinc-400 uppercase tracking-wider">Max Price</label>
-              <span id="mobile-price-slider-label" class="text-sm font-bold text-red-600 font-mono">$500</span>
+              <span id="mobile-price-slider-label" class="text-sm font-bold text-red-600 font-mono">₹10,000</span>
             </div>
             <input 
               type="range" 
               id="mobile-price-range-slider" 
-              min="20" 
-              max="500" 
-              value="500" 
-              step="5" 
+              min="500" 
+              max="10000" 
+              value="10000" 
+              step="100" 
               oninput="handlePriceSliderInput(this.value)"
               class="w-full"
             >
@@ -879,7 +874,7 @@
       <!-- Free Shipping Progress Bar -->
       <div class="bg-zinc-50 px-6 py-3 border-b border-zinc-200 text-xs">
         <div class="flex justify-between items-center mb-1.5">
-          <span id="free-shipping-msg" class="text-zinc-700 font-semibold">Add $100 for Free Express Shipping</span>
+          <span id="free-shipping-msg" class="text-zinc-700 font-semibold">Add ₹2,499 for Free Express Shipping</span>
           <span id="free-shipping-percent" class="font-mono text-red-600 font-bold">0%</span>
         </div>
         <div class="w-full h-1.5 bg-zinc-200 rounded-full overflow-hidden">
@@ -901,7 +896,7 @@
             <input 
               type="text" 
               id="promo-code-input" 
-              placeholder="Promo code (e.g. GRAVITY20)" 
+              placeholder="Promo code (e.g. KARTHI20)" 
               class="w-full bg-zinc-100 text-xs uppercase font-mono text-zinc-900 placeholder-zinc-400 px-3 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-bold"
             >
           </div>
@@ -923,11 +918,11 @@
         <div class="space-y-1.5 text-xs text-zinc-600 pt-2 border-t border-zinc-200 font-medium">
           <div class="flex justify-between">
             <span>Subtotal</span>
-            <span id="cart-subtotal" class="font-mono text-zinc-950 font-bold">$0.00</span>
+            <span id="cart-subtotal" class="font-mono text-zinc-950 font-bold">₹0</span>
           </div>
           <div id="cart-discount-row" class="hidden flex justify-between text-red-600 font-bold">
             <span>Promo Discount</span>
-            <span id="cart-discount-val" class="font-mono">-$0.00</span>
+            <span id="cart-discount-val" class="font-mono">-₹0</span>
           </div>
           <div class="flex justify-between">
             <span>Estimated Shipping</span>
@@ -1102,7 +1097,7 @@
         <div class="pt-4 border-t border-zinc-200 space-y-3">
           <div class="flex justify-between items-center text-sm">
             <span class="text-zinc-600 font-semibold">Total Amount to Pay:</span>
-            <span id="checkout-total-amount" class="text-2xl font-black font-mono text-zinc-950">$0.00</span>
+            <span id="checkout-total-amount" class="text-2xl font-black font-mono text-zinc-950">₹0</span>
           </div>
 
           <button type="submit" id="submit-order-btn" class="w-full py-4 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-sm uppercase tracking-wider transition shadow-lg flex items-center justify-center gap-2">

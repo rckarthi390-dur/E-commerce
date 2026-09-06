@@ -2,7 +2,7 @@
 // KARTHI ATELIER - EXECUTIVE ADMIN DASHBOARD ENGINE
 // ========================================================
 
-// Default Sample Orders for immediate demonstration
+// Default Sample Orders for immediate demonstration (INR - ₹)
 const SAMPLE_ORDERS = [
   {
     id: "KAR-94021",
@@ -10,18 +10,18 @@ const SAMPLE_ORDERS = [
     customer: {
       name: "Alex Mercer",
       email: "alex.mercer@atelier.com",
-      phone: "+1 (555) 234-5678",
+      phone: "+91 98765 43210",
       address: "42 Atelier Boulevard, Suite 10",
-      city: "New York",
-      zip: "10001"
+      city: "Chennai",
+      zip: "600028"
     },
-    paymentMethod: "CARD",
+    paymentMethod: "UPI",
     items: [
       {
         id: "shirt-01",
         name: "Architect Poplin Classic Shirt",
         category: "shirts",
-        price: 68,
+        price: 2499,
         quantity: 2,
         size: "L",
         color: "Crisp White",
@@ -29,10 +29,10 @@ const SAMPLE_ORDERS = [
       }
     ],
     itemCount: 2,
-    subtotal: 136,
+    subtotal: 4998,
     discount: 0,
     shipping: 0,
-    total: 136,
+    total: 4998,
     status: "Shipped"
   },
   {
@@ -41,18 +41,18 @@ const SAMPLE_ORDERS = [
     customer: {
       name: "Sarah Jenkins",
       email: "sarah.j@minimalist.co",
-      phone: "+1 (555) 890-1234",
+      phone: "+91 91234 56789",
       address: "740 Scandinavian Way",
-      city: "San Francisco",
-      zip: "94107"
+      city: "Bangalore",
+      zip: "560001"
     },
-    paymentMethod: "UPI",
+    paymentMethod: "CARD",
     items: [
       {
         id: "tee-01",
         name: "Heavyweight Boxy Graphic Tee",
         category: "tshirts",
-        price: 42,
+        price: 1499,
         quantity: 2,
         size: "M",
         color: "Vintage Chalk",
@@ -60,10 +60,10 @@ const SAMPLE_ORDERS = [
       }
     ],
     itemCount: 2,
-    subtotal: 84,
-    discount: 16.8,
+    subtotal: 2998,
+    discount: 599,
     shipping: 0,
-    total: 67.2,
+    total: 2399,
     status: "Pending"
   },
   {
@@ -72,10 +72,10 @@ const SAMPLE_ORDERS = [
     customer: {
       name: "Liam Patel",
       email: "liam.patel@designstudio.org",
-      phone: "+1 (555) 456-7890",
+      phone: "+91 99887 76655",
       address: "128 Bauhaus Lane",
-      city: "Chicago",
-      zip: "60601"
+      city: "Mumbai",
+      zip: "400001"
     },
     paymentMethod: "COD",
     items: [
@@ -83,7 +83,7 @@ const SAMPLE_ORDERS = [
         id: "pant-01",
         name: "Double-Pleated Tailored Trouser",
         category: "pants",
-        price: 84,
+        price: 2999,
         quantity: 2,
         size: "32",
         color: "Charcoal Grey",
@@ -91,10 +91,10 @@ const SAMPLE_ORDERS = [
       }
     ],
     itemCount: 2,
-    subtotal: 168,
+    subtotal: 5998,
     discount: 0,
-    shipping: 15,
-    total: 183,
+    shipping: 199,
+    total: 6197,
     status: "Delivered"
   }
 ];
@@ -261,10 +261,10 @@ function switchTab(tabName) {
 // KPI METRICS
 // ========================================================
 function renderKPIs() {
-  // Revenue
+  // Revenue (INR)
   const totalRev = adminState.orders.reduce((sum, ord) => sum + (Number(ord.total) || 0), 0);
   const revEl = document.getElementById('kpi-revenue');
-  if (revEl) revEl.textContent = `$${totalRev.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  if (revEl) revEl.textContent = `₹${Math.round(totalRev).toLocaleString('en-IN')}`;
 
   // Orders & Pending
   const ordersCount = adminState.orders.length;
@@ -355,8 +355,8 @@ function renderProductsTable(filteredList = null) {
         </td>
         <td class="py-3 px-4">${catBadge}</td>
         <td class="py-3 px-4">
-          <div class="font-mono font-bold text-zinc-950 text-xs">$${Number(p.price).toFixed(2)}</div>
-          ${p.originalPrice ? `<div class="text-[10px] font-mono text-zinc-400 line-through">$${Number(p.originalPrice).toFixed(2)}</div>` : ''}
+          <div class="font-mono font-bold text-zinc-950 text-xs">₹${Math.round(Number(p.price)).toLocaleString('en-IN')}</div>
+          ${p.originalPrice ? `<div class="text-[10px] font-mono text-zinc-400 line-through">₹${Math.round(Number(p.originalPrice)).toLocaleString('en-IN')}</div>` : ''}
         </td>
         <td class="py-3 px-4">${stockBadge}</td>
         <td class="py-3 px-4">
@@ -504,8 +504,8 @@ function openAddProductModal() {
   document.getElementById('edit-product-id').value = '';
   document.getElementById('edit-name').value = '';
   document.getElementById('edit-category').value = 'shirts';
-  document.getElementById('edit-price').value = '';
-  document.getElementById('edit-orig-price').value = '';
+  document.getElementById('edit-price').value = '2499';
+  document.getElementById('edit-orig-price').value = '3499';
   document.getElementById('edit-stock').value = '15';
   document.getElementById('edit-fabric').value = '100% Long-Staple Egyptian Cotton';
   document.getElementById('edit-fit').value = 'Regular';
@@ -743,8 +743,8 @@ function renderOrdersTable(filteredList = null) {
           <span class="text-[10px] text-zinc-400 font-mono">${ord.itemCount || (ord.items?.length || 1)} items</span>
         </td>
         <td class="py-3 px-4">
-          <div class="font-mono font-bold text-zinc-950 text-xs">$${Number(ord.total).toFixed(2)}</div>
-          <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-zinc-100 text-zinc-700">${ord.paymentMethod || 'CARD'}</span>
+          <div class="font-mono font-bold text-zinc-950 text-xs">₹${Math.round(Number(ord.total)).toLocaleString('en-IN')}</div>
+          <span class="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold bg-zinc-100 text-zinc-700">${ord.paymentMethod || 'UPI'}</span>
         </td>
         <td class="py-3 px-4">
           <select onchange="updateOrderStatus('${ord.id}', this.value)" class="text-xs font-bold px-2 py-1 rounded-lg border ${statusClasses} focus:outline-none cursor-pointer">
@@ -835,16 +835,16 @@ function openOrderModal(orderId) {
           </div>
         </div>
         <div class="font-mono font-bold text-zinc-950 text-xs">
-          $${(item.price * item.quantity).toFixed(2)}
+          ₹${Math.round(item.price * item.quantity).toLocaleString('en-IN')}
         </div>
       </div>
     `).join('');
   }
 
-  document.getElementById('modal-subtotal').textContent = `$${Number(ord.subtotal || ord.total).toFixed(2)}`;
-  document.getElementById('modal-discount').textContent = ord.discount ? `-$${Number(ord.discount).toFixed(2)}` : '$0.00';
-  document.getElementById('modal-shipping').textContent = ord.shipping ? `$${Number(ord.shipping).toFixed(2)}` : 'FREE';
-  document.getElementById('modal-total').textContent = `$${Number(ord.total).toFixed(2)}`;
+  document.getElementById('modal-subtotal').textContent = `₹${Math.round(Number(ord.subtotal || ord.total)).toLocaleString('en-IN')}`;
+  document.getElementById('modal-discount').textContent = ord.discount ? `-₹${Math.round(Number(ord.discount)).toLocaleString('en-IN')}` : '₹0';
+  document.getElementById('modal-shipping').textContent = ord.shipping ? `₹${Math.round(Number(ord.shipping)).toLocaleString('en-IN')}` : 'FREE';
+  document.getElementById('modal-total').textContent = `₹${Math.round(Number(ord.total)).toLocaleString('en-IN')}`;
 
   const modal = document.getElementById('order-details-modal');
   modal.classList.remove('hidden');
