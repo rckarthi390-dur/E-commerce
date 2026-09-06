@@ -285,12 +285,32 @@
        ===================================================== -->
   
   <!-- PDP Detail Modal -->
-  <div id="pdp-modal" class="modal-backdrop">
-    <div class="modal-content max-w-4xl p-6 sm:p-10 relative">
-      <button onclick="closePDPModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 flex items-center justify-center z-10 transition">
+  <div id="pdp-modal" class="fixed inset-0 z-50 modal-overlay modal-backdrop bg-black/60 flex items-center justify-center p-4 backdrop-blur-md">
+    <div class="modal-content-box modal-content bg-white border border-zinc-200 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative text-zinc-900">
+      <button onclick="closePDPModal()" class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 hover:text-zinc-950 flex items-center justify-center transition" aria-label="Close modal">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
-      <div id="pdp-content-container" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
+      <div id="pdp-content-container" class="grid grid-cols-1 md:grid-cols-2 gap-8 p-6 sm:p-8"></div>
+    </div>
+  </div>
+
+  <!-- Size Guide Modal -->
+  <div id="size-guide-modal" class="fixed inset-0 z-50 modal-overlay modal-backdrop bg-black/60 flex items-center justify-center p-4 backdrop-blur-md">
+    <div class="modal-content-box modal-content bg-white border border-zinc-200 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 relative text-zinc-900">
+      <button onclick="closeSizeGuideModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-500 hover:text-zinc-950 flex items-center justify-center">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+      <div class="space-y-6">
+        <div>
+          <span class="text-xs font-bold text-red-600 uppercase tracking-widest">Precision Sizing</span>
+          <h3 class="text-2xl font-black text-zinc-950 mt-1">Interactive Size Chart</h3>
+        </div>
+        <div class="flex items-center gap-2 bg-zinc-100 p-1 rounded-xl w-fit">
+          <button id="unit-inches-btn" onclick="switchSizeGuideUnit('inches')" class="px-4 py-1.5 rounded-lg text-xs font-bold bg-white text-zinc-950 shadow transition">Inches</button>
+          <button id="unit-cm-btn" onclick="switchSizeGuideUnit('cm')" class="px-4 py-1.5 rounded-lg text-xs font-bold text-zinc-500 hover:text-zinc-950 transition">Centimeters</button>
+        </div>
+        <div id="size-guide-table-container" class="overflow-x-auto border border-zinc-200 rounded-2xl bg-white"></div>
+      </div>
     </div>
   </div>
 
@@ -342,10 +362,10 @@
           </div>
         </div>
 
-        <a href="index.html#checkout-modal" onclick="closeCartDrawer(); openCheckoutModal();" class="w-full py-4 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-xs uppercase tracking-wider transition shadow flex items-center justify-center gap-2 cursor-pointer">
+        <button onclick="closeCartDrawer(); openCheckoutModal();" class="w-full py-4 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-xs uppercase tracking-wider transition shadow flex items-center justify-center gap-2 cursor-pointer">
           <i data-lucide="lock" class="w-4 h-4 text-emerald-400"></i>
           <span>Proceed to Secure Checkout</span>
-        </a>
+        </button>
       </div>
     </div>
   </div>
@@ -368,6 +388,160 @@
       <button onclick="closeWishlistDrawer()" class="w-full py-3 bg-zinc-100 hover:bg-zinc-200 text-zinc-950 rounded-xl text-xs font-bold uppercase tracking-wider transition">
         Continue Browsing
       </button>
+    </div>
+  </div>
+
+  <!-- Multi-step Checkout Modal -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 modal-overlay modal-backdrop bg-black/60 flex items-center justify-center p-4 backdrop-blur-md">
+    <div class="modal-content-box modal-content bg-white border border-zinc-200 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl p-6 sm:p-8 relative text-zinc-900">
+      <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-500 hover:text-zinc-950 flex items-center justify-center">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div class="mb-6">
+        <span class="text-xs font-bold text-red-600 uppercase tracking-widest">Secure 256-bit Encrypted</span>
+        <h3 class="text-2xl font-extrabold text-zinc-950 mt-1">Complete Your Order</h3>
+      </div>
+
+      <form id="checkout-form" onsubmit="handleCheckoutSubmit(event)" class="space-y-6">
+        <div class="space-y-4">
+          <h4 class="text-xs font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
+            <span class="w-5 h-5 rounded-full bg-zinc-950 text-white text-[10px] flex items-center justify-center font-bold">1</span>
+            Shipping & Contact Details
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="text-xs text-zinc-600 font-semibold block mb-1">Full Name *</label>
+              <input type="text" id="cust-name" required placeholder="Alex Mercer" class="w-full bg-zinc-100 text-sm text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-medium">
+            </div>
+            <div>
+              <label class="text-xs text-zinc-600 font-semibold block mb-1">Email Address *</label>
+              <input type="email" id="cust-email" required placeholder="alex@example.com" class="w-full bg-zinc-100 text-sm text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-medium">
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div class="sm:col-span-2">
+              <label class="text-xs text-zinc-600 font-semibold block mb-1">Street Address *</label>
+              <input type="text" id="cust-address" required placeholder="42 Atelier Boulevard" class="w-full bg-zinc-100 text-sm text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-medium">
+            </div>
+            <div>
+              <label class="text-xs text-zinc-600 font-semibold block mb-1">Postal Code *</label>
+              <input type="text" id="cust-zip" required placeholder="600001" class="w-full bg-zinc-100 text-sm text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-medium">
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="text-xs text-zinc-600 font-semibold block mb-1">City *</label>
+              <input type="text" id="cust-city" required placeholder="Chennai" class="w-full bg-zinc-100 text-sm text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-medium">
+            </div>
+            <div>
+              <label class="text-xs text-zinc-600 font-semibold block mb-1">Phone Number *</label>
+              <input type="tel" id="cust-phone" required placeholder="+91 98765 43210" class="w-full bg-zinc-100 text-sm text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-medium">
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-4 pt-4 border-t border-zinc-200">
+          <h4 class="text-xs font-bold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
+            <span class="w-5 h-5 rounded-full bg-zinc-950 text-white text-[10px] flex items-center justify-center font-bold">2</span>
+            Select Payment Method
+          </h4>
+          <div class="grid grid-cols-3 gap-2">
+            <label class="payment-method-card flex flex-col items-center justify-center p-3.5 rounded-2xl bg-zinc-50 border-2 border-zinc-950 cursor-pointer text-center">
+              <input type="radio" name="payment-method" value="card" checked onchange="switchPaymentView('card')" class="hidden">
+              <i data-lucide="credit-card" class="w-5 h-5 text-zinc-950 mb-1"></i>
+              <span class="text-xs font-bold text-zinc-950">Card</span>
+            </label>
+            <label class="payment-method-card flex flex-col items-center justify-center p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200 cursor-pointer text-center">
+              <input type="radio" name="payment-method" value="upi" onchange="switchPaymentView('upi')" class="hidden">
+              <i data-lucide="qr-code" class="w-5 h-5 text-zinc-400 mb-1"></i>
+              <span class="text-xs font-bold text-zinc-600">UPI / QR</span>
+            </label>
+            <label class="payment-method-card flex flex-col items-center justify-center p-3.5 rounded-2xl bg-zinc-50 border border-zinc-200 cursor-pointer text-center">
+              <input type="radio" name="payment-method" value="cod" onchange="switchPaymentView('cod')" class="hidden">
+              <i data-lucide="banknote" class="w-5 h-5 text-zinc-400 mb-1"></i>
+              <span class="text-xs font-bold text-zinc-600">Cash on Del.</span>
+            </label>
+          </div>
+
+          <div id="payment-card-view" class="space-y-3 bg-zinc-50 p-4 rounded-2xl border border-zinc-200">
+            <div>
+              <label class="text-xs text-zinc-600 font-semibold block mb-1">Card Number</label>
+              <input type="text" placeholder="4242 •••• •••• 4242" class="w-full bg-white text-sm font-mono text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950">
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="text-xs text-zinc-600 font-semibold block mb-1">Expiry Date</label>
+                <input type="text" placeholder="MM / YY" class="w-full bg-white text-sm font-mono text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950">
+              </div>
+              <div>
+                <label class="text-xs text-zinc-600 font-semibold block mb-1">CVC / CVV</label>
+                <input type="text" placeholder="123" class="w-full bg-white text-sm font-mono text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950">
+              </div>
+            </div>
+          </div>
+
+          <div id="payment-upi-view" class="hidden space-y-3 bg-zinc-50 p-4 rounded-2xl border border-zinc-200 text-center">
+            <div class="w-32 h-32 mx-auto bg-white p-2 rounded-2xl border border-zinc-200 flex items-center justify-center shadow-sm">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=upi://pay?pa=karthiatelier@bank&pn=KarthiAtelier" alt="Mock UPI QR" class="w-full h-full">
+            </div>
+            <p class="text-xs text-zinc-500 font-medium">Scan using any UPI App (GPay, PhonePe, Paytm)</p>
+          </div>
+
+          <div id="payment-cod-view" class="hidden p-4 rounded-2xl bg-zinc-50 border border-zinc-200 text-xs text-zinc-700">
+            <p class="flex items-center gap-2 font-medium">
+              <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
+              Cash on Delivery verified. Pay upon receiving your parcel.
+            </p>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-zinc-200 space-y-3">
+          <div class="flex justify-between items-center text-sm">
+            <span class="text-zinc-600 font-semibold">Total Amount to Pay:</span>
+            <span id="checkout-total-amount" class="text-2xl font-black font-mono text-zinc-950">₹0</span>
+          </div>
+
+          <button type="submit" id="submit-order-btn" class="w-full py-4 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-sm uppercase tracking-wider transition shadow-lg flex items-center justify-center gap-2">
+            <i data-lucide="lock" class="w-4 h-4"></i>
+            <span>Place Order Now</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Order Success Modal -->
+  <div id="order-success-modal" class="fixed inset-0 z-50 modal-overlay modal-backdrop bg-black/60 flex items-center justify-center p-4 backdrop-blur-md">
+    <div id="confetti-container" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
+    <div class="modal-content-box modal-content bg-white border border-zinc-200 rounded-3xl max-w-lg w-full p-8 shadow-2xl relative text-center space-y-6 text-zinc-900">
+      <div class="w-20 h-20 rounded-full bg-red-50 border border-red-200 mx-auto flex items-center justify-center text-red-600 shadow-sm">
+        <i data-lucide="check" class="w-10 h-10"></i>
+      </div>
+      <div class="space-y-2">
+        <span class="text-xs font-bold text-red-600 uppercase tracking-widest">Order Confirmed</span>
+        <h3 class="text-3xl font-extrabold text-zinc-950">Thank You for Ordering!</h3>
+        <p class="text-xs text-zinc-500 font-medium">Your order has been placed successfully. A confirmation email and tracking link have been dispatched.</p>
+      </div>
+      <div class="bg-zinc-50 rounded-2xl p-4 border border-zinc-200 text-left space-y-2 text-xs">
+        <div class="flex justify-between">
+          <span class="text-zinc-500 font-semibold">Order Reference:</span>
+          <span id="success-order-id" class="font-mono font-bold text-zinc-950">#KAR-84729</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-zinc-500 font-semibold">Estimated Delivery:</span>
+          <span id="success-delivery-date" class="text-zinc-800 font-medium">3-4 Business Days</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-zinc-500 font-semibold">Payment Status:</span>
+          <span class="text-emerald-600 font-bold">Authorized & Verified</span>
+        </div>
+      </div>
+      <div class="flex gap-3">
+        <button onclick="closeOrderSuccessModal()" class="flex-1 py-3.5 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-xs uppercase tracking-wider transition shadow">
+          Continue Shopping
+        </button>
+      </div>
     </div>
   </div>
 
