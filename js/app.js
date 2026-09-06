@@ -16,7 +16,7 @@ const STATE = {
   selectedPDPColor: null,
   filters: {
     category: 'all',
-    maxPrice: 10000,
+    maxPrice: 1500,
     sizes: [],
     fits: [],
     saleOnly: false,
@@ -579,19 +579,19 @@ function renderActiveFilterChips() {
     });
   }
 
-  if (STATE.filters.maxPrice < 10000) {
+  if (STATE.filters.maxPrice < 1500) {
     chips.push({
       label: `Max Price: ₹${STATE.filters.maxPrice.toLocaleString('en-IN')}`,
       action: () => {
-        STATE.filters.maxPrice = 10000;
+        STATE.filters.maxPrice = 1500;
         const s1 = document.getElementById('price-range-slider');
         const s2 = document.getElementById('mobile-price-range-slider');
-        if (s1) s1.value = 10000;
-        if (s2) s2.value = 10000;
+        if (s1) s1.value = 1500;
+        if (s2) s2.value = 1500;
         const l1 = document.getElementById('price-slider-label');
         const l2 = document.getElementById('mobile-price-slider-label');
-        if (l1) l1.textContent = '₹10,000';
-        if (l2) l2.textContent = '₹10,000';
+        if (l1) l1.textContent = '₹1,500';
+        if (l2) l2.textContent = '₹1,500';
         handleFilterChange();
       }
     });
@@ -770,7 +770,7 @@ function setMobileCategory(cat) {
 function resetAllFilters() {
   STATE.filters = {
     category: 'all',
-    maxPrice: 10000,
+    maxPrice: 1500,
     sizes: [],
     fits: [],
     saleOnly: false,
@@ -779,14 +779,14 @@ function resetAllFilters() {
   };
 
   const slider = document.getElementById('price-range-slider');
-  if (slider) slider.value = 10000;
+  if (slider) slider.value = 1500;
   const sliderLabel = document.getElementById('price-slider-label');
-  if (sliderLabel) sliderLabel.textContent = '₹10,000';
+  if (sliderLabel) sliderLabel.textContent = '₹1,500';
 
   const mSlider = document.getElementById('mobile-price-range-slider');
-  if (mSlider) mSlider.value = 10000;
+  if (mSlider) mSlider.value = 1500;
   const mSliderLabel = document.getElementById('mobile-price-slider-label');
-  if (mSliderLabel) mSliderLabel.textContent = '₹10,000';
+  if (mSliderLabel) mSliderLabel.textContent = '₹1,500';
 
   const catRadio = document.querySelector('input[name="filter-category"][value="all"]');
   if (catRadio) catRadio.checked = true;
@@ -1236,8 +1236,8 @@ function updateCartUI() {
   if (cartHeaderTotal) cartHeaderTotal.textContent = formatPrice(rawSubtotal);
   if (cartDrawerCount) cartDrawerCount.textContent = `${totalItems} items`;
 
-  // Free Shipping Threshold (₹2,499)
-  const freeShipThreshold = 2499;
+  // Free Shipping Threshold (₹799)
+  const freeShipThreshold = 799;
   const freeShipBar = document.getElementById('free-shipping-bar');
   const freeShipMsg = document.getElementById('free-shipping-msg');
   const freeShipPercent = document.getElementById('free-shipping-percent');
@@ -1309,7 +1309,7 @@ function updateCartUI() {
     discountAmount = rawSubtotal * STATE.appliedCoupon.discount;
   }
 
-  const shippingCost = (rawSubtotal >= freeShipThreshold || (STATE.appliedCoupon && STATE.appliedCoupon.freeShipping) || rawSubtotal === 0) ? 0 : 199;
+  const shippingCost = (rawSubtotal >= freeShipThreshold || (STATE.appliedCoupon && STATE.appliedCoupon.freeShipping) || rawSubtotal === 0) ? 0 : 49;
   const finalTotal = Math.max(0, rawSubtotal - discountAmount + (rawSubtotal > 0 ? shippingCost : 0));
 
   const subtotalEl = document.getElementById('cart-subtotal');

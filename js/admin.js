@@ -21,7 +21,7 @@ const SAMPLE_ORDERS = [
         id: "shirt-01",
         name: "Architect Poplin Classic Shirt",
         category: "shirts",
-        price: 2499,
+        price: 799,
         quantity: 2,
         size: "L",
         color: "Crisp White",
@@ -29,10 +29,10 @@ const SAMPLE_ORDERS = [
       }
     ],
     itemCount: 2,
-    subtotal: 4998,
+    subtotal: 1598,
     discount: 0,
     shipping: 0,
-    total: 4998,
+    total: 1598,
     status: "Shipped"
   },
   {
@@ -52,7 +52,7 @@ const SAMPLE_ORDERS = [
         id: "tee-01",
         name: "Heavyweight Boxy Graphic Tee",
         category: "tshirts",
-        price: 1499,
+        price: 499,
         quantity: 2,
         size: "M",
         color: "Vintage Chalk",
@@ -60,10 +60,10 @@ const SAMPLE_ORDERS = [
       }
     ],
     itemCount: 2,
-    subtotal: 2998,
-    discount: 599,
+    subtotal: 998,
+    discount: 199,
     shipping: 0,
-    total: 2399,
+    total: 799,
     status: "Pending"
   },
   {
@@ -83,7 +83,7 @@ const SAMPLE_ORDERS = [
         id: "pant-01",
         name: "Double-Pleated Tailored Trouser",
         category: "pants",
-        price: 2999,
+        price: 1099,
         quantity: 2,
         size: "32",
         color: "Charcoal Grey",
@@ -91,10 +91,10 @@ const SAMPLE_ORDERS = [
       }
     ],
     itemCount: 2,
-    subtotal: 5998,
+    subtotal: 2198,
     discount: 0,
-    shipping: 199,
-    total: 6197,
+    shipping: 49,
+    total: 2247,
     status: "Delivered"
   }
 ];
@@ -504,8 +504,8 @@ function openAddProductModal() {
   document.getElementById('edit-product-id').value = '';
   document.getElementById('edit-name').value = '';
   document.getElementById('edit-category').value = 'shirts';
-  document.getElementById('edit-price').value = '2499';
-  document.getElementById('edit-orig-price').value = '3499';
+  document.getElementById('edit-price').value = '799';
+  document.getElementById('edit-orig-price').value = '1199';
   document.getElementById('edit-stock').value = '15';
   document.getElementById('edit-fabric').value = '100% Long-Staple Egyptian Cotton';
   document.getElementById('edit-fit').value = 'Regular';

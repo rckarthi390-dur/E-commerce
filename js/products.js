@@ -1,19 +1,20 @@
 // ==========================================
 // KARTHI APPAREL - PRODUCT CATALOG DATABASE
 // All Prices in Indian Rupee (INR - ₹)
+// Calibrated for Budget Range: ₹100 - ₹1,500
 // ==========================================
 
 const DEFAULT_PRODUCTS = [
   // ----------------------------------------
-  // SHIRTS
+  // SHIRTS (₹749 - ₹999)
   // ----------------------------------------
   {
     id: "shirt-01",
     name: "Architect Poplin Classic Shirt",
     category: "shirts",
-    price: 2499,
-    originalPrice: 3499,
-    discount: 28,
+    price: 799,
+    originalPrice: 1199,
+    discount: 33,
     rating: 4.9,
     reviewsCount: 142,
     badge: "BESTSELLER",
@@ -63,8 +64,8 @@ const DEFAULT_PRODUCTS = [
     id: "shirt-02",
     name: "Riviera Linen Cuban Collar Shirt",
     category: "shirts",
-    price: 2799,
-    originalPrice: 3999,
+    price: 899,
+    originalPrice: 1299,
     discount: 30,
     rating: 4.8,
     reviewsCount: 98,
@@ -113,9 +114,9 @@ const DEFAULT_PRODUCTS = [
     id: "shirt-03",
     name: "Kuro Structured Minimal Overshirt",
     category: "shirts",
-    price: 2999,
-    originalPrice: 3899,
-    discount: 23,
+    price: 999,
+    originalPrice: 1499,
+    discount: 33,
     rating: 4.9,
     reviewsCount: 76,
     badge: "NEW ARRIVAL",
@@ -163,9 +164,9 @@ const DEFAULT_PRODUCTS = [
     id: "shirt-04",
     name: "Milano Tailored Slim Oxford",
     category: "shirts",
-    price: 2899,
-    originalPrice: 3999,
-    discount: 27,
+    price: 749,
+    originalPrice: 1099,
+    discount: 31,
     rating: 4.7,
     reviewsCount: 115,
     badge: "SALE",
@@ -210,15 +211,15 @@ const DEFAULT_PRODUCTS = [
   },
 
   // ----------------------------------------
-  // T-SHIRTS
+  // T-SHIRTS (₹349 - ₹549)
   // ----------------------------------------
   {
     id: "tee-01",
     name: "Neo-Archive Heavyweight Graphic Tee",
     category: "tshirts",
-    price: 1499,
-    originalPrice: 1999,
-    discount: 25,
+    price: 499,
+    originalPrice: 799,
+    discount: 37,
     rating: 5.0,
     reviewsCount: 230,
     badge: "TRENDING",
@@ -268,9 +269,9 @@ const DEFAULT_PRODUCTS = [
     id: "tee-02",
     name: "Supima Luxe Ribbed Crewneck",
     category: "tshirts",
-    price: 1299,
-    originalPrice: 1799,
-    discount: 27,
+    price: 399,
+    originalPrice: 599,
+    discount: 33,
     rating: 4.8,
     reviewsCount: 167,
     badge: "BESTSELLER",
@@ -320,9 +321,9 @@ const DEFAULT_PRODUCTS = [
     id: "tee-03",
     name: "Antigravity Zero-G Oversized Tee",
     category: "tshirts",
-    price: 1699,
-    originalPrice: 2299,
-    discount: 26,
+    price: 549,
+    originalPrice: 849,
+    discount: 35,
     rating: 4.9,
     reviewsCount: 84,
     badge: "EXCLUSIVE",
@@ -369,9 +370,9 @@ const DEFAULT_PRODUCTS = [
     id: "tee-04",
     name: "Raw Hem Waffle Knit Tee",
     category: "tshirts",
-    price: 1599,
-    originalPrice: 2199,
-    discount: 27,
+    price: 349,
+    originalPrice: 499,
+    discount: 30,
     rating: 4.6,
     reviewsCount: 52,
     badge: "SALE",
@@ -416,15 +417,15 @@ const DEFAULT_PRODUCTS = [
   },
 
   // ----------------------------------------
-  // PANTS / TROUSERS
+  // PANTS / TROUSERS (₹849 - ₹1,199)
   // ----------------------------------------
   {
     id: "pants-01",
     name: "Atelier Pleated Wide-Leg Trousers",
     category: "pants",
-    price: 2999,
-    originalPrice: 3999,
-    discount: 25,
+    price: 999,
+    originalPrice: 1499,
+    discount: 33,
     rating: 4.9,
     reviewsCount: 189,
     badge: "BESTSELLER",
@@ -476,9 +477,9 @@ const DEFAULT_PRODUCTS = [
     id: "pants-02",
     name: "Tactical Minimalist Cargo Pant",
     category: "pants",
-    price: 3499,
-    originalPrice: 4699,
-    discount: 25,
+    price: 1199,
+    originalPrice: 1699,
+    discount: 29,
     rating: 4.8,
     reviewsCount: 140,
     badge: "NEW ARRIVAL",
@@ -530,9 +531,9 @@ const DEFAULT_PRODUCTS = [
     id: "pants-03",
     name: "Sartorial Stretch Chino Trousers",
     category: "pants",
-    price: 2799,
-    originalPrice: 3799,
-    discount: 26,
+    price: 849,
+    originalPrice: 1199,
+    discount: 29,
     rating: 4.7,
     reviewsCount: 112,
     badge: "SALE",
@@ -583,9 +584,9 @@ const DEFAULT_PRODUCTS = [
     id: "pants-04",
     name: "Verona Drawstring Relaxed Linen Pant",
     category: "pants",
-    price: 3199,
-    originalPrice: 4299,
-    discount: 25,
+    price: 1099,
+    originalPrice: 1599,
+    discount: 31,
     rating: 4.8,
     reviewsCount: 65,
     badge: "NEW SEASON",
@@ -641,8 +642,8 @@ function getActiveProducts() {
     try {
       let parsed = JSON.parse(saved);
       if (Array.isArray(parsed) && parsed.length > 0) {
-        // If stored products contain legacy dollar values (< 300), reset to INR defaults
-        if (parsed.some(p => p.price && p.price < 300)) {
+        // If stored products contain old pricing (> 1500 or < 100), sync with new INR catalog
+        if (parsed.some(p => p.price && (p.price > 1500 || p.price < 100))) {
           localStorage.removeItem('karthi_products');
           localStorage.setItem('karthi_products', JSON.stringify(DEFAULT_PRODUCTS));
           return DEFAULT_PRODUCTS;
