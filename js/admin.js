@@ -399,6 +399,105 @@ function filterAdminProducts() {
   renderProductsTable(filtered);
 }
 
+// ========================================================
+// IMAGE UPLOADER & PREVIEW CONTROLLER (DEVICE & URL)
+// ========================================================
+function processUploadedImage(file, callback) {
+  if (!file || !file.type.startsWith('image/')) {
+    showToast('Please select a valid image file (JPG, PNG, WEBP)', 'error');
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = new Image();
+    img.onload = function() {
+      // Resize to max 900px for high definition and fast localStorage performance
+      const canvas = document.createElement('canvas');
+      const maxDim = 900;
+      let w = img.width;
+      let h = img.height;
+      if (w > maxDim || h > maxDim) {
+        if (w > h) {
+          h = Math.round((h * maxDim) / w);
+          w = maxDim;
+        } else {
+          w = Math.round((w * maxDim) / h);
+          h = maxDim;
+        }
+      }
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, w, h);
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+      callback(dataUrl);
+    };
+    img.onerror = function() {
+      showToast('Error processing image file', 'error');
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function onFileSelected(event, index) {
+  const file = event.target.files && event.target.files[0];
+  if (!file) return;
+
+  processUploadedImage(file, (dataUrl) => {
+    setImageValueAndPreview(index, dataUrl, true);
+    showToast(`Photo ${index === 1 ? 'Primary' : 'Secondary'} loaded from device!`, 'success');
+  });
+}
+
+function onUrlInput(index) {
+  const input = document.getElementById(`edit-image-${index}`);
+  const val = input ? input.value.trim() : '';
+  if (val) {
+    setImageValueAndPreview(index, val, false);
+  } else {
+    clearImage(index);
+  }
+}
+
+function setImageValueAndPreview(index, srcUrl, updateInput = true) {
+  const input = document.getElementById(`edit-image-${index}`);
+  const previewBox = document.getElementById(`preview-box-${index}`);
+  const previewImg = document.getElementById(`preview-img-${index}`);
+  const uploadPrompt = document.getElementById(`upload-prompt-${index}`);
+
+  if (updateInput && input) {
+    input.value = srcUrl;
+  }
+
+  if (previewImg) previewImg.src = srcUrl;
+  if (previewBox) {
+    previewBox.classList.remove('hidden');
+    previewBox.classList.add('flex');
+  }
+  if (uploadPrompt) uploadPrompt.classList.add('hidden');
+  initLucideIcons();
+}
+
+function clearImage(index) {
+  const input = document.getElementById(`edit-image-${index}`);
+  const fileInput = document.getElementById(`file-input-image-${index}`);
+  const previewBox = document.getElementById(`preview-box-${index}`);
+  const previewImg = document.getElementById(`preview-img-${index}`);
+  const uploadPrompt = document.getElementById(`upload-prompt-${index}`);
+
+  if (input) input.value = '';
+  if (fileInput) fileInput.value = '';
+  if (previewImg) previewImg.src = '';
+  if (previewBox) {
+    previewBox.classList.add('hidden');
+    previewBox.classList.remove('flex');
+  }
+  if (uploadPrompt) uploadPrompt.classList.remove('hidden');
+  initLucideIcons();
+}
+
 function openAddProductModal() {
   document.getElementById('product-modal-badge').textContent = 'Catalog Management';
   document.getElementById('product-modal-title').textContent = 'Add New Product';
@@ -408,11 +507,13 @@ function openAddProductModal() {
   document.getElementById('edit-price').value = '';
   document.getElementById('edit-orig-price').value = '';
   document.getElementById('edit-stock').value = '15';
-  document.getElementById('edit-fabric').value = '100% Long-Staple Cotton';
+  document.getElementById('edit-fabric').value = '100% Long-Staple Egyptian Cotton';
   document.getElementById('edit-fit').value = 'Regular';
-  document.getElementById('edit-image-1').value = 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=800&q=80';
-  document.getElementById('edit-image-2').value = 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800&q=80';
   document.getElementById('edit-description').value = '';
+
+  // Clear previews and file inputs
+  clearImage(1);
+  clearImage(2);
 
   const modal = document.getElementById('product-modal');
   modal.classList.remove('hidden');
@@ -434,9 +535,23 @@ function openEditProductModal(id) {
   document.getElementById('edit-stock').value = p.stock || 0;
   document.getElementById('edit-fabric').value = p.fabric || '';
   document.getElementById('edit-fit').value = p.fit || 'Regular';
-  document.getElementById('edit-image-1').value = (p.images && p.images[0]) || '';
-  document.getElementById('edit-image-2').value = (p.images && p.images[1]) || '';
   document.getElementById('edit-description').value = p.description || '';
+
+  // Set images & previews
+  const img1 = (p.images && p.images[0]) || '';
+  const img2 = (p.images && p.images[1]) || '';
+
+  if (img1) {
+    setImageValueAndPreview(1, img1, true);
+  } else {
+    clearImage(1);
+  }
+
+  if (img2) {
+    setImageValueAndPreview(2, img2, true);
+  } else {
+    clearImage(2);
+  }
 
   const modal = document.getElementById('product-modal');
   modal.classList.remove('hidden');
@@ -463,6 +578,11 @@ function handleSaveProduct(event) {
   const img1 = document.getElementById('edit-image-1').value.trim();
   const img2 = document.getElementById('edit-image-2').value.trim();
   const description = document.getElementById('edit-description').value.trim();
+
+  if (!img1) {
+    showToast('Please select or upload a Primary Image for the product', 'error');
+    return;
+  }
 
   const images = [img1];
   if (img2) images.push(img2);
