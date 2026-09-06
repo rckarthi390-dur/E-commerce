@@ -118,9 +118,6 @@
         <button onclick="filterByCategory('shirts')" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100 transition" data-category="shirts">Shirts</button>
         <button onclick="filterByCategory('tshirts')" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100 transition" data-category="tshirts">T-Shirts</button>
         <button onclick="filterByCategory('pants')" class="nav-link px-4 py-2 rounded-xl text-sm font-medium text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100 transition" data-category="pants">Pants & Trousers</button>
-        <button onclick="filterBySale()" class="nav-link px-4 py-2 rounded-xl text-sm font-bold text-red-600 hover:text-red-700 hover:bg-red-50 transition flex items-center gap-1.5" data-category="sale">
-          <span class="w-1.5 h-1.5 rounded-full bg-red-600"></span> Sale Up to 35%
-        </button>
       </nav>
 
       <!-- Search & Utility Action Badges -->
@@ -165,7 +162,7 @@
             <i data-lucide="shopping-bag" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
             <span id="cart-badge" class="absolute -top-2 -right-2 bg-red-600 text-white font-black text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
           </div>
-          <span id="header-cart-total" class="hidden sm:inline font-bold tracking-tight font-mono">$0.00</span>
+          <span id="header-cart-total" class="hidden sm:inline font-bold tracking-tight font-mono">₹0</span>
         </button>
       </div>
 
@@ -218,10 +215,6 @@
           <button onclick="filterByCategory('pants'); closeMobileNav();" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-medium text-zinc-700 hover:bg-zinc-100">
             <span>Trousers & Pants</span>
             <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
-          </button>
-          <button onclick="filterBySale(); closeMobileNav();" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-bold text-red-600 bg-red-50 hover:bg-red-100 border border-red-200">
-            <span>Seasonal Sale (-35% Off)</span>
-            <span class="text-xs bg-red-600 text-white px-2 py-0.5 rounded font-bold">HOT</span>
           </button>
         </nav>
       </div>
