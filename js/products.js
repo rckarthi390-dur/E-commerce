@@ -633,13 +633,47 @@ const PRODUCTS = [
   }
 ];
 
-// Coupon Codes configuration
-const COUPONS = {
-  "KARTHI20": { discount: 0.20, label: "20% Karthi Atelier Discount" },
-  "WELCOME10": { discount: 0.10, label: "10% Welcome Discount" },
-  "GRAVITY20": { discount: 0.20, label: "20% Drop Discount" },
-  "FREESHIP": { discount: 0.00, freeShipping: true, label: "Free Express Shipping" }
-};
+// Default Catalog
+const DEFAULT_PRODUCTS = PRODUCTS;
+
+// Dynamic Products Store (Synchronized with Admin Panel)
+function getActiveProducts() {
+  const saved = localStorage.getItem('karthi_products');
+  if (saved) {
+    try {
+      return JSON.parse(saved);
+    } catch (e) {
+      console.error('Error parsing stored products', e);
+    }
+  }
+  localStorage.setItem('karthi_products', JSON.stringify(DEFAULT_PRODUCTS));
+  return DEFAULT_PRODUCTS;
+}
+
+// Global mutable products reference
+let ACTIVE_PRODUCTS = getActiveProducts();
+
+// Coupon Codes configuration (Dynamic with Admin sync)
+function getActiveCoupons() {
+  const saved = localStorage.getItem('karthi_coupons');
+  if (saved) {
+    try {
+      return JSON.parse(saved);
+    } catch (e) {
+      console.error('Error parsing coupons', e);
+    }
+  }
+  const defaults = {
+    "KARTHI20": { discount: 0.20, label: "20% Karthi Atelier Discount" },
+    "WELCOME10": { discount: 0.10, label: "10% Welcome Discount" },
+    "GRAVITY20": { discount: 0.20, label: "20% Drop Discount" },
+    "FREESHIP": { discount: 0.00, freeShipping: true, label: "Free Express Shipping" }
+  };
+  localStorage.setItem('karthi_coupons', JSON.stringify(defaults));
+  return defaults;
+}
+
+const COUPONS = getActiveCoupons();
 
 // Currency configurations
 const CURRENCIES = {
@@ -648,3 +682,5 @@ const CURRENCIES = {
   INR: { symbol: "₹", rate: 83.50, label: "INR (₹)" },
   GBP: { symbol: "£", rate: 0.79, label: "GBP (£)" }
 };
+
+

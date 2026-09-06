@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Console | KARTHI ATELIER</title>
+  <meta name="description" content="KARTHI Atelier Admin Dashboard - Manage inventory, orders, customer details, and promo codes.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              red: '#DC2626',
+              crimson: '#991B1B',
+              dark: '#09090B',
+              card: '#FFFFFF',
+              border: '#E4E4E7',
+              muted: '#71717A',
+              bg: '#FAFAFA'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['"Space Grotesk"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css?v=4">
+
+  <!-- Force Hide All Scrollbars Globally -->
+  <style>
+    html, body, div, section, main, aside, nav, form, table, tbody, ul, li, * {
+      -ms-overflow-style: none !important;
+      scrollbar-width: none !important;
+    }
+    html::-webkit-scrollbar, body::-webkit-scrollbar, div::-webkit-scrollbar, *::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+  </style>
+</head>
+<body class="bg-[#FAFAFA] text-zinc-900 font-sans antialiased min-h-screen flex flex-col selection:bg-red-600 selection:text-white">
+
+  <!-- =====================================================
+       LOGIN SCREEN (Displayed when not logged in)
+       ===================================================== -->
+  <div id="login-screen" class="fixed inset-0 z-50 bg-[#FAFAFA] flex items-center justify-center p-4">
+    <div class="max-w-md w-full bg-white border border-zinc-200 rounded-3xl p-8 shadow-xl relative text-zinc-900">
+      
+      <!-- Brand Logo Header -->
+      <div class="text-center space-y-3 mb-8">
+        <div class="w-14 h-14 rounded-2xl bg-zinc-950 text-white font-extrabold text-2xl flex items-center justify-center mx-auto shadow-md">
+          K
+        </div>
+        <div>
+          <span class="text-[11px] font-bold text-red-600 uppercase tracking-widest block">Executive Portal</span>
+          <h1 class="text-2xl font-black font-heading text-zinc-950">KARTHI ATELIER</h1>
+          <p class="text-xs text-zinc-500 mt-1">Management & Inventory Console</p>
+        </div>
+      </div>
+
+      <!-- Demo Credentials Notice -->
+      <div class="bg-zinc-50 border border-zinc-200 rounded-2xl p-3.5 mb-6 text-xs text-zinc-600 flex items-center justify-between">
+        <div>
+          <span class="font-bold text-zinc-900">Demo Login:</span>
+          <div class="font-mono text-[11px] text-zinc-700 mt-0.5">User: <strong class="text-zinc-950">admin</strong> &nbsp;|&nbsp; Pass: <strong class="text-zinc-950">karthi@2026</strong></div>
+        </div>
+        <button onclick="fillDemoCredentials()" class="px-2.5 py-1 bg-zinc-200 hover:bg-zinc-300 text-zinc-800 text-[10px] font-bold rounded-lg transition uppercase tracking-wider">
+          Auto Fill
+        </button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="admin-login-form" onsubmit="handleAdminLogin(event)" class="space-y-4">
+        <div>
+          <label class="text-xs font-semibold text-zinc-700 block mb-1">Username / ID</label>
+          <div class="relative">
+            <i data-lucide="user" class="w-4 h-4 text-zinc-400 absolute left-3.5 top-3"></i>
+            <input type="text" id="admin-username" required placeholder="admin" class="w-full bg-zinc-50 text-sm text-zinc-900 pl-10 pr-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-medium">
+          </div>
+        </div>
+
+        <div>
+          <label class="text-xs font-semibold text-zinc-700 block mb-1">Security Password</label>
+          <div class="relative">
+            <i data-lucide="lock" class="w-4 h-4 text-zinc-400 absolute left-3.5 top-3"></i>
+            <input type="password" id="admin-password" required placeholder="••••••••••••" class="w-full bg-zinc-50 text-sm text-zinc-900 pl-10 pr-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-medium">
+          </div>
+        </div>
+
+        <button type="submit" id="admin-login-btn" class="w-full py-3 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-xs uppercase tracking-wider transition shadow flex items-center justify-center gap-2">
+          <span>Authenticate & Access Console</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </form>
+
+      <!-- Storefront Return Link -->
+      <div class="text-center pt-6 mt-6 border-t border-zinc-100">
+        <a href="index.html" class="inline-flex items-center gap-1.5 text-xs text-zinc-500 hover:text-zinc-950 transition font-medium">
+          <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+          <span>Return to Storefront Catalog</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =====================================================
+       AUTHENTICATED ADMIN APP WRAPPER
+       ===================================================== -->
+  <div id="admin-app" class="hidden flex-1 flex flex-col">
+
+    <!-- Top Admin Navigation Bar -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-zinc-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        
+        <!-- Brand & Title -->
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-lg bg-zinc-950 text-white font-black text-sm flex items-center justify-center">K</div>
+            <div>
+              <span class="font-heading font-extrabold text-sm tracking-tight text-zinc-950">KARTHI ATELIER</span>
+              <span class="text-[10px] uppercase font-bold text-red-600 block leading-none">Console Manager</span>
+            </div>
+          </div>
+
+          <!-- Live Sync Status -->
+          <div class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-[11px] font-semibold">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Live Catalog Sync Active</span>
+          </div>
+        </div>
+
+        <!-- Header Actions -->
+        <div class="flex items-center gap-3">
+          <a href="index.html" target="_blank" class="px-3.5 py-1.5 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-800 text-xs font-bold transition flex items-center gap-1.5">
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            <span>View Live Store</span>
+          </a>
+
+          <button onclick="handleAdminLogout()" class="px-3.5 py-1.5 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 border border-red-200 text-xs font-bold transition flex items-center gap-1.5">
+            <i data-lucide="log-out" class="w-3.5 h-3.5"></i>
+            <span class="hidden sm:inline">Logout</span>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- Main Admin Dashboard Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full space-y-8">
+      
+      <!-- Greeting & Overview -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-black font-heading text-zinc-950 tracking-tight">Atelier Operations Center</h2>
+          <p class="text-xs text-zinc-500 mt-1">Real-time inventory control, live order tracking, promo campaigns, and revenue insights.</p>
+        </div>
+        
+        <div class="flex items-center gap-2">
+          <button onclick="openAddProductModal()" class="px-4 py-2.5 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white text-xs font-bold uppercase tracking-wider transition shadow flex items-center gap-2">
+            <i data-lucide="plus" class="w-4 h-4"></i>
+            <span>Add New Product</span>
+          </button>
+          <button onclick="confirmResetCatalog()" class="px-3.5 py-2.5 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-700 text-xs font-semibold transition" title="Restore factory default products">
+            <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI Metrics Ribbon (4 Luxury White Cards) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <!-- Metric 1: Total Revenue -->
+        <div class="bg-white border border-zinc-200 rounded-2xl p-5 shadow-sm space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-zinc-400 uppercase tracking-wider">Gross Revenue</span>
+            <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+              <i data-lucide="dollar-sign" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <div>
+            <div id="kpi-revenue" class="text-2xl sm:text-3xl font-black font-mono text-zinc-950">$0.00</div>
+            <div class="text-[11px] text-emerald-600 font-semibold flex items-center gap-1 mt-1">
+              <i data-lucide="trending-up" class="w-3 h-3"></i>
+              <span>All completed & active orders</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric 2: Total Orders -->
+        <div class="bg-white border border-zinc-200 rounded-2xl p-5 shadow-sm space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-zinc-400 uppercase tracking-wider">Customer Orders</span>
+            <div class="w-8 h-8 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+              <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <div>
+            <div id="kpi-orders" class="text-2xl sm:text-3xl font-black font-mono text-zinc-950">0</div>
+            <div id="kpi-pending-orders" class="text-[11px] text-amber-600 font-semibold flex items-center gap-1 mt-1">
+              <i data-lucide="clock" class="w-3 h-3"></i>
+              <span>0 orders pending fulfillment</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric 3: Active Products -->
+        <div class="bg-white border border-zinc-200 rounded-2xl p-5 shadow-sm space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-zinc-400 uppercase tracking-wider">Catalog Inventory</span>
+            <div class="w-8 h-8 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center">
+              <i data-lucide="layers" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <div>
+            <div id="kpi-products" class="text-2xl sm:text-3xl font-black font-mono text-zinc-950">0</div>
+            <div id="kpi-low-stock" class="text-[11px] text-zinc-500 font-semibold flex items-center gap-1 mt-1">
+              <i data-lucide="alert-circle" class="w-3 h-3"></i>
+              <span>Live in store catalog</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metric 4: Active Promo Codes -->
+        <div class="bg-white border border-zinc-200 rounded-2xl p-5 shadow-sm space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-zinc-400 uppercase tracking-wider">Active Promo Codes</span>
+            <div class="w-8 h-8 rounded-xl bg-red-50 text-red-600 flex items-center justify-center">
+              <i data-lucide="tag" class="w-4 h-4"></i>
+            </div>
+          </div>
+          <div>
+            <div id="kpi-coupons" class="text-2xl sm:text-3xl font-black font-mono text-zinc-950">0</div>
+            <div class="text-[11px] text-red-600 font-semibold flex items-center gap-1 mt-1">
+              <i data-lucide="zap" class="w-3 h-3"></i>
+              <span>KARTHI20, WELCOME10, etc.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="border-b border-zinc-200 flex items-center gap-2 sm:gap-6 overflow-x-auto">
+        <button onclick="switchTab('products')" id="tab-btn-products" class="admin-tab-btn pb-3 px-1 text-xs font-bold uppercase tracking-wider text-zinc-950 border-b-2 border-zinc-950 flex items-center gap-2">
+          <i data-lucide="box" class="w-4 h-4"></i>
+          <span>Products & Catalog</span>
+          <span id="tab-count-products" class="px-2 py-0.5 rounded-full bg-zinc-100 text-[10px] font-mono text-zinc-700">0</span>
+        </button>
+
+        <button onclick="switchTab('orders')" id="tab-btn-orders" class="admin-tab-btn pb-3 px-1 text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-zinc-800 border-b-2 border-transparent flex items-center gap-2">
+          <i data-lucide="shopping-cart" class="w-4 h-4"></i>
+          <span>Customer Orders</span>
+          <span id="tab-count-orders" class="px-2 py-0.5 rounded-full bg-red-50 text-red-600 text-[10px] font-mono font-bold">0</span>
+        </button>
+
+        <button onclick="switchTab('coupons')" id="tab-btn-coupons" class="admin-tab-btn pb-3 px-1 text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-zinc-800 border-b-2 border-transparent flex items-center gap-2">
+          <i data-lucide="percent" class="w-4 h-4"></i>
+          <span>Promo Coupons</span>
+        </button>
+
+        <button onclick="switchTab('analytics')" id="tab-btn-analytics" class="admin-tab-btn pb-3 px-1 text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-zinc-800 border-b-2 border-transparent flex items-center gap-2">
+          <i data-lucide="bar-chart-3" class="w-4 h-4"></i>
+          <span>Analytics & Export</span>
+        </button>
+      </div>
+
+      <!-- ===================================================
+           TAB 1: PRODUCTS INVENTORY MANAGEMENT
+           =================================================== -->
+      <section id="tab-content-products" class="space-y-4">
+        
+        <!-- Filter and Search Bar -->
+        <div class="bg-white border border-zinc-200 rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div class="flex items-center gap-2 w-full sm:w-auto">
+            <div class="relative w-full sm:w-64">
+              <i data-lucide="search" class="w-4 h-4 text-zinc-400 absolute left-3 top-2.5"></i>
+              <input type="text" id="admin-product-search" oninput="filterAdminProducts()" placeholder="Search product name or SKU..." class="w-full bg-zinc-50 text-xs text-zinc-900 pl-9 pr-3 py-2 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-medium">
+            </div>
+
+            <select id="admin-category-filter" onchange="filterAdminProducts()" class="bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2 text-xs font-semibold text-zinc-800 focus:outline-none focus:border-zinc-950">
+              <option value="all">All Categories</option>
+              <option value="shirts">Shirts</option>
+              <option value="tshirts">T-Shirts</option>
+              <option value="pants">Pants</option>
+            </select>
+          </div>
+
+          <div class="flex items-center gap-2 w-full sm:w-auto justify-end">
+            <span id="product-count-label" class="text-xs text-zinc-500 font-medium">Showing 12 items</span>
+          </div>
+        </div>
+
+        <!-- Products Table -->
+        <div class="bg-white border border-zinc-200 rounded-2xl shadow-sm overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="bg-zinc-50/70 border-b border-zinc-200 text-zinc-400 uppercase font-bold text-[10px] tracking-wider">
+                  <th class="py-3 px-4">Product Details</th>
+                  <th class="py-3 px-4">Category</th>
+                  <th class="py-3 px-4">Retail Price</th>
+                  <th class="py-3 px-4">Stock Status</th>
+                  <th class="py-3 px-4">Rating</th>
+                  <th class="py-3 px-4 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-products-table-body" class="divide-y divide-zinc-100">
+                <!-- Dynamically generated by js/admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ===================================================
+           TAB 2: CUSTOMER ORDERS MANAGEMENT
+           =================================================== -->
+      <section id="tab-content-orders" class="hidden space-y-4">
+        
+        <!-- Orders Controls -->
+        <div class="bg-white border border-zinc-200 rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div class="flex items-center gap-2 w-full sm:w-auto">
+            <div class="relative w-full sm:w-64">
+              <i data-lucide="search" class="w-4 h-4 text-zinc-400 absolute left-3 top-2.5"></i>
+              <input type="text" id="admin-order-search" oninput="filterAdminOrders()" placeholder="Search Order ID, Name, Email..." class="w-full bg-zinc-50 text-xs text-zinc-900 pl-9 pr-3 py-2 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-medium">
+            </div>
+
+            <select id="admin-order-status-filter" onchange="filterAdminOrders()" class="bg-zinc-50 border border-zinc-200 rounded-xl px-3 py-2 text-xs font-semibold text-zinc-800 focus:outline-none focus:border-zinc-950">
+              <option value="all">All Statuses</option>
+              <option value="Pending">Pending</option>
+              <option value="Processing">Processing</option>
+              <option value="Shipped">Shipped</option>
+              <option value="Delivered">Delivered</option>
+            </select>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button onclick="seedSampleOrders()" class="px-3 py-1.5 bg-zinc-100 hover:bg-zinc-200 text-zinc-700 text-xs font-bold rounded-xl transition flex items-center gap-1.5">
+              <i data-lucide="plus-circle" class="w-3.5 h-3.5"></i>
+              <span>Add Demo Orders</span>
+            </button>
+            <button onclick="clearAllOrders()" class="px-3 py-1.5 bg-red-50 hover:bg-red-100 text-red-600 text-xs font-bold rounded-xl border border-red-200 transition">
+              Clear All
+            </button>
+          </div>
+        </div>
+
+        <!-- Orders Table -->
+        <div class="bg-white border border-zinc-200 rounded-2xl shadow-sm overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="bg-zinc-50/70 border-b border-zinc-200 text-zinc-400 uppercase font-bold text-[10px] tracking-wider">
+                  <th class="py-3 px-4">Order Reference</th>
+                  <th class="py-3 px-4">Customer</th>
+                  <th class="py-3 px-4">Items</th>
+                  <th class="py-3 px-4">Total & Payment</th>
+                  <th class="py-3 px-4">Fulfillment Status</th>
+                  <th class="py-3 px-4 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-orders-table-body" class="divide-y divide-zinc-100">
+                <!-- Dynamically generated by js/admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ===================================================
+           TAB 3: PROMO COUPONS MANAGEMENT
+           =================================================== -->
+      <section id="tab-content-coupons" class="hidden space-y-6">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          
+          <!-- Create Coupon Card -->
+          <div class="bg-white border border-zinc-200 rounded-2xl p-6 shadow-sm space-y-4">
+            <div>
+              <span class="text-[11px] font-bold text-red-600 uppercase tracking-widest block">Promotions Engine</span>
+              <h3 class="text-lg font-bold text-zinc-950 mt-0.5">Create New Coupon</h3>
+              <p class="text-xs text-zinc-500">Add coupon codes for instant checkout discounts.</p>
+            </div>
+
+            <form id="create-coupon-form" onsubmit="handleCreateCoupon(event)" class="space-y-3">
+              <div>
+                <label class="text-xs font-semibold text-zinc-700 block mb-1">Promo Code (Uppercase)</label>
+                <input type="text" id="coupon-code-input" required placeholder="e.g. FLASH30" class="w-full bg-zinc-50 text-xs text-zinc-900 font-mono uppercase px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-bold">
+              </div>
+
+              <div>
+                <label class="text-xs font-semibold text-zinc-700 block mb-1">Discount Percentage (%)</label>
+                <input type="number" id="coupon-discount-input" min="0" max="100" required placeholder="e.g. 25" class="w-full bg-zinc-50 text-xs text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-medium">
+              </div>
+
+              <div>
+                <label class="text-xs font-semibold text-zinc-700 block mb-1">Coupon Label / Description</label>
+                <input type="text" id="coupon-label-input" required placeholder="e.g. 25% Flash Summer Drop" class="w-full bg-zinc-50 text-xs text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-medium">
+              </div>
+
+              <label class="flex items-center gap-2 cursor-pointer pt-1">
+                <input type="checkbox" id="coupon-freeship-input" class="w-4 h-4 rounded border-zinc-300 accent-red-600">
+                <span class="text-xs text-zinc-700 font-medium">Include Free Express Shipping</span>
+              </label>
+
+              <button type="submit" class="w-full py-2.5 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-xs uppercase tracking-wider transition shadow flex items-center justify-center gap-2">
+                <i data-lucide="plus" class="w-4 h-4"></i>
+                <span>Save Promo Code</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Active Coupons Table -->
+          <div class="lg:col-span-2 bg-white border border-zinc-200 rounded-2xl p-6 shadow-sm space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-lg font-bold text-zinc-950">Active Promo Codes</h3>
+                <p class="text-xs text-zinc-500">Live coupons redeemable by customers in checkout.</p>
+              </div>
+              <button onclick="resetDefaultCoupons()" class="px-3 py-1.5 bg-zinc-100 hover:bg-zinc-200 text-zinc-700 text-xs font-bold rounded-xl transition">
+                Reset Defaults
+              </button>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="bg-zinc-50 border-b border-zinc-200 text-zinc-400 uppercase font-bold text-[10px] tracking-wider">
+                    <th class="py-2.5 px-3">Code</th>
+                    <th class="py-2.5 px-3">Discount</th>
+                    <th class="py-2.5 px-3">Details</th>
+                    <th class="py-2.5 px-3 text-right">Action</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-coupons-table-body" class="divide-y divide-zinc-100">
+                  <!-- Dynamically populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ===================================================
+           TAB 4: STORE ANALYTICS & EXPORT
+           =================================================== -->
+      <section id="tab-content-analytics" class="hidden space-y-6">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- Category Sales Breakdown -->
+          <div class="bg-white border border-zinc-200 rounded-2xl p-6 shadow-sm space-y-4">
+            <h3 class="text-base font-bold text-zinc-950 flex items-center gap-2">
+              <i data-lucide="pie-chart" class="w-4 h-4 text-red-600"></i>
+              <span>Category Distribution</span>
+            </h3>
+            
+            <div class="space-y-3 pt-2">
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1">
+                  <span class="text-zinc-700">Shirts (Oxford, Linen & Poplin)</span>
+                  <span id="stat-shirts-percent" class="font-mono text-zinc-950">40%</span>
+                </div>
+                <div class="w-full bg-zinc-100 rounded-full h-2.5 overflow-hidden">
+                  <div id="stat-shirts-bar" class="bg-zinc-950 h-2.5 rounded-full" style="width: 40%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1">
+                  <span class="text-zinc-700">T-Shirts (Heavyweight & Graphic)</span>
+                  <span id="stat-tshirts-percent" class="font-mono text-zinc-950">35%</span>
+                </div>
+                <div class="w-full bg-zinc-100 rounded-full h-2.5 overflow-hidden">
+                  <div id="stat-tshirts-bar" class="bg-red-600 h-2.5 rounded-full" style="width: 35%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="flex justify-between text-xs font-semibold mb-1">
+                  <span class="text-zinc-700">Pants & Trousers (Pleated, Cargo)</span>
+                  <span id="stat-pants-percent" class="font-mono text-zinc-950">25%</span>
+                </div>
+                <div class="w-full bg-zinc-100 rounded-full h-2.5 overflow-hidden">
+                  <div id="stat-pants-bar" class="bg-zinc-400 h-2.5 rounded-full" style="width: 25%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Data Export -->
+          <div class="bg-white border border-zinc-200 rounded-2xl p-6 shadow-sm space-y-4">
+            <h3 class="text-base font-bold text-zinc-950 flex items-center gap-2">
+              <i data-lucide="download" class="w-4 h-4 text-emerald-600"></i>
+              <span>Data Export & Backup</span>
+            </h3>
+            <p class="text-xs text-zinc-500 leading-relaxed">
+              Export all customer orders, product catalogs, or backup data as structured JSON files for external reporting.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-2">
+              <button onclick="exportOrdersJSON()" class="px-4 py-2.5 bg-zinc-100 hover:bg-zinc-200 text-zinc-800 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2">
+                <i data-lucide="file-text" class="w-4 h-4"></i>
+                <span>Export Orders JSON</span>
+              </button>
+              <button onclick="exportProductsJSON()" class="px-4 py-2.5 bg-zinc-100 hover:bg-zinc-200 text-zinc-800 rounded-xl text-xs font-bold transition flex items-center justify-center gap-2">
+                <i data-lucide="file-box" class="w-4 h-4"></i>
+                <span>Export Catalog JSON</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-zinc-200 py-6 text-center text-xs text-zinc-400">
+      <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <span>© 2026 KARTHI ATELIER STUDIO — Confidential Admin Console</span>
+        <div class="flex items-center gap-4">
+          <a href="index.html" class="hover:text-zinc-700">Storefront</a>
+          <span>•</span>
+          <span class="text-emerald-600 font-semibold">Local Storage DB Connected</span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- =====================================================
+       ADD / EDIT PRODUCT MODAL
+       ===================================================== -->
+  <div id="product-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="bg-white border border-zinc-200 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative text-zinc-900">
+      
+      <button onclick="closeProductModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-500 hover:text-zinc-950 flex items-center justify-center">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <div class="mb-6">
+        <span class="text-[11px] font-bold text-red-600 uppercase tracking-widest" id="product-modal-badge">Catalog Management</span>
+        <h3 class="text-2xl font-black font-heading text-zinc-950 mt-0.5" id="product-modal-title">Add New Product</h3>
+      </div>
+
+      <form id="product-edit-form" onsubmit="handleSaveProduct(event)" class="space-y-4">
+        <input type="hidden" id="edit-product-id">
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="text-xs font-semibold text-zinc-700 block mb-1">Product Title *</label>
+            <input type="text" id="edit-name" required placeholder="e.g. Oxford Oversized Linen Shirt" class="w-full bg-zinc-50 text-xs text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-medium">
+          </div>
+
+          <div>
+            <label class="text-xs font-semibold text-zinc-700 block mb-1">Category *</label>
+            <select id="edit-category" required class="w-full bg-zinc-50 text-xs text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 font-medium">
+              <option value="shirts">Shirts</option>
+              <option value="tshirts">T-Shirts</option>
+              <option value="pants">Pants</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <label class="text-xs font-semibold text-zinc-700 block mb-1">Retail Price ($) *</label>
+            <input type="number" step="0.01" id="edit-price" required placeholder="68.00" class="w-full bg-zinc-50 text-xs text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-mono font-bold">
+          </div>
+          <div>
+            <label class="text-xs font-semibold text-zinc-700 block mb-1">Original Price ($)</label>
+            <input type="number" step="0.01" id="edit-orig-price" placeholder="95.00" class="w-full bg-zinc-50 text-xs text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-mono font-medium">
+          </div>
+          <div>
+            <label class="text-xs font-semibold text-zinc-700 block mb-1">Stock Quantity *</label>
+            <input type="number" id="edit-stock" required placeholder="15" class="w-full bg-zinc-50 text-xs text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-mono font-medium">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="text-xs font-semibold text-zinc-700 block mb-1">Fabric Composition</label>
+            <input type="text" id="edit-fabric" placeholder="100% Long-Staple Egyptian Cotton" class="w-full bg-zinc-50 text-xs text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-medium">
+          </div>
+
+          <div>
+            <label class="text-xs font-semibold text-zinc-700 block mb-1">Fit Profile</label>
+            <select id="edit-fit" class="w-full bg-zinc-50 text-xs text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 font-medium">
+              <option value="Regular">Regular Fit</option>
+              <option value="Slim">Slim Fit</option>
+              <option value="Relaxed">Relaxed Fit</option>
+              <option value="Oversized">Oversized Silhouette</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="text-xs font-semibold text-zinc-700 block mb-1">Primary Image URL *</label>
+          <input type="url" id="edit-image-1" required placeholder="https://images.unsplash.com/..." class="w-full bg-zinc-50 text-xs text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-medium">
+        </div>
+
+        <div>
+          <label class="text-xs font-semibold text-zinc-700 block mb-1">Secondary Hover Image URL</label>
+          <input type="url" id="edit-image-2" placeholder="https://images.unsplash.com/..." class="w-full bg-zinc-50 text-xs text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-medium">
+        </div>
+
+        <div>
+          <label class="text-xs font-semibold text-zinc-700 block mb-1">Product Description</label>
+          <textarea id="edit-description" rows="3" placeholder="Crafted with architectural precision..." class="w-full bg-zinc-50 text-xs text-zinc-900 px-3.5 py-2.5 rounded-xl border border-zinc-200 focus:outline-none focus:border-zinc-950 focus:bg-white font-medium"></textarea>
+        </div>
+
+        <div class="flex items-center gap-3 pt-4 border-t border-zinc-100">
+          <button type="submit" class="flex-1 py-3 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-xs uppercase tracking-wider transition shadow">
+            Save Product to Catalog
+          </button>
+          <button type="button" onclick="closeProductModal()" class="px-5 py-3 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-bold text-xs uppercase tracking-wider transition">
+            Cancel
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- =====================================================
+       ORDER DETAILS & PACKING SLIP MODAL
+       ===================================================== -->
+  <div id="order-details-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-md hidden items-center justify-center p-4">
+    <div class="bg-white border border-zinc-200 rounded-3xl max-w-xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative text-zinc-900 space-y-6">
+      
+      <button onclick="closeOrderModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-500 hover:text-zinc-950 flex items-center justify-center">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+
+      <!-- Order Header -->
+      <div class="border-b border-zinc-200 pb-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <span class="text-[11px] font-bold text-red-600 uppercase tracking-widest">Order Packing Slip</span>
+            <h3 class="text-2xl font-black font-mono text-zinc-950 mt-0.5" id="modal-order-id">#KARTHI-84729</h3>
+          </div>
+          <span id="modal-order-badge" class="px-3 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-700 border border-amber-200">
+            Pending
+          </span>
+        </div>
+        <div class="text-xs text-zinc-500 mt-1" id="modal-order-date">Placed on Sep 6, 2026</div>
+      </div>
+
+      <!-- Customer Details Card -->
+      <div class="bg-zinc-50 rounded-2xl p-4 border border-zinc-200 text-xs space-y-2">
+        <h4 class="font-bold text-zinc-950 uppercase tracking-wider text-[10px]">Customer & Destination</h4>
+        <div class="grid grid-cols-2 gap-2 text-zinc-700">
+          <div>
+            <span class="text-zinc-400 block text-[10px]">Name:</span>
+            <strong id="modal-cust-name" class="text-zinc-950">Alex Mercer</strong>
+          </div>
+          <div>
+            <span class="text-zinc-400 block text-[10px]">Email:</span>
+            <span id="modal-cust-email">alex@example.com</span>
+          </div>
+          <div>
+            <span class="text-zinc-400 block text-[10px]">Phone:</span>
+            <span id="modal-cust-phone">+1 (555) 234-5678</span>
+          </div>
+          <div>
+            <span class="text-zinc-400 block text-[10px]">Payment Mode:</span>
+            <span id="modal-payment-mode" class="font-mono font-semibold">CARD</span>
+          </div>
+        </div>
+        <div class="pt-2 border-t border-zinc-200">
+          <span class="text-zinc-400 block text-[10px]">Shipping Address:</span>
+          <span id="modal-cust-address" class="text-zinc-800 font-medium">42 Atelier Boulevard, Suite 10, New York 10001</span>
+        </div>
+      </div>
+
+      <!-- Items List -->
+      <div class="space-y-3">
+        <h4 class="font-bold text-zinc-950 uppercase tracking-wider text-[10px]">Purchased Apparel</h4>
+        <div id="modal-order-items" class="space-y-2">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Financial Totals -->
+      <div class="bg-zinc-50 rounded-2xl p-4 border border-zinc-200 text-xs space-y-1.5">
+        <div class="flex justify-between text-zinc-600">
+          <span>Subtotal:</span>
+          <span id="modal-subtotal" class="font-mono">$0.00</span>
+        </div>
+        <div class="flex justify-between text-zinc-600">
+          <span>Discount:</span>
+          <span id="modal-discount" class="font-mono text-red-600">-$0.00</span>
+        </div>
+        <div class="flex justify-between text-zinc-600">
+          <span>Shipping:</span>
+          <span id="modal-shipping" class="font-mono">$0.00</span>
+        </div>
+        <div class="flex justify-between font-bold text-zinc-950 text-sm pt-2 border-t border-zinc-200">
+          <span>Total Paid:</span>
+          <span id="modal-total" class="font-mono text-base font-black text-zinc-950">$0.00</span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-3 pt-2">
+        <button onclick="window.print()" class="flex-1 py-3 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-xs uppercase tracking-wider transition shadow flex items-center justify-center gap-2">
+          <i data-lucide="printer" class="w-4 h-4"></i>
+          <span>Print Packing Slip</span>
+        </button>
+        <button onclick="closeOrderModal()" class="px-5 py-3 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-700 font-bold text-xs uppercase tracking-wider transition">
+          Close
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Floating Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 max-w-sm w-full pointer-events-none px-4 sm:px-0"></div>
+
+  <!-- Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

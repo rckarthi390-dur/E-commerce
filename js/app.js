@@ -1492,9 +1492,55 @@ function handleCheckoutSubmit(e) {
     submitBtn.innerHTML = `<i data-lucide="loader-2" class="w-4 h-4 animate-spin"></i> Authorizing Payment...`;
   }
 
+  // Calculate values
+  const rawSubtotal = STATE.cart.reduce((sum, i) => sum + (i.price * i.quantity), 0);
+  const discountAmount = (STATE.appliedCoupon && STATE.appliedCoupon.discount) ? rawSubtotal * STATE.appliedCoupon.discount : 0;
+  const freeShipThreshold = 100;
+  const shippingCost = (rawSubtotal >= freeShipThreshold || (STATE.appliedCoupon && STATE.appliedCoupon.freeShipping) || rawSubtotal === 0) ? 0 : 15;
+  const finalTotal = Math.max(0, rawSubtotal - discountAmount + (rawSubtotal > 0 ? shippingCost : 0));
+
+  const custName = document.getElementById('cust-name')?.value || 'Valued Client';
+  const custEmail = document.getElementById('cust-email')?.value || 'client@example.com';
+  const custAddress = document.getElementById('cust-address')?.value || '';
+  const custZip = document.getElementById('cust-zip')?.value || '';
+  const custCity = document.getElementById('cust-city')?.value || '';
+  const custPhone = document.getElementById('cust-phone')?.value || '';
+  const paymentMode = document.querySelector('input[name="payment-method"]:checked')?.value || 'card';
+
   setTimeout(() => {
     closeCheckoutModal();
     const orderId = `#KAR-${Math.floor(10000 + Math.random() * 90000)}`;
+
+    // Save Complete Order to LocalStorage for Admin Dashboard
+    const newOrder = {
+      id: orderId,
+      date: new Date().toISOString(),
+      displayDate: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' }),
+      customer: {
+        name: custName,
+        email: custEmail,
+        address: custAddress,
+        city: custCity,
+        zip: custZip,
+        phone: custPhone
+      },
+      paymentMethod: paymentMode.toUpperCase(),
+      items: [...STATE.cart],
+      itemCount: STATE.cart.reduce((sum, i) => sum + i.quantity, 0),
+      subtotal: rawSubtotal,
+      discount: discountAmount,
+      shipping: shippingCost,
+      total: finalTotal,
+      status: 'Pending'
+    };
+
+    try {
+      const storedOrders = JSON.parse(localStorage.getItem('karthi_orders') || '[]');
+      storedOrders.unshift(newOrder);
+      localStorage.setItem('karthi_orders', JSON.stringify(storedOrders));
+    } catch (err) {
+      console.error('Error saving order to localStorage', err);
+    }
     
     // Clear Cart
     STATE.cart = [];
