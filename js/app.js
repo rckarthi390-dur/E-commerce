@@ -14,6 +14,7 @@ const STATE = {
   currentPDPProduct: null,
   selectedPDPSize: null,
   selectedPDPColor: null,
+  offersFilter: 'all',
   filters: {
     category: 'all',
     maxPrice: 1500,
@@ -31,6 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initLucideIcons();
   setupEventListeners();
   updateCurrencyDisplay();
+  renderOffers();
+  startOfferCountdowns();
   renderProducts();
   updateCartUI();
   updateWishlistUI();
@@ -170,13 +173,19 @@ function setupEventListeners() {
     renderProducts();
   });
 
-  // Real-time synchronization when Admin modifies products/coupons in another tab
+  // Real-time synchronization when Admin modifies products/coupons/offers in another tab
   window.addEventListener('storage', (e) => {
     if (e.key === 'karthi_products') {
       if (typeof getActiveProducts === 'function') {
         PRODUCTS = getActiveProducts();
       }
       renderProducts();
+    }
+    if (e.key === 'karthi_offers') {
+      if (typeof getActiveOffers === 'function') {
+        OFFERS = getActiveOffers();
+      }
+      renderOffers();
     }
   });
 
@@ -185,6 +194,10 @@ function setupEventListeners() {
     if (typeof getActiveProducts === 'function') {
       PRODUCTS = getActiveProducts();
     }
+    if (typeof getActiveOffers === 'function') {
+      OFFERS = getActiveOffers();
+    }
+    renderOffers();
     renderProducts();
   });
 }
@@ -197,6 +210,259 @@ function formatPrice(amount) {
 
 function updateCurrencyDisplay() {
   // Always fixed to INR (₹)
+}
+
+// =====================================================
+// SPECIAL OFFERS & COMBO DEALS ENGINE (WHITE ATELIER)
+// =====================================================
+
+function filterOffersByCategory(category) {
+  STATE.offersFilter = category;
+  
+  // Update Tab Pills Active State
+  document.querySelectorAll('.offer-tab-btn').forEach(btn => {
+    if (btn.dataset.offerCat === category) {
+      btn.classList.add('active', 'text-white', 'bg-zinc-950');
+      btn.classList.remove('text-zinc-600');
+    } else {
+      btn.classList.remove('active', 'text-white', 'bg-zinc-950');
+      btn.classList.add('text-zinc-600');
+    }
+  });
+
+  renderOffers();
+}
+
+function renderOffers() {
+  const container = document.getElementById('offers-grid');
+  if (!container) return;
+
+  if (typeof getActiveOffers === 'function') {
+    OFFERS = getActiveOffers();
+  }
+
+  const list = OFFERS.filter(offer => {
+    if (STATE.offersFilter === 'all') return true;
+    return offer.category === STATE.offersFilter;
+  });
+
+  if (list.length === 0) {
+    container.innerHTML = `
+      <div class="col-span-full py-12 text-center bg-white rounded-3xl border border-zinc-200 p-8 shadow-sm">
+        <i data-lucide="sparkles" class="w-10 h-10 mx-auto text-zinc-300 mb-2"></i>
+        <h4 class="text-base font-bold text-zinc-950">No Active Offers in this Department</h4>
+        <p class="text-xs text-zinc-500 mt-1">Check back soon or explore our complete catalog collection below.</p>
+        <button onclick="filterOffersByCategory('all')" class="mt-4 px-4 py-2 bg-zinc-950 text-white text-xs font-bold rounded-xl">View All Offers</button>
+      </div>
+    `;
+    initLucideIcons();
+    return;
+  }
+
+  container.innerHTML = list.map(offer => {
+    const isCombo = offer.category === 'combo';
+    const primaryImg = (offer.images && offer.images[0]) || 'assets/images/category-shirts.jpg';
+    const secondaryImg = (offer.images && offer.images[1]) || primaryImg;
+    const isExpired = offer.expiryDate && (new Date(offer.expiryDate) < new Date());
+    const formattedExpiryDate = typeof formatDateTimeToDDMMYYYY === 'function' 
+      ? formatDateTimeToDDMMYYYY(offer.expiryDate) 
+      : offer.expiryDate;
+
+    const typeBadge = {
+      combo: '🎁 COMBO DROP',
+      shirts: '👔 SHIRTS SPECIAL',
+      tshirts: '👕 T-SHIRTS DROP',
+      pants: '👖 PANTS BUNDLE'
+    }[offer.category] || '🔥 SPECIAL OFFER';
+
+    return `
+      <div class="offer-card relative bg-white rounded-3xl border ${isCombo ? 'border-red-200 ring-1 ring-red-100 shadow-md hover:shadow-xl' : 'border-zinc-200 shadow-sm hover:shadow-lg'} transition-all duration-300 overflow-hidden flex flex-col justify-between group">
+        
+        <!-- Top Visual Image Area -->
+        <div class="relative aspect-[16/11] bg-zinc-100 overflow-hidden">
+          <img 
+            src="${primaryImg}" 
+            alt="${offer.title}" 
+            class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+            loading="lazy"
+          >
+          <img 
+            src="${secondaryImg}" 
+            alt="${offer.title} preview" 
+            class="absolute inset-0 w-full h-full object-cover object-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            loading="lazy"
+          >
+
+          <!-- Badges Overlay -->
+          <div class="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
+            <span class="px-2.5 py-1 rounded-lg text-[10px] font-black tracking-wider uppercase bg-zinc-950 text-white shadow-sm flex items-center gap-1">
+              <span>${typeBadge}</span>
+            </span>
+            ${offer.badge ? `
+              <span class="px-2.5 py-0.5 rounded-lg text-[10px] font-black tracking-wider uppercase bg-red-600 text-white shadow-sm">
+                ${offer.badge}
+              </span>
+            ` : ''}
+          </div>
+
+          <!-- Discount Pill -->
+          ${offer.originalPrice ? `
+            <div class="absolute top-3 right-3 px-2.5 py-1 rounded-xl bg-white/95 backdrop-blur-md border border-red-200 shadow-sm text-red-600 text-[11px] font-black font-mono">
+              SAVE ${Math.round(((offer.originalPrice - offer.price) / offer.originalPrice) * 100)}%
+            </div>
+          ` : ''}
+        </div>
+
+        <!-- Offer Details Body -->
+        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+          
+          <div class="space-y-2">
+            <h3 class="text-lg font-extrabold text-zinc-950 group-hover:text-red-600 transition tracking-tight leading-snug">
+              ${offer.title}
+            </h3>
+
+            ${offer.itemsIncluded ? `
+              <div class="bg-zinc-50 border border-zinc-200/80 rounded-xl p-2.5 text-xs text-zinc-700 flex items-start gap-2">
+                <i data-lucide="package-check" class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                <span class="font-medium leading-relaxed">${offer.itemsIncluded}</span>
+              </div>
+            ` : ''}
+
+            <p class="text-xs text-zinc-500 leading-relaxed line-clamp-2">
+              ${offer.description}
+            </p>
+          </div>
+
+          <!-- Price & Expiry Banner Section -->
+          <div class="pt-3 border-t border-zinc-100 space-y-3">
+            
+            <!-- Pricing -->
+            <div class="flex items-baseline justify-between">
+              <div>
+                <span class="text-2xl font-black text-zinc-950 font-mono">${formatPrice(offer.price)}</span>
+                ${offer.originalPrice ? `
+                  <span class="text-xs text-zinc-400 line-through ml-2 font-mono">${formatPrice(offer.originalPrice)}</span>
+                ` : ''}
+              </div>
+              <span class="text-[11px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-lg border border-emerald-200">
+                In Stock & Valid
+              </span>
+            </div>
+
+            <!-- Expiry Date (DD/MM/YYYY) & Live Countdown Banner -->
+            <div class="bg-zinc-950 text-white rounded-2xl p-3 space-y-1.5 shadow-sm">
+              <div class="flex items-center justify-between text-[11px] text-zinc-300">
+                <span class="flex items-center gap-1.5 font-medium">
+                  <i data-lucide="calendar" class="w-3.5 h-3.5 text-red-400"></i>
+                  <span>Valid Till: <strong class="text-white font-mono font-bold">${formattedExpiryDate}</strong></span>
+                </span>
+              </div>
+              
+              <!-- Countdown Display -->
+              <div class="flex items-center justify-between pt-1 border-t border-zinc-800 text-xs">
+                <span class="text-zinc-400 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full ${isExpired ? 'bg-zinc-500' : 'bg-red-500 animate-pulse'}"></span>
+                  ${isExpired ? 'Offer Expired' : 'Flash Timer:'}
+                </span>
+                <span class="offer-countdown font-mono font-bold ${isExpired ? 'text-zinc-500' : 'text-red-400'}" data-expiry="${offer.expiryDate || ''}">
+                  ${isExpired ? 'Expired' : 'Calculating...'}
+                </span>
+              </div>
+            </div>
+
+            <!-- Claim Offer Action Button -->
+            <button 
+              onclick="claimOffer('${offer.id}')"
+              class="w-full py-3.5 rounded-xl bg-zinc-950 hover:bg-red-600 text-white text-xs font-bold uppercase tracking-wider transition shadow flex items-center justify-center gap-2 cursor-pointer"
+            >
+              <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+              <span>Claim Offer & Add to Bag</span>
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+    `;
+  }).join('');
+
+  initLucideIcons();
+  updateCountdownValues();
+}
+
+let _offerCountdownInterval = null;
+function startOfferCountdowns() {
+  if (_offerCountdownInterval) clearInterval(_offerCountdownInterval);
+  updateCountdownValues();
+  _offerCountdownInterval = setInterval(updateCountdownValues, 1000);
+}
+
+function updateCountdownValues() {
+  const elements = document.querySelectorAll('.offer-countdown');
+  const now = new Date().getTime();
+
+  elements.forEach(el => {
+    const expiryStr = el.dataset.expiry;
+    if (!expiryStr) {
+      el.textContent = 'Limited Availability';
+      return;
+    }
+
+    const expiryTime = new Date(expiryStr).getTime();
+    if (isNaN(expiryTime)) {
+      el.textContent = 'Limited Time';
+      return;
+    }
+
+    const distance = expiryTime - now;
+
+    if (distance <= 0) {
+      el.textContent = 'Expired';
+      el.classList.add('text-zinc-500');
+      el.classList.remove('text-red-400');
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    const strD = String(days).padStart(2, '0');
+    const strH = String(hours).padStart(2, '0');
+    const strM = String(minutes).padStart(2, '0');
+    const strS = String(seconds).padStart(2, '0');
+
+    el.textContent = `${strD}d : ${strH}h : ${strM}m : ${strS}s`;
+  });
+}
+
+function claimOffer(offerId) {
+  if (typeof getActiveOffers === 'function') {
+    OFFERS = getActiveOffers();
+  }
+  const offer = OFFERS.find(o => o.id === offerId);
+  if (!offer) return;
+
+  const defaultSize = (offer.sizes && offer.sizes[0]) || 'Standard';
+  const cartItemId = `offer-${offer.id}-${Date.now()}`;
+
+  STATE.cart.push({
+    id: cartItemId,
+    productId: offer.id,
+    name: `[OFFER] ${offer.title}`,
+    price: offer.price,
+    size: defaultSize,
+    color: 'Combo / Deal',
+    image: (offer.images && offer.images[0]) || 'assets/images/category-shirts.jpg',
+    quantity: 1
+  });
+
+  saveCart();
+  updateCartUI();
+  showToast(`🎁 Claimed Offer: "${offer.title}" added to your bag!`, 'success');
+  openCartDrawer();
 }
 
 // =====================================================

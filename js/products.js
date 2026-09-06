@@ -662,6 +662,157 @@ function getActiveProducts() {
 let PRODUCTS = getActiveProducts();
 let ACTIVE_PRODUCTS = PRODUCTS;
 
+// ==========================================
+// SPECIAL OFFERS & COMBO DEALS DATABASE
+// Categories: combo | shirts | tshirts | pants
+// Date & Time Expiry: Strictly DD/MM/YYYY
+// ==========================================
+
+const DEFAULT_OFFERS = [
+  {
+    id: "offer-combo-01",
+    title: "Atelier Executive Duo (Poplin Shirt + Pleated Pant)",
+    category: "combo",
+    badge: "COMBO 36% OFF",
+    price: 1399,
+    originalPrice: 2198,
+    discount: 36,
+    expiryDate: new Date(Date.now() + 1000 * 60 * 60 * 24 * 10).toISOString(),
+    images: [
+      "assets/images/category-shirts.jpg",
+      "assets/images/category-pants.jpg"
+    ],
+    itemsIncluded: "1x Architect Poplin Shirt + 1x Double-Pleated Tailored Trouser",
+    description: "Our signature luxury formal combination. Crafted from pure Egyptian Giza cotton and heavy wool-blend twill with custom architectural silhouettes.",
+    sizes: ["M", "L", "XL", "XXL"],
+    inStock: true
+  },
+  {
+    id: "offer-combo-02",
+    title: "Zero-Gravity 2x Heavyweight Tee Bundle",
+    category: "combo",
+    badge: "TWIN PACK DEAL",
+    price: 699,
+    originalPrice: 1048,
+    discount: 33,
+    expiryDate: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7).toISOString(),
+    images: [
+      "assets/images/category-tees.jpg",
+      "assets/images/antigravity-feature.jpg"
+    ],
+    itemsIncluded: "1x Neo-Archive Graphic Tee + 1x Zero-G Oversized Tee",
+    description: "Double heavy-duty drop shoulder tees engineered in 280-300 GSM combed terry cotton. Ultra durable ribbing and archival graphics.",
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    inStock: true
+  },
+  {
+    id: "offer-shirt-01",
+    title: "Milano Oxford & French Linen Shirt Special",
+    category: "shirts",
+    badge: "SHIRTS SPECIAL",
+    price: 1199,
+    originalPrice: 1648,
+    discount: 27,
+    expiryDate: new Date(Date.now() + 1000 * 60 * 60 * 24 * 5).toISOString(),
+    images: [
+      "assets/images/category-shirts.jpg",
+      "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=800&q=80"
+    ],
+    itemsIncluded: "1x Milano Tailored Oxford + 1x Riviera Linen Cuban Shirt",
+    description: "Curated two-shirt collection designed for boardroom authority and breezy weekend relaxation.",
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    inStock: true
+  },
+  {
+    id: "offer-tee-01",
+    title: "Supima Luxe Ribbed Essential 3-Pack",
+    category: "tshirts",
+    badge: "FLASH 25% OFF",
+    price: 899,
+    originalPrice: 1197,
+    discount: 25,
+    expiryDate: new Date(Date.now() + 1000 * 60 * 60 * 24 * 4).toISOString(),
+    images: [
+      "assets/images/category-tees.jpg",
+      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80"
+    ],
+    itemsIncluded: "3x Supima Luxe Crewneck Tees (Black, Chalk, Sage)",
+    description: "The ultimate wardrobe foundation. 100% California Supima cotton crewnecks with bound collar construction.",
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    inStock: true
+  },
+  {
+    id: "offer-pants-01",
+    title: "Sartorial Chino + Utility Cargo Dual Trouser Pack",
+    category: "pants",
+    badge: "PANTS SPECIAL",
+    price: 1499,
+    originalPrice: 2048,
+    discount: 27,
+    expiryDate: new Date(Date.now() + 1000 * 60 * 60 * 24 * 8).toISOString(),
+    images: [
+      "assets/images/category-pants.jpg",
+      "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=80"
+    ],
+    itemsIncluded: "1x Tactical Minimalist Cargo Pant + 1x Sartorial Stretch Chino",
+    description: "Two precision-engineered bottom silhouettes covering technical urban utility and smart-casual tailored minimalism.",
+    sizes: ["28", "30", "32", "34", "36", "38"],
+    inStock: true
+  }
+];
+
+// Date Formatting Utilities (Strictly DD/MM/YYYY)
+function formatDateTimeToDDMMYYYY(dateInput) {
+  if (!dateInput) return 'No Expiry Set';
+  const d = new Date(dateInput);
+  if (isNaN(d.getTime())) return String(dateInput);
+  const day = String(d.getDate()).padStart(2, '0');
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const year = d.getFullYear();
+  let hours = d.getHours();
+  const minutes = String(d.getMinutes()).padStart(2, '0');
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12;
+  hours = hours ? hours : 12;
+  const strHours = String(hours).padStart(2, '0');
+  return `${day}/${month}/${year} at ${strHours}:${minutes} ${ampm}`;
+}
+
+function formatDateToDDMMYYYY(dateInput) {
+  if (!dateInput) return '';
+  if (typeof dateInput === 'string' && dateInput.includes('-') && !dateInput.includes('T')) {
+    const parts = dateInput.split('-');
+    if (parts.length === 3) {
+      return `${parts[2]}/${parts[1]}/${parts[0]}`;
+    }
+  }
+  const d = new Date(dateInput);
+  if (isNaN(d.getTime())) return String(dateInput);
+  const day = String(d.getDate()).padStart(2, '0');
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const year = d.getFullYear();
+  return `${day}/${month}/${year}`;
+}
+
+// Dynamic Offers Store (Synchronized with Admin & LocalStorage)
+function getActiveOffers() {
+  const saved = localStorage.getItem('karthi_offers');
+  if (saved) {
+    try {
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
+      }
+    } catch (e) {
+      console.error('Error parsing stored offers', e);
+    }
+  }
+  localStorage.setItem('karthi_offers', JSON.stringify(DEFAULT_OFFERS));
+  return DEFAULT_OFFERS;
+}
+
+let OFFERS = getActiveOffers();
+
 // Coupon Codes configuration (Dynamic with Admin sync)
 function getActiveCoupons() {
   const saved = localStorage.getItem('karthi_coupons');

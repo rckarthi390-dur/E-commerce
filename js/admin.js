@@ -104,6 +104,7 @@ let adminState = {
   products: [],
   orders: [],
   coupons: {},
+  offers: [],
   activeTab: 'products'
 };
 
@@ -193,7 +194,20 @@ function initAdminData() {
     localStorage.setItem('karthi_orders', JSON.stringify(SAMPLE_ORDERS));
   }
 
-  // 3. Sync Coupons
+  // 3. Sync Offers
+  const savedOffers = localStorage.getItem('karthi_offers');
+  if (savedOffers) {
+    try {
+      adminState.offers = JSON.parse(savedOffers);
+    } catch (e) {
+      adminState.offers = typeof DEFAULT_OFFERS !== 'undefined' ? DEFAULT_OFFERS : [];
+    }
+  } else {
+    adminState.offers = typeof DEFAULT_OFFERS !== 'undefined' ? DEFAULT_OFFERS : (typeof OFFERS !== 'undefined' ? OFFERS : []);
+    localStorage.setItem('karthi_offers', JSON.stringify(adminState.offers));
+  }
+
+  // 4. Sync Coupons
   const savedCoupons = localStorage.getItem('karthi_coupons');
   if (savedCoupons) {
     try {
@@ -220,6 +234,10 @@ function saveOrdersToStorage() {
   localStorage.setItem('karthi_orders', JSON.stringify(adminState.orders));
 }
 
+function saveOffersToStorage() {
+  localStorage.setItem('karthi_offers', JSON.stringify(adminState.offers));
+}
+
 function saveCouponsToStorage() {
   localStorage.setItem('karthi_coupons', JSON.stringify(adminState.coupons));
 }
@@ -229,9 +247,11 @@ function loadDashboardData() {
   renderKPIs();
   renderProductsTable();
   renderOrdersTable();
+  renderOffersTable();
   renderCouponsTable();
   renderAnalytics();
   initLucideIcons();
+  resetOfferForm();
 }
 
 // ========================================================
@@ -239,18 +259,20 @@ function loadDashboardData() {
 // ========================================================
 function switchTab(tabName) {
   adminState.activeTab = tabName;
-  const tabs = ['products', 'orders', 'coupons', 'analytics'];
+  const tabs = ['products', 'orders', 'offers', 'coupons', 'analytics'];
 
   tabs.forEach(t => {
     const btn = document.getElementById(`tab-btn-${t}`);
     const content = document.getElementById(`tab-content-${t}`);
     
-    if (t === tabName) {
-      btn.className = "admin-tab-btn pb-3 px-1 text-xs font-bold uppercase tracking-wider text-zinc-950 border-b-2 border-zinc-950 flex items-center gap-2";
-      content.classList.remove('hidden');
-    } else {
-      btn.className = "admin-tab-btn pb-3 px-1 text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-zinc-800 border-b-2 border-transparent flex items-center gap-2";
-      content.classList.add('hidden');
+    if (btn && content) {
+      if (t === tabName) {
+        btn.className = "admin-tab-btn pb-3 px-1 text-xs font-bold uppercase tracking-wider text-zinc-950 border-b-2 border-zinc-950 flex items-center gap-2";
+        content.classList.remove('hidden');
+      } else {
+        btn.className = "admin-tab-btn pb-3 px-1 text-xs font-bold uppercase tracking-wider text-zinc-400 hover:text-zinc-800 border-b-2 border-transparent flex items-center gap-2";
+        content.classList.add('hidden');
+      }
     }
   });
 
@@ -883,6 +905,356 @@ function clearAllOrders() {
     renderOrdersTable();
     renderKPIs();
     showToast("All orders cleared", 'info');
+  }
+}
+
+// ========================================================
+// SPECIAL OFFERS & COMBOS MANAGEMENT
+// Strictly DD/MM/YYYY Date & Time Schedulers
+// ========================================================
+
+function renderOffersTable() {
+  const tableBody = document.getElementById('admin-offers-table-body');
+  const countBadge = document.getElementById('tab-count-offers');
+  if (!tableBody) return;
+
+  const offers = adminState.offers || [];
+  if (countBadge) countBadge.textContent = offers.length;
+
+  if (offers.length === 0) {
+    tableBody.innerHTML = `
+      <tr>
+        <td colspan="6" class="text-center py-8 text-zinc-400 text-xs">
+          <i data-lucide="sparkles" class="w-8 h-8 mx-auto mb-2 text-zinc-300"></i>
+          <p>No special offers configured. Click "Reset Defaults" to restore recommended offers.</p>
+        </td>
+      </tr>
+    `;
+    initLucideIcons();
+    return;
+  }
+
+  tableBody.innerHTML = offers.map(offer => {
+    const isExpired = offer.expiryDate && (new Date(offer.expiryDate) < new Date());
+    const primaryImg = (offer.images && offer.images[0]) || 'assets/images/category-shirts.jpg';
+    
+    // Strict DD/MM/YYYY formatting
+    const formattedDate = typeof formatDateTimeToDDMMYYYY === 'function'
+      ? formatDateTimeToDDMMYYYY(offer.expiryDate)
+      : (offer.expiryDate || 'No Expiry');
+
+    const catBadge = {
+      combo: '<span class="px-2 py-0.5 rounded-lg bg-red-50 text-red-700 text-[10px] font-bold uppercase">🎁 Combo</span>',
+      shirts: '<span class="px-2 py-0.5 rounded-lg bg-zinc-100 text-zinc-800 text-[10px] font-bold uppercase">👔 Shirts</span>',
+      tshirts: '<span class="px-2 py-0.5 rounded-lg bg-zinc-100 text-zinc-800 text-[10px] font-bold uppercase">👕 T-Shirts</span>',
+      pants: '<span class="px-2 py-0.5 rounded-lg bg-zinc-100 text-zinc-800 text-[10px] font-bold uppercase">👖 Pants</span>'
+    }[offer.category] || `<span class="px-2 py-0.5 rounded-lg bg-zinc-100 text-zinc-800 text-[10px] font-bold uppercase">${offer.category}</span>`;
+
+    const statusBadge = isExpired
+      ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-zinc-100 text-zinc-600 border border-zinc-200">Expired</span>'
+      : '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 animate-pulse">● Active</span>';
+
+    return `
+      <tr class="hover:bg-zinc-50/70 transition group">
+        <td class="py-3 px-3">
+          <div class="flex items-center gap-3">
+            <img src="${primaryImg}" alt="${offer.title}" class="w-10 h-10 rounded-xl object-cover border border-zinc-200 flex-shrink-0">
+            <div>
+              <span class="font-bold text-zinc-950 block text-xs group-hover:text-red-600 transition">${offer.title}</span>
+              <span class="text-[10px] text-zinc-500 line-clamp-1">${offer.itemsIncluded || offer.description || 'Special Bundle'}</span>
+            </div>
+          </div>
+        </td>
+        <td class="py-3 px-3">${catBadge}</td>
+        <td class="py-3 px-3">
+          <div class="font-mono font-bold text-xs text-zinc-950">₹${Math.round(Number(offer.price)).toLocaleString('en-IN')}</div>
+          ${offer.originalPrice ? `<div class="text-[10px] font-mono text-zinc-400 line-through">₹${Math.round(Number(offer.originalPrice)).toLocaleString('en-IN')}</div>` : ''}
+        </td>
+        <td class="py-3 px-3 font-mono text-[11px] font-semibold text-zinc-800">
+          <div class="flex items-center gap-1.5">
+            <i data-lucide="calendar" class="w-3.5 h-3.5 text-zinc-400"></i>
+            <span>${formattedDate}</span>
+          </div>
+        </td>
+        <td class="py-3 px-3">${statusBadge}</td>
+        <td class="py-3 px-3 text-right">
+          <div class="flex items-center justify-end gap-1.5">
+            <button onclick="openEditOffer('${offer.id}')" class="p-1.5 rounded-lg bg-zinc-100 hover:bg-zinc-200 text-zinc-700 hover:text-zinc-950 transition" title="Edit Offer">
+              <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+            </button>
+            <button onclick="confirmDeleteOffer('${offer.id}')" class="p-1.5 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 transition" title="Delete Offer">
+              <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    `;
+  }).join('');
+
+  initLucideIcons();
+}
+
+// Live Expiry Date & Time Preview in strict DD/MM/YYYY format
+function updateOfferDatePreview() {
+  const dateVal = document.getElementById('offer-edit-date')?.value;
+  const timeVal = document.getElementById('offer-edit-time')?.value || '23:59';
+  const previewEl = document.getElementById('offer-preview-ddmmyyyy');
+  if (!previewEl) return;
+
+  if (!dateVal) {
+    previewEl.textContent = 'DD/MM/YYYY at --:-- --';
+    return;
+  }
+
+  const parts = dateVal.split('-');
+  if (parts.length === 3) {
+    const year = parts[0];
+    const month = parts[1];
+    const day = parts[2];
+
+    let [hours, mins] = timeVal.split(':');
+    hours = parseInt(hours, 10) || 0;
+    mins = mins || '00';
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    let displayHours = hours % 12;
+    displayHours = displayHours ? displayHours : 12;
+    const strHours = String(displayHours).padStart(2, '0');
+
+    previewEl.textContent = `${day}/${month}/${year} at ${strHours}:${mins} ${ampm}`;
+  }
+}
+
+// Offer Image Picker & URL Handlers
+function onOfferFileSelected(event, index) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  if (file.size > 4 * 1024 * 1024) {
+    showToast("Selected image is larger than 4MB. Please choose a smaller photo.", 'error');
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const dataUrl = e.target.result;
+    setOfferImageValueAndPreview(index, dataUrl);
+  };
+  reader.readAsDataURL(file);
+}
+
+function onOfferUrlInput(index) {
+  const input = document.getElementById(`offer-edit-img-${index}`);
+  if (!input) return;
+  const val = input.value.trim();
+  if (val) {
+    setOfferImageValueAndPreview(index, val, false);
+  } else {
+    clearOfferImage(index);
+  }
+}
+
+function setOfferImageValueAndPreview(index, src, syncInput = true) {
+  const previewBox = document.getElementById(`offer-preview-box-${index}`);
+  const previewImg = document.getElementById(`offer-preview-img-${index}`);
+  const promptBox = document.getElementById(`offer-upload-prompt-${index}`);
+  const textInput = document.getElementById(`offer-edit-img-${index}`);
+
+  if (previewImg && previewBox) {
+    previewImg.src = src;
+    previewBox.classList.remove('hidden');
+  }
+  if (promptBox) promptBox.classList.add('hidden');
+  if (syncInput && textInput) textInput.value = src;
+}
+
+function clearOfferImage(index) {
+  const previewBox = document.getElementById(`offer-preview-box-${index}`);
+  const previewImg = document.getElementById(`offer-preview-img-${index}`);
+  const promptBox = document.getElementById(`offer-upload-prompt-${index}`);
+  const textInput = document.getElementById(`offer-edit-img-${index}`);
+  const fileInput = document.getElementById(`file-input-offer-${index}`);
+
+  if (previewImg) previewImg.src = '';
+  if (previewBox) previewBox.classList.add('hidden');
+  if (promptBox) promptBox.classList.remove('hidden');
+  if (textInput) textInput.value = '';
+  if (fileInput) fileInput.value = '';
+}
+
+// Offer Form Reset
+function resetOfferForm() {
+  document.getElementById('offer-manage-form')?.reset();
+  const idEl = document.getElementById('offer-edit-id');
+  if (idEl) idEl.value = '';
+  const badgeEl = document.getElementById('offer-form-badge');
+  if (badgeEl) badgeEl.textContent = 'Promotional Deals Engine';
+  const titleEl = document.getElementById('offer-form-title');
+  if (titleEl) titleEl.textContent = 'Create Special Offer';
+  const submitBtn = document.getElementById('offer-submit-btn');
+  if (submitBtn) submitBtn.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i> <span>Publish Special Offer</span>';
+
+  // Default Expiry: 7 days from today
+  const nextWeek = new Date(Date.now() + 1000 * 60 * 60 * 24 * 7);
+  const yyyy = nextWeek.getFullYear();
+  const mm = String(nextWeek.getMonth() + 1).padStart(2, '0');
+  const dd = String(nextWeek.getDate()).padStart(2, '0');
+
+  const dateInput = document.getElementById('offer-edit-date');
+  const timeInput = document.getElementById('offer-edit-time');
+  if (dateInput) dateInput.value = `${yyyy}-${mm}-${dd}`;
+  if (timeInput) timeInput.value = '23:59';
+
+  clearOfferImage(1);
+  clearOfferImage(2);
+  updateOfferDatePreview();
+  initLucideIcons();
+}
+
+// Save or Update Offer
+function handleSaveOffer(event) {
+  event.preventDefault();
+  const id = document.getElementById('offer-edit-id').value;
+  const title = document.getElementById('offer-edit-title').value.trim();
+  const category = document.getElementById('offer-edit-category').value;
+  const price = parseFloat(document.getElementById('offer-edit-price').value);
+  const origPrice = parseFloat(document.getElementById('offer-edit-orig-price').value) || null;
+  const badge = document.getElementById('offer-edit-badge').value.trim() || 'SPECIAL OFFER';
+  const itemsIncluded = document.getElementById('offer-edit-items').value.trim();
+  const description = document.getElementById('offer-edit-desc').value.trim();
+
+  const dateVal = document.getElementById('offer-edit-date').value;
+  const timeVal = document.getElementById('offer-edit-time').value || '23:59';
+
+  const img1 = document.getElementById('offer-edit-img-1').value.trim();
+  const img2 = document.getElementById('offer-edit-img-2').value.trim();
+
+  if (!img1) {
+    showToast('Please select or upload a Primary Image for this offer', 'error');
+    return;
+  }
+
+  const images = [img1];
+  if (img2) images.push(img2);
+
+  const expiryIso = new Date(`${dateVal}T${timeVal}:00`).toISOString();
+  const discount = origPrice && origPrice > price ? Math.round(((origPrice - price) / origPrice) * 100) : 0;
+
+  if (id) {
+    // Update existing offer
+    const idx = adminState.offers.findIndex(o => o.id === id);
+    if (idx !== -1) {
+      adminState.offers[idx] = {
+        ...adminState.offers[idx],
+        title,
+        category,
+        price,
+        originalPrice: origPrice,
+        discount,
+        badge,
+        itemsIncluded,
+        description: description || "Limited time promotional package engineered with architectural silhouettes.",
+        expiryDate: expiryIso,
+        images
+      };
+      showToast(`Updated Special Offer "${title}"`, 'success');
+    }
+  } else {
+    // Create new offer
+    const newOffer = {
+      id: `offer-${category}-${Date.now().toString().slice(-4)}`,
+      title,
+      category,
+      price,
+      originalPrice: origPrice,
+      discount,
+      badge,
+      itemsIncluded,
+      description: description || "Limited time promotional package engineered with architectural silhouettes.",
+      expiryDate: expiryIso,
+      images,
+      sizes: category === 'pants' ? ["28", "30", "32", "34", "36"] : ["S", "M", "L", "XL", "XXL"],
+      inStock: true
+    };
+    adminState.offers.unshift(newOffer);
+    showToast(`Published new Special Offer "${title}"`, 'success');
+  }
+
+  saveOffersToStorage();
+  renderOffersTable();
+  resetOfferForm();
+}
+
+// Edit Offer Trigger
+function openEditOffer(id) {
+  const offer = adminState.offers.find(o => o.id === id);
+  if (!offer) return;
+
+  document.getElementById('offer-edit-id').value = offer.id;
+  document.getElementById('offer-edit-title').value = offer.title || '';
+  document.getElementById('offer-edit-category').value = offer.category || 'combo';
+  document.getElementById('offer-edit-price').value = offer.price || '';
+  document.getElementById('offer-edit-orig-price').value = offer.originalPrice || '';
+  document.getElementById('offer-edit-badge').value = offer.badge || '';
+  document.getElementById('offer-edit-items').value = offer.itemsIncluded || '';
+  document.getElementById('offer-edit-desc').value = offer.description || '';
+
+  if (offer.expiryDate) {
+    const d = new Date(offer.expiryDate);
+    if (!isNaN(d.getTime())) {
+      const yyyy = d.getFullYear();
+      const mm = String(d.getMonth() + 1).padStart(2, '0');
+      const dd = String(d.getDate()).padStart(2, '0');
+      const hh = String(d.getHours()).padStart(2, '0');
+      const min = String(d.getMinutes()).padStart(2, '0');
+
+      document.getElementById('offer-edit-date').value = `${yyyy}-${mm}-${dd}`;
+      document.getElementById('offer-edit-time').value = `${hh}:${min}`;
+    }
+  }
+
+  updateOfferDatePreview();
+
+  const img1 = (offer.images && offer.images[0]) || '';
+  const img2 = (offer.images && offer.images[1]) || '';
+
+  if (img1) {
+    setOfferImageValueAndPreview(1, img1, true);
+  } else {
+    clearOfferImage(1);
+  }
+
+  if (img2) {
+    setOfferImageValueAndPreview(2, img2, true);
+  } else {
+    clearOfferImage(2);
+  }
+
+  document.getElementById('offer-form-badge').textContent = `Editing Offer: ${offer.id}`;
+  document.getElementById('offer-form-title').textContent = 'Edit Special Offer';
+  document.getElementById('offer-submit-btn').innerHTML = '<i data-lucide="check" class="w-4 h-4"></i> <span>Update Special Offer</span>';
+
+  document.getElementById('tab-content-offers')?.scrollIntoView({ behavior: 'smooth' });
+  initLucideIcons();
+}
+
+function confirmDeleteOffer(id) {
+  const offer = adminState.offers.find(o => o.id === id);
+  if (!offer) return;
+
+  if (confirm(`Are you sure you want to delete the offer "${offer.title}"?`)) {
+    adminState.offers = adminState.offers.filter(o => o.id !== id);
+    saveOffersToStorage();
+    renderOffersTable();
+    showToast(`Deleted offer "${offer.title}"`, 'info');
+  }
+}
+
+function resetDefaultOffers() {
+  if (confirm("Reset offers back to factory default bundle drops?")) {
+    adminState.offers = typeof DEFAULT_OFFERS !== 'undefined' ? DEFAULT_OFFERS : [];
+    saveOffersToStorage();
+    renderOffersTable();
+    showToast("Special offers restored to defaults", 'success');
   }
 }
 
