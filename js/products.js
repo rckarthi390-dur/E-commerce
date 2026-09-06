@@ -1,5 +1,5 @@
 // ==========================================
-// AURA APPAREL - PRODUCT CATALOG DATABASE
+// KARTHI APPAREL - PRODUCT CATALOG DATABASE
 // ==========================================
 
 const PRODUCTS = [
@@ -635,8 +635,9 @@ const PRODUCTS = [
 
 // Coupon Codes configuration
 const COUPONS = {
+  "KARTHI20": { discount: 0.20, label: "20% Karthi Atelier Discount" },
   "WELCOME10": { discount: 0.10, label: "10% Welcome Discount" },
-  "GRAVITY20": { discount: 0.20, label: "20% Antigravity Drop Discount" },
+  "GRAVITY20": { discount: 0.20, label: "20% Drop Discount" },
   "FREESHIP": { discount: 0.00, freeShipping: true, label: "Free Express Shipping" }
 };
 

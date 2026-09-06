@@ -1,5 +1,5 @@
 // ==========================================
-// AURA ATELIER - LIGHTWEIGHT STATIC SERVER
+// KARTHI ATELIER - LIGHTWEIGHT STATIC SERVER
 // Compatible with Render Web Service & Cloud
 // ==========================================
 
@@ -66,5 +66,5 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(PORT, '0.0.0.0', () => {
-  console.log(`[AURA Server] Live and listening on port ${PORT}`);
+  console.log(`[KARTHI Server] Live and listening on port ${PORT}`);
 });

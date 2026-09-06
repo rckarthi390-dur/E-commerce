@@ -1,14 +1,14 @@
 // =====================================================
-// AURA ATELIER - APPLICATION CONTROLLER & STATE MANAGER
+// KARTHI ATELIER - APPLICATION CONTROLLER & STATE MANAGER
 // WHITE MINIMALIST LUXURY DESIGN
 // =====================================================
 
 // Global Application State
 const STATE = {
-  cart: JSON.parse(localStorage.getItem('aura_cart')) || [],
-  wishlist: JSON.parse(localStorage.getItem('aura_wishlist')) || [],
-  currency: localStorage.getItem('aura_currency') || 'USD',
-  appliedCoupon: JSON.parse(localStorage.getItem('aura_coupon')) || null,
+  cart: JSON.parse(localStorage.getItem('karthi_cart')) || [],
+  wishlist: JSON.parse(localStorage.getItem('karthi_wishlist')) || [],
+  currency: localStorage.getItem('karthi_currency') || 'USD',
+  appliedCoupon: JSON.parse(localStorage.getItem('karthi_coupon')) || null,
   viewMode: 'grid',
   sizeGuideUnit: 'inches',
   currentPDPProduct: null,
@@ -51,7 +51,7 @@ function setupEventListeners() {
     currencySelector.value = STATE.currency;
     currencySelector.addEventListener('change', (e) => {
       STATE.currency = e.target.value;
-      localStorage.setItem('aura_currency', STATE.currency);
+      localStorage.setItem('karthi_currency', STATE.currency);
       renderProducts();
       updateCartUI();
       if (STATE.currentPDPProduct) {
@@ -821,7 +821,7 @@ function openProductDetailModal(productId) {
         <!-- Breadcrumb & Stock Status -->
         <div class="flex items-center justify-between text-xs">
           <span class="text-zinc-500 uppercase tracking-wider font-bold capitalize">
-            Aura Atelier / ${product.category}
+            Karthi Atelier / ${product.category}
           </span>
           <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full ${
             product.stockStatus === 'only_2_left' 
@@ -1166,7 +1166,7 @@ function removeFromCart(cartItemId) {
 }
 
 function saveCart() {
-  localStorage.setItem('aura_cart', JSON.stringify(STATE.cart));
+  localStorage.setItem('karthi_cart', JSON.stringify(STATE.cart));
 }
 
 function updateCartUI() {
@@ -1302,12 +1302,12 @@ function applyPromoCode() {
   const coupon = COUPONS[code];
 
   if (!coupon) {
-    showToast(`Coupon "${code}" is invalid or expired. Try "GRAVITY20"`, 'error');
+    showToast(`Coupon "${code}" is invalid or expired. Try "KARTHI20"`, 'error');
     return;
   }
 
   STATE.appliedCoupon = { code, ...coupon };
-  localStorage.setItem('aura_coupon', JSON.stringify(STATE.appliedCoupon));
+  localStorage.setItem('karthi_coupon', JSON.stringify(STATE.appliedCoupon));
 
   const pill = document.getElementById('applied-coupon-pill');
   const label = document.getElementById('coupon-label');
@@ -1323,7 +1323,7 @@ function applyPromoCode() {
 
 function removePromoCode() {
   STATE.appliedCoupon = null;
-  localStorage.removeItem('aura_coupon');
+  localStorage.removeItem('karthi_coupon');
 
   const pill = document.getElementById('applied-coupon-pill');
   if (pill) pill.classList.add('hidden');
@@ -1348,7 +1348,7 @@ function toggleWishlist(productId) {
     showToast(`Saved "${product?.name}" to your wishlist!`, 'success');
   }
 
-  localStorage.setItem('aura_wishlist', JSON.stringify(STATE.wishlist));
+  localStorage.setItem('karthi_wishlist', JSON.stringify(STATE.wishlist));
   updateWishlistUI();
   renderProducts();
 }
@@ -1430,7 +1430,7 @@ function addAllWishlistToCart() {
   });
 
   STATE.wishlist = [];
-  localStorage.setItem('aura_wishlist', JSON.stringify([]));
+  localStorage.setItem('karthi_wishlist', JSON.stringify([]));
   updateWishlistUI();
   closeWishlistDrawer();
   openCartDrawer();
@@ -1493,7 +1493,7 @@ function handleCheckoutSubmit(e) {
 
   setTimeout(() => {
     closeCheckoutModal();
-    const orderId = `#AUR-${Math.floor(10000 + Math.random() * 90000)}`;
+    const orderId = `#KAR-${Math.floor(10000 + Math.random() * 90000)}`;
     
     // Clear Cart
     STATE.cart = [];
@@ -1590,6 +1590,6 @@ function showToast(message, type = 'info') {
 // Newsletter Subscription
 function handleNewsletterSubmit(e) {
   e.preventDefault();
-  showToast('Welcome to the Atelier Club! Check your inbox for private drop access.', 'success');
+  showToast('Welcome to the Karthi Atelier Club! Check your inbox for private drop access.', 'success');
   e.target.reset();
 }

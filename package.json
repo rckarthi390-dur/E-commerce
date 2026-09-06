@@ -1,7 +1,7 @@
 {
-  "name": "aura-ecommerce",
+  "name": "karthi-ecommerce",
   "version": "1.0.0",
-  "description": "AURA Atelier Contemporary E-Commerce Store",
+  "description": "KARTHI Atelier Contemporary E-Commerce Store",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -10,6 +10,6 @@
     "node": ">=18.0.0"
   },
   "keywords": ["ecommerce", "fashion", "apparel"],
-  "author": "AURA Atelier",
+  "author": "KARTHI Atelier",
   "license": "MIT"
 }
