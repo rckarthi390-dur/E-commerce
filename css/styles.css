@@ -153,8 +153,9 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.drawer-backdrop.active .drawer-panel,
 .drawer-panel.active {
-  transform: translateX(0);
+  transform: translateX(0) !important;
 }
 
 /* Slide in from left (Mobile Menu & Filters) */
@@ -163,8 +164,9 @@ h1, h2, h3, h4, h5, h6, .font-heading {
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+.drawer-backdrop.active .drawer-panel-left,
 .drawer-panel-left.active {
-  transform: translateX(0);
+  transform: translateX(0) !important;
 }
 
 /* Modal Zoom & Fade */

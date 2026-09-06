@@ -1142,6 +1142,7 @@ function addToCart(productId, size, color, quantity = 1) {
   saveCart();
   updateCartUI();
   showToast(`Added ${quantity}x "${product.name}" (${size}) to your bag!`, 'success');
+  openCartDrawer();
 }
 
 function updateCartItemQty(cartItemId, delta) {

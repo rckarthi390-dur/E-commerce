@@ -134,13 +134,13 @@
         </button>
 
         <!-- Wishlist Button with Badge -->
-        <button id="wishlist-btn" class="relative p-2.5 text-zinc-600 hover:text-zinc-950 rounded-xl hover:bg-zinc-100 transition group border border-zinc-200 bg-white shadow-sm" aria-label="View wishlist">
+        <button id="wishlist-btn" onclick="openWishlistDrawer()" class="relative p-2.5 text-zinc-600 hover:text-zinc-950 rounded-xl hover:bg-zinc-100 transition group border border-zinc-200 bg-white shadow-sm cursor-pointer" aria-label="View wishlist">
           <i data-lucide="heart" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
           <span id="wishlist-badge" class="absolute -top-1 -right-1 w-5 h-5 bg-red-600 text-white font-bold text-[11px] rounded-full flex items-center justify-center ring-2 ring-white transform scale-0 transition-transform duration-200">0</span>
         </button>
 
         <!-- Cart Slide-out Trigger Button -->
-        <button id="cart-btn" class="relative flex items-center gap-2.5 bg-zinc-950 hover:bg-zinc-800 text-white px-4 py-2.5 rounded-xl font-semibold text-sm transition shadow-md group" aria-label="View shopping cart">
+        <button id="cart-btn" onclick="openCartDrawer()" class="relative flex items-center gap-2.5 bg-zinc-950 hover:bg-zinc-800 text-white px-4 py-2.5 rounded-xl font-semibold text-sm transition shadow-md group cursor-pointer" aria-label="View shopping cart">
           <div class="relative">
             <i data-lucide="shopping-bag" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
             <span id="cart-badge" class="absolute -top-2 -right-2 bg-red-600 text-white font-black text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
