@@ -635,7 +635,23 @@ function handleSaveProduct(event) {
         "Tailored silhouette for fluid motion",
         "Pre-shrunk for enduring fit"
       ],
-      careInstructions: "Machine wash cold on gentle cycle. Hang dry."
+      careInstructions: "Machine wash cold on gentle cycle. Hang dry.",
+      measurements: {
+        inches: {
+          S: { chest: "38", length: "29", shoulder: "17.5", sleeve: "33.5" },
+          M: { chest: "41", length: "29.5", shoulder: "18.25", sleeve: "34.5" },
+          L: { chest: "44", length: "30", shoulder: "19", sleeve: "35.5" },
+          XL: { chest: "47", length: "30.5", shoulder: "19.75", sleeve: "36.5" },
+          XXL: { chest: "50", length: "31", shoulder: "20.5", sleeve: "37" }
+        },
+        cm: {
+          S: { chest: "96.5", length: "73.5", shoulder: "44.5", sleeve: "85" },
+          M: { chest: "104", length: "75", shoulder: "46.3", sleeve: "87.5" },
+          L: { chest: "111.8", length: "76.2", shoulder: "48.2", sleeve: "90" },
+          XL: { chest: "119.4", length: "77.5", shoulder: "50.2", sleeve: "92.7" },
+          XXL: { chest: "127", length: "78.7", shoulder: "52", sleeve: "94" }
+        }
+      }
     };
     adminState.products.unshift(newProduct);
     showToast(`Added new product "${name}"`, 'success');

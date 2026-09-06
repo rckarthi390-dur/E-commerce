@@ -16,7 +16,7 @@ const STATE = {
   selectedPDPColor: null,
   filters: {
     category: 'all',
-    maxPrice: 100,
+    maxPrice: 500,
     sizes: [],
     fits: [],
     saleOnly: false,
@@ -169,6 +169,24 @@ function setupEventListeners() {
     document.getElementById('view-grid-btn').classList.add('text-zinc-500');
     renderProducts();
   });
+
+  // Real-time synchronization when Admin modifies products/coupons in another tab
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'karthi_products') {
+      if (typeof getActiveProducts === 'function') {
+        PRODUCTS = getActiveProducts();
+      }
+      renderProducts();
+    }
+  });
+
+  // Auto-refresh catalog whenever user focuses or switches to storefront tab
+  window.addEventListener('focus', () => {
+    if (typeof getActiveProducts === 'function') {
+      PRODUCTS = getActiveProducts();
+    }
+    renderProducts();
+  });
 }
 
 // Price and Currency Formatter
@@ -188,6 +206,11 @@ function updateCurrencyDisplay() {
 // =====================================================
 
 function getFilteredProducts() {
+  // Always fetch fresh catalog from LocalStorage
+  if (typeof getActiveProducts === 'function') {
+    PRODUCTS = getActiveProducts();
+  }
+
   return PRODUCTS.filter(p => {
     // Category filter
     if (STATE.filters.category !== 'all' && p.category !== STATE.filters.category) {
@@ -201,7 +224,7 @@ function getFilteredProducts() {
 
     // Size filter
     if (STATE.filters.sizes.length > 0) {
-      const hasSize = STATE.filters.sizes.some(s => p.sizes.includes(s));
+      const hasSize = STATE.filters.sizes.some(s => p.sizes && p.sizes.includes(s));
       if (!hasSize) return false;
     }
 
@@ -225,8 +248,8 @@ function getFilteredProducts() {
       const q = STATE.filters.searchQuery.toLowerCase();
       const matchName = p.name.toLowerCase().includes(q);
       const matchCategory = p.category.toLowerCase().includes(q);
-      const matchFabric = p.fabric.toLowerCase().includes(q);
-      const matchDesc = p.description.toLowerCase().includes(q);
+      const matchFabric = p.fabric && p.fabric.toLowerCase().includes(q);
+      const matchDesc = p.description && p.description.toLowerCase().includes(q);
       if (!matchName && !matchCategory && !matchFabric && !matchDesc) return false;
     }
 
@@ -241,11 +264,31 @@ function getFilteredProducts() {
   });
 }
 
+function updateCategoryCountBadges() {
+  if (!Array.isArray(PRODUCTS)) return;
+  const allCount = PRODUCTS.length;
+  const shirtsCount = PRODUCTS.filter(p => p.category === 'shirts').length;
+  const tshirtsCount = PRODUCTS.filter(p => p.category === 'tshirts').length;
+  const pantsCount = PRODUCTS.filter(p => p.category === 'pants').length;
+  
+  const countAllEl = document.getElementById('cat-count-all');
+  const countShirtsEl = document.getElementById('cat-count-shirts');
+  const countTshirtsEl = document.getElementById('cat-count-tshirts');
+  const countPantsEl = document.getElementById('cat-count-pants');
+  
+  if (countAllEl) countAllEl.textContent = allCount;
+  if (countShirtsEl) countShirtsEl.textContent = shirtsCount;
+  if (countTshirtsEl) countTshirtsEl.textContent = tshirtsCount;
+  if (countPantsEl) countPantsEl.textContent = pantsCount;
+}
+
 function renderProducts() {
   const grid = document.getElementById('products-grid');
   const emptyState = document.getElementById('empty-state');
   const countLabel = document.getElementById('product-count-label');
   const filtered = getFilteredProducts();
+
+  updateCategoryCountBadges();
 
   if (countLabel) {
     countLabel.textContent = `Showing ${filtered.length} of ${PRODUCTS.length} contemporary apparel pieces`;
@@ -538,13 +581,19 @@ function renderActiveFilterChips() {
     });
   }
 
-  if (STATE.filters.maxPrice < 100) {
+  if (STATE.filters.maxPrice < 500) {
     chips.push({
       label: `Max Price: $${STATE.filters.maxPrice}`,
       action: () => {
-        STATE.filters.maxPrice = 100;
-        document.getElementById('price-range-slider').value = 100;
-        document.getElementById('price-slider-label').textContent = '$100';
+        STATE.filters.maxPrice = 500;
+        const s1 = document.getElementById('price-range-slider');
+        const s2 = document.getElementById('mobile-price-range-slider');
+        if (s1) s1.value = 500;
+        if (s2) s2.value = 500;
+        const l1 = document.getElementById('price-slider-label');
+        const l2 = document.getElementById('mobile-price-slider-label');
+        if (l1) l1.textContent = '$500';
+        if (l2) l2.textContent = '$500';
         handleFilterChange();
       }
     });
@@ -722,7 +771,7 @@ function setMobileCategory(cat) {
 function resetAllFilters() {
   STATE.filters = {
     category: 'all',
-    maxPrice: 100,
+    maxPrice: 500,
     sizes: [],
     fits: [],
     saleOnly: false,
@@ -731,9 +780,14 @@ function resetAllFilters() {
   };
 
   const slider = document.getElementById('price-range-slider');
-  if (slider) slider.value = 100;
+  if (slider) slider.value = 500;
   const sliderLabel = document.getElementById('price-slider-label');
-  if (sliderLabel) sliderLabel.textContent = '$100';
+  if (sliderLabel) sliderLabel.textContent = '$500';
+
+  const mSlider = document.getElementById('mobile-price-range-slider');
+  if (mSlider) mSlider.value = 500;
+  const mSliderLabel = document.getElementById('mobile-price-slider-label');
+  if (mSliderLabel) mSliderLabel.textContent = '$500';
 
   const catRadio = document.querySelector('input[name="filter-category"][value="all"]');
   if (catRadio) catRadio.checked = true;

@@ -2,7 +2,7 @@
 // KARTHI APPAREL - PRODUCT CATALOG DATABASE
 // ==========================================
 
-const PRODUCTS = [
+const DEFAULT_PRODUCTS = [
   // ----------------------------------------
   // SHIRTS
   // ----------------------------------------
@@ -633,15 +633,15 @@ const PRODUCTS = [
   }
 ];
 
-// Default Catalog
-const DEFAULT_PRODUCTS = PRODUCTS;
-
-// Dynamic Products Store (Synchronized with Admin Panel)
+// Dynamic Products Store (Synchronized with Admin Panel & LocalStorage)
 function getActiveProducts() {
   const saved = localStorage.getItem('karthi_products');
   if (saved) {
     try {
-      return JSON.parse(saved);
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
+      }
     } catch (e) {
       console.error('Error parsing stored products', e);
     }
@@ -650,8 +650,9 @@ function getActiveProducts() {
   return DEFAULT_PRODUCTS;
 }
 
-// Global mutable products reference
-let ACTIVE_PRODUCTS = getActiveProducts();
+// Global dynamic products references (Always in sync)
+let PRODUCTS = getActiveProducts();
+let ACTIVE_PRODUCTS = PRODUCTS;
 
 // Coupon Codes configuration (Dynamic with Admin sync)
 function getActiveCoupons() {

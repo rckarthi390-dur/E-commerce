@@ -590,28 +590,28 @@
                   <input type="radio" name="filter-category" value="all" checked onchange="handleFilterChange()" class="accent-zinc-950">
                   <span class="text-zinc-900">All Apparel</span>
                 </span>
-                <span class="text-xs text-zinc-400 font-mono">12</span>
+                <span id="cat-count-all" class="text-xs text-zinc-400 font-mono font-bold">12</span>
               </label>
               <label class="flex items-center justify-between cursor-pointer p-2 rounded-xl hover:bg-zinc-50 transition">
                 <span class="flex items-center gap-2.5">
                   <input type="radio" name="filter-category" value="shirts" onchange="handleFilterChange()" class="accent-zinc-950">
                   <span class="text-zinc-900">Shirts</span>
                 </span>
-                <span class="text-xs text-zinc-400 font-mono">4</span>
+                <span id="cat-count-shirts" class="text-xs text-zinc-400 font-mono font-bold">4</span>
               </label>
               <label class="flex items-center justify-between cursor-pointer p-2 rounded-xl hover:bg-zinc-50 transition">
                 <span class="flex items-center gap-2.5">
                   <input type="radio" name="filter-category" value="tshirts" onchange="handleFilterChange()" class="accent-zinc-950">
                   <span class="text-zinc-900">T-Shirts</span>
                 </span>
-                <span class="text-xs text-zinc-400 font-mono">4</span>
+                <span id="cat-count-tshirts" class="text-xs text-zinc-400 font-mono font-bold">4</span>
               </label>
               <label class="flex items-center justify-between cursor-pointer p-2 rounded-xl hover:bg-zinc-50 transition">
                 <span class="flex items-center gap-2.5">
                   <input type="radio" name="filter-category" value="pants" onchange="handleFilterChange()" class="accent-zinc-950">
                   <span class="text-zinc-900">Pants & Trousers</span>
                 </span>
-                <span class="text-xs text-zinc-400 font-mono">4</span>
+                <span id="cat-count-pants" class="text-xs text-zinc-400 font-mono font-bold">4</span>
               </label>
             </div>
           </div>
@@ -620,22 +620,22 @@
           <div class="space-y-3 pt-4 border-t border-zinc-200">
             <div class="flex items-center justify-between">
               <label class="text-xs font-bold text-zinc-400 uppercase tracking-wider">Max Price</label>
-              <span id="price-slider-label" class="text-sm font-bold text-red-600 font-mono">$100</span>
+              <span id="price-slider-label" class="text-sm font-bold text-red-600 font-mono">$500</span>
             </div>
             <input 
               type="range" 
               id="price-range-slider" 
-              min="30" 
-              max="100" 
-              value="100" 
-              step="2" 
+              min="20" 
+              max="500" 
+              value="500" 
+              step="5" 
               oninput="handlePriceSliderInput(this.value)"
               class="w-full"
             >
             <div class="flex justify-between text-[11px] text-zinc-400 font-mono font-medium">
-              <span>$30</span>
-              <span>$65</span>
-              <span>$100</span>
+              <span>$20</span>
+              <span>$250</span>
+              <span>$500</span>
             </div>
           </div>
 
@@ -748,15 +748,15 @@
           <div>
             <div class="flex justify-between items-center mb-2">
               <label class="text-xs font-bold text-zinc-400 uppercase tracking-wider">Max Price</label>
-              <span id="mobile-price-slider-label" class="text-sm font-bold text-red-600 font-mono">$100</span>
+              <span id="mobile-price-slider-label" class="text-sm font-bold text-red-600 font-mono">$500</span>
             </div>
             <input 
               type="range" 
               id="mobile-price-range-slider" 
-              min="30" 
-              max="100" 
-              value="100" 
-              step="2" 
+              min="20" 
+              max="500" 
+              value="500" 
+              step="5" 
               oninput="handlePriceSliderInput(this.value)"
               class="w-full"
             >
