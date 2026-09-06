@@ -29,6 +29,18 @@ const STATE = {
 
 // Initialize Application on DOM Ready
 document.addEventListener('DOMContentLoaded', () => {
+  // Detect dedicated category or offer page from body data attribute
+  const pageCategory = document.body.dataset.pageCategory;
+  if (pageCategory) {
+    if (pageCategory === 'combos') {
+      STATE.offersFilter = 'combo';
+    } else if (pageCategory === 'offers') {
+      STATE.offersFilter = 'all';
+    } else {
+      STATE.filters.category = pageCategory;
+    }
+  }
+
   initLucideIcons();
   setupEventListeners();
   updateCurrencyDisplay();
@@ -1034,8 +1046,11 @@ function setMobileCategory(cat) {
 }
 
 function resetAllFilters() {
+  const pageCategory = document.body.dataset.pageCategory;
+  const defaultCategory = (pageCategory && pageCategory !== 'combos' && pageCategory !== 'offers') ? pageCategory : 'all';
+
   STATE.filters = {
-    category: 'all',
+    category: defaultCategory,
     maxPrice: 1500,
     sizes: [],
     fits: [],
@@ -1054,7 +1069,7 @@ function resetAllFilters() {
   const mSliderLabel = document.getElementById('mobile-price-slider-label');
   if (mSliderLabel) mSliderLabel.textContent = '₹1,500';
 
-  const catRadio = document.querySelector('input[name="filter-category"][value="all"]');
+  const catRadio = document.querySelector(`input[name="filter-category"][value="${defaultCategory}"]`);
   if (catRadio) catRadio.checked = true;
 
   const saleToggle = document.getElementById('sale-only-toggle');

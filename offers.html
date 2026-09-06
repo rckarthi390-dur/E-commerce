@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Special Offers & Flash Drops | KARTHI ATELIER</title>
+  <meta name="description" content="Exclusive limited-time promotional bundles, discounted combos, and flash drops with live real-time countdown timers.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              red: '#DC2626',
+              crimson: '#991B1B',
+              dark: '#09090B',
+              card: '#FFFFFF',
+              border: '#E4E4E7',
+              muted: '#71717A',
+              bg: '#FAFAFA'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            heading: ['"Space Grotesk"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css?v=3">
+
+  <!-- Force Hide All Scrollbars Globally -->
+  <style>
+    html, body, div, section, main, aside, nav, form, table, tbody, ul, li, * {
+      -ms-overflow-style: none !important;
+      scrollbar-width: none !important;
+    }
+    html::-webkit-scrollbar, body::-webkit-scrollbar, div::-webkit-scrollbar, *::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      background: transparent !important;
+      opacity: 0 !important;
+    }
+  </style>
+</head>
+<body data-page-category="offers" class="bg-[#FAFAFA] text-zinc-900 antialiased selection:bg-red-600 selection:text-white">
+
+  <!-- =====================================================
+       TOP ANNOUNCEMENT BAR
+       ===================================================== -->
+  <div class="bg-zinc-950 text-white text-xs py-2 px-4 border-b border-zinc-800">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+      <div class="flex items-center gap-2 text-zinc-300">
+        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold bg-red-600/90 text-white">
+          <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span> FLASH OFFERS ATELIER
+        </span>
+        <span class="text-xs">Use code <strong class="text-white tracking-wider font-mono bg-zinc-800 px-1.5 py-0.5 rounded text-red-400">KARTHI20</strong> for 20% Off • Free Express Delivery Across India on orders ₹799+</span>
+      </div>
+      <div class="flex items-center gap-4 text-zinc-400 text-xs">
+        <div class="flex items-center gap-1.5 text-zinc-200 text-xs font-bold font-mono bg-zinc-900 px-2.5 py-1 rounded-lg border border-zinc-800">
+          <span>🇮🇳</span>
+          <span>INR (₹)</span>
+        </div>
+        <span class="text-zinc-700">|</span>
+        <a href="admin.html" class="hover:text-white transition flex items-center gap-1">
+          <i data-lucide="shield" class="w-3.5 h-3.5 text-red-500"></i> Admin Panel
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+       HEADER & MAIN NAVIGATION
+       ===================================================== -->
+  <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-xl border-b border-zinc-200 transition-all duration-300 shadow-sm" id="main-header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+      
+      <!-- Mobile Menu Toggle Button -->
+      <button id="mobile-menu-btn" class="lg:hidden p-2 text-zinc-600 hover:text-zinc-950 focus:outline-none rounded-xl hover:bg-zinc-100" aria-label="Toggle navigation">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+
+      <!-- Brand Logo -->
+      <a href="index.html" class="flex items-center gap-2.5 group">
+        <div class="w-9 h-9 rounded-xl bg-zinc-950 flex items-center justify-center text-white group-hover:bg-red-600 transition shadow-md">
+          <span class="font-heading font-black text-lg tracking-tighter">K</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-heading text-xl font-extrabold tracking-widest text-zinc-950 leading-none">KARTHI<span class="text-red-600">.</span></span>
+          <span class="text-[9px] uppercase tracking-[0.25em] text-zinc-500 font-bold">Studio Atelier</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center gap-1 xl:gap-2">
+        <a href="index.html" class="nav-link px-3.5 py-2 rounded-xl text-sm font-medium text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100 transition">All Collection</a>
+        <a href="shirts.html" class="nav-link px-3.5 py-2 rounded-xl text-sm font-medium text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100 transition">Shirts</a>
+        <a href="tshirts.html" class="nav-link px-3.5 py-2 rounded-xl text-sm font-medium text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100 transition">T-Shirts</a>
+        <a href="pants.html" class="nav-link px-3.5 py-2 rounded-xl text-sm font-medium text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100 transition">Pants & Trousers</a>
+        <a href="offers.html" class="active px-3.5 py-2 rounded-xl text-sm font-bold text-red-600 bg-red-50 border border-red-200 transition flex items-center gap-1.5">
+          <i data-lucide="sparkles" class="w-4 h-4 text-red-600"></i>
+          <span>Special Offers</span>
+        </a>
+        <a href="combos.html" class="px-3.5 py-2 rounded-xl text-sm font-bold text-zinc-900 hover:text-red-600 hover:bg-zinc-100 transition flex items-center gap-1.5">
+          <span>🎁 Combos</span>
+        </a>
+      </nav>
+
+      <!-- Search & Utility Action Badges -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        
+        <!-- Live Search Box -->
+        <div class="relative hidden md:block w-48 lg:w-64 xl:w-72">
+          <div class="relative flex items-center">
+            <i data-lucide="search" class="w-4 h-4 text-zinc-400 absolute left-3 pointer-events-none"></i>
+            <input 
+              type="text" 
+              id="global-search-input" 
+              placeholder="Search offers & bundles..." 
+              class="w-full bg-zinc-100 text-sm text-zinc-900 placeholder-zinc-400 pl-9 pr-8 py-2 rounded-xl border border-zinc-200 focus:bg-white focus:border-zinc-950 focus:ring-1 focus:ring-zinc-950 focus:outline-none transition"
+              autocomplete="off"
+            >
+            <button id="search-clear-btn" class="hidden absolute right-2.5 text-zinc-400 hover:text-zinc-950 p-0.5">
+              <i data-lucide="x" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+          <div id="search-results-dropdown" class="hidden absolute left-0 right-0 top-full mt-2 glass-dropdown-light rounded-2xl shadow-xl p-2 z-50 max-h-96 overflow-y-auto border border-zinc-200"></div>
+        </div>
+
+        <!-- Wishlist Button -->
+        <button id="wishlist-btn" onclick="openWishlistDrawer()" class="relative p-2.5 text-zinc-600 hover:text-zinc-950 rounded-xl hover:bg-zinc-100 transition group border border-zinc-200 bg-white shadow-sm cursor-pointer">
+          <i data-lucide="heart" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+          <span id="wishlist-badge" class="absolute -top-1 -right-1 w-5 h-5 bg-red-600 text-white font-bold text-[11px] rounded-full flex items-center justify-center ring-2 ring-white transform scale-0 transition-transform duration-200">0</span>
+        </button>
+
+        <!-- Cart Button -->
+        <button id="cart-btn" onclick="openCartDrawer()" class="relative flex items-center gap-2.5 bg-zinc-950 hover:bg-zinc-800 text-white px-4 py-2.5 rounded-xl font-semibold text-sm transition shadow-md group cursor-pointer">
+          <div class="relative">
+            <i data-lucide="shopping-bag" class="w-4 h-4 group-hover:scale-110 transition-transform"></i>
+            <span id="cart-badge" class="absolute -top-2 -right-2 bg-red-600 text-white font-black text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+          </div>
+          <span id="header-cart-total" class="hidden sm:inline font-bold tracking-tight font-mono">₹0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =====================================================
+       MOBILE NAVIGATION DRAWER
+       ===================================================== -->
+  <div id="mobile-menu-drawer" class="fixed inset-0 z-50 drawer-backdrop bg-black/60 flex">
+    <div class="w-4/5 max-w-sm bg-white h-full border-r border-zinc-200 p-6 flex flex-col justify-between drawer-panel-left overflow-y-auto shadow-2xl">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-zinc-200">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg bg-zinc-950 flex items-center justify-center font-bold text-white">K</div>
+            <span class="font-heading font-extrabold text-lg text-zinc-950">KARTHI ATELIER</span>
+          </div>
+          <button id="close-mobile-menu" class="p-2 text-zinc-400 hover:text-zinc-950 rounded-lg hover:bg-zinc-100">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <nav class="mt-6 flex flex-col gap-2">
+          <a href="index.html" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-medium text-zinc-700 hover:bg-zinc-100">
+            <span>All Collection</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
+          </a>
+          <a href="shirts.html" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-medium text-zinc-700 hover:bg-zinc-100">
+            <span>Shirts & Overshirts</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
+          </a>
+          <a href="tshirts.html" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-medium text-zinc-700 hover:bg-zinc-100">
+            <span>Graphic & Heavy Tees</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
+          </a>
+          <a href="pants.html" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-medium text-zinc-700 hover:bg-zinc-100">
+            <span>Trousers & Pants</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
+          </a>
+          <a href="offers.html" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-bold text-red-600 bg-red-50 hover:bg-red-100 border border-red-200">
+            <span class="flex items-center gap-2">
+              <i data-lucide="sparkles" class="w-4 h-4 text-red-600"></i>
+              <span>Special Offers & Drops</span>
+            </span>
+            <span class="text-xs bg-red-600 text-white px-2 py-0.5 rounded font-bold">HOT</span>
+          </a>
+          <a href="combos.html" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-bold text-zinc-900 bg-zinc-50 hover:bg-zinc-100 border border-zinc-200">
+            <span>🎁 Combo Packs & Bundles</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
+          </a>
+        </nav>
+      </div>
+
+      <div class="pt-6 border-t border-zinc-200 space-y-4">
+        <a href="admin.html" class="w-full flex items-center justify-center gap-2 p-3 rounded-xl bg-zinc-950 text-white text-xs font-bold uppercase tracking-wider">
+          <i data-lucide="shield" class="w-4 h-4 text-red-500"></i> Admin Panel
+        </a>
+        <div class="text-xs text-zinc-400 text-center font-medium">
+          © 2026 KARTHI STUDIO ATELIER.
+        </div>
+      </div>
+    </div>
+    <div class="flex-1" onclick="closeMobileNav()"></div>
+  </div>
+
+  <!-- =====================================================
+       DEDICATED OFFERS HERO BANNER
+       ===================================================== -->
+  <section class="relative bg-gradient-to-b from-white via-red-50/20 to-white border-b border-zinc-200 py-12 lg:py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-zinc-400 font-semibold mb-4">
+        <a href="index.html" class="hover:text-zinc-950 transition">Home</a>
+        <span>/</span>
+        <span class="text-zinc-950 font-bold">Special Offers & Flash Deals</span>
+      </nav>
+
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+        <div class="space-y-3 max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-100 text-red-700 border border-red-200 text-xs font-bold uppercase tracking-wider">
+            <span class="w-2 h-2 rounded-full bg-red-600 animate-ping"></span>
+            <span>🔥 Time-Sensitive Promotional Drops</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black font-heading text-zinc-950 tracking-tight">
+            Special Offers & Flash Drops
+          </h1>
+          <p class="text-sm text-zinc-600 leading-relaxed max-w-xl">
+            Save up to 40% on curated bundles, dual shirt combinations, heavyweight twin tees, and sartorial pairings. Strict real-time expiration countdowns on all drops.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-4 bg-white border border-red-200 p-4 rounded-2xl shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-red-600 text-white flex items-center justify-center font-bold shadow-md">
+            <i data-lucide="timer" class="w-6 h-6 text-white"></i>
+          </div>
+          <div>
+            <div class="text-xs font-bold text-zinc-950 uppercase tracking-wider">Strict Expiry Verification</div>
+            <div class="text-[11px] text-zinc-500">Dates in DD/MM/YYYY with live second countdown</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =====================================================
+       OFFERS SHOWCASE SECTION
+       ===================================================== -->
+  <section class="py-14 bg-[#FAFAFA]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Filter Bar -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between pb-8 border-b border-zinc-200 gap-4">
+        <div>
+          <h2 class="text-2xl font-extrabold text-zinc-950">Active Promotional Offers</h2>
+          <p class="text-xs text-zinc-500 mt-1">Select a department tab to filter special bundles</p>
+        </div>
+
+        <!-- Category Filter Pills -->
+        <div class="flex flex-wrap items-center gap-2 bg-white p-1.5 rounded-2xl border border-zinc-200 shadow-sm">
+          <button onclick="filterOffersByCategory('all')" class="offer-tab-btn active px-4 py-2 rounded-xl text-xs font-bold text-white bg-zinc-950 transition" data-offer-cat="all">
+            All Offers
+          </button>
+          <button onclick="filterOffersByCategory('combo')" class="offer-tab-btn px-4 py-2 rounded-xl text-xs font-semibold text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100 transition" data-offer-cat="combo">
+            🎁 Combos
+          </button>
+          <button onclick="filterOffersByCategory('shirts')" class="offer-tab-btn px-4 py-2 rounded-xl text-xs font-semibold text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100 transition" data-offer-cat="shirts">
+            👔 Shirts
+          </button>
+          <button onclick="filterOffersByCategory('tshirts')" class="offer-tab-btn px-4 py-2 rounded-xl text-xs font-semibold text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100 transition" data-offer-cat="tshirts">
+            👕 T-Shirts
+          </button>
+          <button onclick="filterOffersByCategory('pants')" class="offer-tab-btn px-4 py-2 rounded-xl text-xs font-semibold text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100 transition" data-offer-cat="pants">
+            👖 Pants
+          </button>
+        </div>
+      </div>
+
+      <!-- Dynamic Offers Grid -->
+      <div id="offers-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-8"></div>
+
+    </div>
+  </section>
+
+  <!-- =====================================================
+       SHARED MODALS & DRAWERS
+       ===================================================== -->
+  
+  <!-- PDP Detail Modal -->
+  <div id="pdp-modal" class="modal-backdrop">
+    <div class="modal-content max-w-4xl p-6 sm:p-10 relative">
+      <button onclick="closePDPModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 flex items-center justify-center z-10 transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div id="pdp-content-container" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
+    </div>
+  </div>
+
+  <!-- Cart Slide-out Drawer -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 drawer-backdrop bg-black/60 flex justify-end">
+    <div class="w-full max-w-md bg-white h-full border-l border-zinc-200 p-6 flex flex-col justify-between drawer-panel shadow-2xl">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-zinc-200">
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="shopping-bag" class="w-5 h-5 text-red-600"></i>
+            <h3 class="text-lg font-bold text-zinc-950">Shopping Bag</h3>
+            <span id="cart-drawer-count" class="text-xs font-mono font-bold bg-zinc-100 px-2 py-0.5 rounded-full text-zinc-700">0 items</span>
+          </div>
+          <button id="close-cart-btn" class="p-2 text-zinc-400 hover:text-zinc-950 rounded-lg hover:bg-zinc-100">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <div class="py-3">
+          <div class="flex justify-between text-xs font-bold mb-1.5">
+            <span id="free-shipping-msg" class="text-zinc-700 font-medium">Add items for Free Express Shipping</span>
+            <span id="free-shipping-percent" class="font-mono text-red-600">0%</span>
+          </div>
+          <div class="w-full bg-zinc-100 rounded-full h-2 overflow-hidden border border-zinc-200">
+            <div id="free-shipping-bar" class="bg-red-600 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <div id="cart-items-container" class="space-y-3 overflow-y-auto max-h-[45vh] pr-1 py-2"></div>
+      </div>
+
+      <div class="pt-4 border-t border-zinc-200 space-y-3">
+        <div class="space-y-1 text-xs">
+          <div class="flex justify-between text-zinc-600">
+            <span>Subtotal</span>
+            <span id="cart-subtotal" class="font-mono font-bold text-zinc-950">₹0</span>
+          </div>
+          <div id="cart-discount-row" class="hidden flex justify-between text-emerald-700 font-semibold">
+            <span>Discount Applied</span>
+            <span id="cart-discount-val" class="font-mono">-₹0</span>
+          </div>
+          <div class="flex justify-between text-zinc-600">
+            <span>Express Shipping</span>
+            <span id="cart-shipping" class="font-mono font-bold text-zinc-950">₹49</span>
+          </div>
+          <div class="flex justify-between text-base font-extrabold text-zinc-950 pt-2 border-t border-zinc-100">
+            <span>Estimated Total</span>
+            <span id="cart-total" class="font-mono text-lg text-red-600">₹0</span>
+          </div>
+        </div>
+
+        <a href="index.html#checkout-modal" onclick="closeCartDrawer(); openCheckoutModal();" class="w-full py-4 rounded-xl bg-zinc-950 hover:bg-zinc-800 text-white font-bold text-xs uppercase tracking-wider transition shadow flex items-center justify-center gap-2 cursor-pointer">
+          <i data-lucide="lock" class="w-4 h-4 text-emerald-400"></i>
+          <span>Proceed to Secure Checkout</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wishlist Drawer -->
+  <div id="wishlist-drawer" class="fixed inset-0 z-50 drawer-backdrop bg-black/60 flex justify-end">
+    <div class="w-full max-w-md bg-white h-full border-l border-zinc-200 p-6 flex flex-col justify-between drawer-panel shadow-2xl">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-zinc-200">
+          <div class="flex items-center gap-2">
+            <i data-lucide="heart" class="w-5 h-5 text-red-600 fill-red-600"></i>
+            <h3 class="text-lg font-bold text-zinc-950">Saved Atelier Pieces</h3>
+          </div>
+          <button id="close-wishlist-btn" class="p-2 text-zinc-400 hover:text-zinc-950 rounded-lg hover:bg-zinc-100">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+        <div id="wishlist-items-container" class="space-y-3 overflow-y-auto max-h-[65vh] py-4 pr-1"></div>
+      </div>
+      <button onclick="closeWishlistDrawer()" class="w-full py-3 bg-zinc-100 hover:bg-zinc-200 text-zinc-950 rounded-xl text-xs font-bold uppercase tracking-wider transition">
+        Continue Browsing
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-zinc-950 text-white border-t border-zinc-800 pt-16 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-zinc-800 text-xs">
+        <div class="space-y-3">
+          <div class="font-heading text-xl font-extrabold tracking-widest text-white">KARTHI<span class="text-red-500">.</span></div>
+          <p class="text-zinc-400 leading-relaxed">Contemporary luxury fashion and flash promotional drops.</p>
+        </div>
+        <div>
+          <h4 class="font-bold text-white uppercase tracking-wider mb-3">Departments</h4>
+          <ul class="space-y-2 text-zinc-400">
+            <li><a href="shirts.html" class="hover:text-white transition">Shirts & Overshirts</a></li>
+            <li><a href="tshirts.html" class="hover:text-white transition">Heavyweight Graphic Tees</a></li>
+            <li><a href="pants.html" class="hover:text-white transition">Tailored Trousers & Pants</a></li>
+            <li><a href="combos.html" class="hover:text-white transition">Combo Bundles</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-white uppercase tracking-wider mb-3">Special Drops</h4>
+          <ul class="space-y-2 text-zinc-400">
+            <li><a href="offers.html" class="hover:text-white transition">Flash Offers</a></li>
+            <li><a href="combos.html" class="hover:text-white transition">Curated Combos</a></li>
+            <li><a href="admin.html" class="hover:text-white transition">Admin Operations Console</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-white uppercase tracking-wider mb-3">Customer Care</h4>
+          <p class="text-zinc-400">All India Express Shipping • Doorstep 30-Day Returns • 24/7 Concierge Support</p>
+        </div>
+      </div>
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
+        <div>© 2026 KARTHI STUDIO ATELIER. All Rights Reserved.</div>
+        <div>Indian Rupee (INR - ₹) Checkout</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-2 pointer-events-none"></div>
+
+  <!-- Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

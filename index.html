@@ -114,13 +114,16 @@
 
       <!-- Desktop Nav Links -->
       <nav class="hidden lg:flex items-center gap-1 xl:gap-2">
-        <button onclick="filterByCategory('all'); scrollToCatalog();" class="nav-link active px-3.5 py-2 rounded-xl text-sm font-semibold text-zinc-950 bg-zinc-100 hover:bg-zinc-200/80 transition" data-category="all">All Products</button>
-        <button onclick="filterByCategory('shirts'); scrollToCatalog();" class="nav-link px-3.5 py-2 rounded-xl text-sm font-medium text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100 transition" data-category="shirts">Shirts</button>
-        <button onclick="filterByCategory('tshirts'); scrollToCatalog();" class="nav-link px-3.5 py-2 rounded-xl text-sm font-medium text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100 transition" data-category="tshirts">T-Shirts</button>
-        <button onclick="filterByCategory('pants'); scrollToCatalog();" class="nav-link px-3.5 py-2 rounded-xl text-sm font-medium text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100 transition" data-category="pants">Pants & Trousers</button>
-        <a href="#offers-section" class="px-3.5 py-2 rounded-xl text-sm font-bold text-red-600 hover:text-red-700 hover:bg-red-50 transition flex items-center gap-1.5" title="View Special Offers & Combos">
+        <a href="index.html" class="nav-link active px-3.5 py-2 rounded-xl text-sm font-semibold text-zinc-950 bg-zinc-100 hover:bg-zinc-200/80 transition">All Collection</a>
+        <a href="shirts.html" class="nav-link px-3.5 py-2 rounded-xl text-sm font-medium text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100 transition">Shirts</a>
+        <a href="tshirts.html" class="nav-link px-3.5 py-2 rounded-xl text-sm font-medium text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100 transition">T-Shirts</a>
+        <a href="pants.html" class="nav-link px-3.5 py-2 rounded-xl text-sm font-medium text-zinc-600 hover:text-zinc-950 hover:bg-zinc-100 transition">Pants & Trousers</a>
+        <a href="offers.html" class="px-3.5 py-2 rounded-xl text-sm font-bold text-red-600 hover:text-red-700 hover:bg-red-50 transition flex items-center gap-1.5" title="View Special Offers & Flash Deals">
           <i data-lucide="sparkles" class="w-4 h-4 text-red-600"></i>
-          <span>Offers & Combos</span>
+          <span>Special Offers</span>
+        </a>
+        <a href="combos.html" class="px-3.5 py-2 rounded-xl text-sm font-bold text-zinc-900 hover:text-red-600 hover:bg-zinc-100 transition flex items-center gap-1.5" title="View Combo Packs">
+          <span>🎁 Combos</span>
         </a>
       </nav>
 
@@ -204,28 +207,32 @@
         </div>
 
         <nav class="mt-6 flex flex-col gap-2">
-          <button onclick="filterByCategory('all'); scrollToCatalog(); closeMobileNav();" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-semibold text-zinc-950 hover:bg-zinc-100">
+          <a href="index.html" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-semibold text-zinc-950 bg-zinc-100">
             <span>All Collection</span>
-            <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
-          </button>
-          <button onclick="filterByCategory('shirts'); scrollToCatalog(); closeMobileNav();" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-medium text-zinc-700 hover:bg-zinc-100">
+            <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-950"></i>
+          </a>
+          <a href="shirts.html" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-medium text-zinc-700 hover:bg-zinc-100">
             <span>Shirts & Overshirts</span>
             <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
-          </button>
-          <button onclick="filterByCategory('tshirts'); scrollToCatalog(); closeMobileNav();" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-medium text-zinc-700 hover:bg-zinc-100">
+          </a>
+          <a href="tshirts.html" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-medium text-zinc-700 hover:bg-zinc-100">
             <span>Graphic & Heavy Tees</span>
             <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
-          </button>
-          <button onclick="filterByCategory('pants'); scrollToCatalog(); closeMobileNav();" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-medium text-zinc-700 hover:bg-zinc-100">
+          </a>
+          <a href="pants.html" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-medium text-zinc-700 hover:bg-zinc-100">
             <span>Trousers & Pants</span>
             <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
-          </button>
-          <a href="#offers-section" onclick="closeMobileNav()" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-bold text-red-600 bg-red-50 hover:bg-red-100 border border-red-200">
+          </a>
+          <a href="offers.html" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-bold text-red-600 bg-red-50 hover:bg-red-100 border border-red-200">
             <span class="flex items-center gap-2">
               <i data-lucide="sparkles" class="w-4 h-4 text-red-600"></i>
-              <span>Special Offers & Combos</span>
+              <span>Special Offers & Drops</span>
             </span>
             <span class="text-xs bg-red-600 text-white px-2 py-0.5 rounded font-bold">HOT</span>
+          </a>
+          <a href="combos.html" class="flex items-center justify-between p-3.5 rounded-xl text-left text-base font-bold text-zinc-900 bg-zinc-50 hover:bg-zinc-100 border border-zinc-200">
+            <span>🎁 Combo Packs & Bundles</span>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-zinc-400"></i>
           </a>
         </nav>
       </div>
@@ -407,7 +414,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
         <!-- Category 1: Shirts -->
-        <div onclick="filterByCategory('shirts'); scrollToCatalog();" class="group relative rounded-3xl overflow-hidden cursor-pointer h-96 border border-zinc-200 hover:border-zinc-400 transition-all duration-300 shadow-sm hover:shadow-xl bg-white">
+        <a href="shirts.html" class="group relative rounded-3xl overflow-hidden cursor-pointer h-96 border border-zinc-200 hover:border-zinc-400 transition-all duration-300 shadow-sm hover:shadow-xl bg-white block">
           <img 
             src="assets/images/category-shirts.jpg" 
             alt="Tailored & Linen Shirts" 
@@ -421,10 +428,10 @@
               Shop Shirts <i data-lucide="arrow-right" class="w-4 h-4 text-red-400"></i>
             </span>
           </div>
-        </div>
+        </a>
 
         <!-- Category 2: T-Shirts -->
-        <div onclick="filterByCategory('tshirts'); scrollToCatalog();" class="group relative rounded-3xl overflow-hidden cursor-pointer h-96 border border-zinc-200 hover:border-zinc-400 transition-all duration-300 shadow-sm hover:shadow-xl bg-white">
+        <a href="tshirts.html" class="group relative rounded-3xl overflow-hidden cursor-pointer h-96 border border-zinc-200 hover:border-zinc-400 transition-all duration-300 shadow-sm hover:shadow-xl bg-white block">
           <img 
             src="assets/images/category-tees.jpg" 
             alt="Oversized Heavyweight Graphic Tees" 
@@ -438,10 +445,10 @@
               Shop Tees <i data-lucide="arrow-right" class="w-4 h-4 text-red-400"></i>
             </span>
           </div>
-        </div>
+        </a>
 
         <!-- Category 3: Pants -->
-        <div onclick="filterByCategory('pants'); scrollToCatalog();" class="group relative rounded-3xl overflow-hidden cursor-pointer h-96 border border-zinc-200 hover:border-zinc-400 transition-all duration-300 shadow-sm hover:shadow-xl bg-white">
+        <a href="pants.html" class="group relative rounded-3xl overflow-hidden cursor-pointer h-96 border border-zinc-200 hover:border-zinc-400 transition-all duration-300 shadow-sm hover:shadow-xl bg-white block">
           <img 
             src="assets/images/category-pants.jpg" 
             alt="Pleated Trousers & Utility Cargo Pants" 
@@ -455,7 +462,7 @@
               Shop Pants <i data-lucide="arrow-right" class="w-4 h-4 text-red-400"></i>
             </span>
           </div>
-        </div>
+        </a>
 
       </div>
     </div>
