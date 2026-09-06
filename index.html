@@ -37,7 +37,32 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=3">
+
+  <!-- Force Hide All Scrollbars Globally -->
+  <style>
+    /* Complete scrollbar elimination for all browsers */
+    html, body, div, section, main, aside, nav, form, table, tbody, ul, li, * {
+      -ms-overflow-style: none !important; /* IE and Edge */
+      scrollbar-width: none !important; /* Firefox */
+    }
+
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar,
+    div::-webkit-scrollbar,
+    section::-webkit-scrollbar,
+    main::-webkit-scrollbar,
+    aside::-webkit-scrollbar,
+    nav::-webkit-scrollbar,
+    form::-webkit-scrollbar,
+    *::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      background: transparent !important;
+      opacity: 0 !important;
+    }
+  </style>
 </head>
 <body class="bg-[#FAFAFA] text-zinc-900 antialiased selection:bg-red-600 selection:text-white">
 
